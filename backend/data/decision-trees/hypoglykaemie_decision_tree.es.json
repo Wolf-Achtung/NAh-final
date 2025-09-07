@@ -1,0 +1,35 @@
+{
+  "root": {
+    "id": "root",
+    "text": "¿Rostro caído repentinamente, parálisis o trastorno del habla?",
+    "options": [
+      {
+        "label": "Sí",
+        "nextId": "sofort"
+      },
+      {
+        "label": "No seguro",
+        "nextId": "unsicher"
+      },
+      {
+        "label": "No",
+        "nextId": "ende"
+      }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ Sospecha de ictus!\n- Realizar prueba FAST (Face, Arms, Speech, Time).\n- Llamar inmediatamente al 112.\n- Anotar la hora de inicio de los síntomas.\n- Mantener a la persona tranquila, no dar comida ni bebida.",
+    "options": []
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "En caso de duda, llame al 112 y describa los síntomas.",
+    "options": []
+  },
+  "ende": {
+    "id": "ende",
+    "text": "No hay sospecha de ictus agudo. Seguir observando.",
+    "options": []
+  }
+}

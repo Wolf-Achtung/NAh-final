@@ -1,0 +1,24 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Starke Blutung – so stoppst du sie:",
+    "options": [
+      { "label": "Anleitung anzeigen", "nextId": "steps" },
+      { "label": "Notruf 112 – was sage ich?", "nextId": "notruf" }
+    ]
+  },
+  "steps": {
+    "id": "steps",
+    "text": "1. 112 rufen.\n2. Handschutz/Hygiene beachten (wenn möglich).\n3. Saubere Auflage auf die Wunde, festen Druck ausüben.\n4. Druckverband anlegen; blutet es durch, weitere Auflage obenauf.\n5. Hochlagern (wenn möglich), beruhigen, warm halten.\n6. Beobachten bis Hilfe kommt.",
+    "options": [
+      { "label": "Zurück", "nextId": "root" }
+    ]
+  },
+  "notruf": {
+    "id": "notruf",
+    "text": "Beispiel: „Die Person blutet stark und unaufhörlich aus der Wunde am [Arm/Kopf/…]. Wir sind an [Ort/Adresse].“\n→ Kurz, klar, Standort & Zustand nennen.",
+    "options": [
+      { "label": "Zurück", "nextId": "root" }
+    ]
+  }
+}

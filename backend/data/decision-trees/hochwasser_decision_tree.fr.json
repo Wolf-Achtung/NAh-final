@@ -1,0 +1,68 @@
+{
+  "root": {
+    "id": "root",
+    "text": "[FR] Hochwasserwarnung! Bitte wählen Sie den passenden Bereich:",
+    "options": [
+      {
+        "label": "Vorbereitung",
+        "nextId": "prepare"
+      },
+      {
+        "label": "Ich bin im Haus",
+        "nextId": "indoors"
+      },
+      {
+        "label": "Ich bin im Auto",
+        "nextId": "car"
+      },
+      {
+        "label": "Ich bin draußen / helfe",
+        "nextId": "outside"
+      },
+      {
+        "label": "Nach dem Hochwasser",
+        "nextId": "after"
+      },
+      {
+        "label": "Notruf & Warnungen",
+        "nextId": "emergency"
+      }
+    ]
+  },
+  "prepare": {
+    "id": "prepare",
+    "text": "[FR] Halte Sandsäcke, Schalbretter und Abdichtmaterial bereit; lagere gefährliche Stoffe hochwassersicher; bringe Möbel und Dokumente in höhere Stockwerke; sichere den Heizöltank gegen Auftrieb; stelle Notgepäck, Lebensmittel, Trinkwasser, Radio, Taschenlampe und Campingkocher bereit; plane die Evakuierung von Kindern, Kranken und Haustieren und stimme dich mit Nachbarn ab【697673071276625†L78-L90】【396780410511475†L123-L133】【697673071276625†L86-L88】【396780410511475†L125-L134】【697673071276625†L90-L92】【396780410511475†L133-L137】【396780410511475†L111-L118】.",
+    "options": [],
+    "text_simplified": "[FR] Sandsäcke, Wasser, Essen bereitstellen."
+  },
+  "indoors": {
+    "id": "indoors",
+    "text": "[FR] Prüfe Rückstauklappen; bleibe dem Keller und Tiefgaragen fern; dichte Fenster, Türen und Abflussöffnungen ab; schalte elektrische Geräte und Heizungen ab oder den Strom ganz aus; bringe Kinder und Hilfsbedürftige rechtzeitig in sichere Bereiche; verlasse das Haus nur, wenn die Behörden es anordnen oder akute Gefahr besteht und folge Warnungen und Durchsagen【396780410511475†L148-L154】【697673071276625†L130-L131】【396780410511475†L149-L150】【396780410511475†L151-L152】【396780410511475†L152-L154】【396780410511475†L170-L171】【396780410511475†L167-L179】.",
+    "options": [],
+    "text_simplified": "[FR] Bleib im Obergeschoss, Strom aus."
+  },
+  "car": {
+    "id": "car",
+    "text": "[FR] Fahre dein Auto rechtzeitig aus gefährdeten Garagen oder Parkplätzen; nutze keine Tiefgaragen; fahre nicht durch überflutete Straßen, da Wasser Motor und Elektronik zerstört und die Tiefe oft unbekannt ist; steht das Wasser bereits bis über die Räder, lasse das Fahrzeug abschleppen【396780410511475†L158-L165】【697673071276625†L145-L146】.",
+    "options": [],
+    "text_simplified": "[FR] Fahr nicht durch überflutete Straßen."
+  },
+  "outside": {
+    "id": "outside",
+    "text": "[FR] Rette andere nur ohne dich selbst zu gefährden; bringe Kinder schnellstmöglich aus dem Überschwemmungsgebiet; unterlasse Bootsfahrten in überfluteten Gebieten; halte dich von Uferbereichen fern, da Unterspülungen und Abrutschen drohen; beachte Sperrungen und Anweisungen der Einsatzkräfte【396780410511475†L167-L179】.",
+    "options": [],
+    "text_simplified": "[FR] Geh auf höheres Gelände."
+  },
+  "after": {
+    "id": "after",
+    "text": "[FR] Beginne erst mit dem Abpumpen, wenn keine Gebäudeschäden zu erwarten sind; trockne das Gebäude nach Schlammräumung schnell und nutze ggf. Mietheizgeräte; ziehe bei Rissen oder klemmenden Türen Statiker hinzu und lasse Elektrik und Heizöltanks von Fachleuten überprüfen; melde freigesetzte Schadstoffe der Feuerwehr; entsorge Lebensmittel, die mit dem Wasser in Kontakt kamen; dokumentiere Schäden fotografisch und informiere deine Versicherung frühzeitig; beachte, dass Trocknung und Sanierung Monate dauern können und informiere dich über Hilfsangebote【697673071276625†L155-L190】.",
+    "options": [],
+    "text_simplified": "[FR] Warte auf Entwarnung, prüfe Schäden."
+  },
+  "emergency": {
+    "id": "emergency",
+    "text": "[FR] Bei akuter Gefahr oder Verletzungen rufe 112: nenne Ort, Ereignis und wer anruft und warte auf Rückfragen; leiste Erste Hilfe, bis Rettungskräfte eintreffen; nutze Warn‑Apps wie NINA/KATWARN, beachte Durchsagen und Lautsprecherwarnungen der Einsatzkräfte【788410206792198†L808-L820】【697673071276625†L100-L104】【396780410511475†L93-L96】.",
+    "options": [],
+    "text_simplified": "[FR] Ruf 112 bei Gefahr oder Verletzung."
+  }
+}

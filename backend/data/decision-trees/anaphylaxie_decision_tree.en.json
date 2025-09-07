@@ -1,0 +1,35 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Sudden drooping face, paralysis or speech disorder?",
+    "options": [
+      {
+        "label": "Yes",
+        "nextId": "sofort"
+      },
+      {
+        "label": "Unsure",
+        "nextId": "unsicher"
+      },
+      {
+        "label": "No",
+        "nextId": "ende"
+      }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ Suspected stroke!\n- Perform FAST test (Face, Arms, Speech, Time).\n- Call 112 immediately.\n- Note the time of symptoms.\n- Keep the person calm, no food or drink.",
+    "options": []
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "If in doubt, call 112 and describe the symptoms.",
+    "options": []
+  },
+  "ende": {
+    "id": "ende",
+    "text": "No acute stroke suspicion. Keep monitoring.",
+    "options": []
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Affaissement soudain du visage, paralysie ou troubles de la parole ?",
+    "options": [
+      {
+        "label": "Oui",
+        "nextId": "sofort"
+      },
+      {
+        "label": "Incertain",
+        "nextId": "unsicher"
+      },
+      {
+        "label": "Non",
+        "nextId": "ende"
+      }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ Suspect d’AVC !\n- Effectuer le test FAST (Face, Bras, Parole, Temps).\n- Appeler immédiatement le 112.\n- Noter l’heure d’apparition des symptômes.\n- Rassurer la personne, pas de nourriture ni de boisson.",
+    "options": []
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "En cas de doute, appelez le 112 et décrivez les symptômes.",
+    "options": []
+  },
+  "ende": {
+    "id": "ende",
+    "text": "Pas de suspicion d’AVC aigu. Surveiller.",
+    "options": []
+  }
+}

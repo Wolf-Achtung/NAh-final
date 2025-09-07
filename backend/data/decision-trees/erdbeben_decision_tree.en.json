@@ -1,0 +1,62 @@
+{
+  "root": {
+    "id": "root",
+    "text": "[EN] Erdbeben oder Erschütterung festgestellt – wo sind Sie?",
+    "options": [
+      {
+        "label": "Vorbereitung",
+        "nextId": "prepare"
+      },
+      {
+        "label": "Ich bin drinnen",
+        "nextId": "indoors"
+      },
+      {
+        "label": "Ich bin draußen",
+        "nextId": "outside"
+      },
+      {
+        "label": "Nach dem Beben",
+        "nextId": "after"
+      }
+    ]
+  },
+  "prepare": {
+    "id": "prepare",
+    "text": "[EN] Möbel sichern, Notgepäck vorbereiten, Fenster sichern, Taschenlampe bereithalten.",
+    "context": [
+      "zu Hause",
+      "mit Kindern"
+    ],
+    "related": [],
+    "options": [],
+    "text_simplified": "[EN] Sichere Möbel, packe Notgepäck."
+  },
+  "indoors": {
+    "id": "indoors",
+    "text": "[EN] Nicht rauslaufen! Unter Tisch kauern, weg von Fenstern, Kopf schützen.",
+    "context": [
+      "drinnen"
+    ],
+    "options": [],
+    "text_simplified": "[EN] Kauere unter einem Tisch."
+  },
+  "outside": {
+    "id": "outside",
+    "text": "[EN] Freifläche aufsuchen, Abstand zu Gebäuden, Stromleitungen, Brücken halten.",
+    "context": [
+      "unterwegs"
+    ],
+    "options": [],
+    "text_simplified": "[EN] Bleib weg von Gebäuden."
+  },
+  "after": {
+    "id": "after",
+    "text": "[EN] Gebäude verlassen, Schäden prüfen, Radio hören, Nachbeben beachten.",
+    "context": [
+      "nach Erdbeben"
+    ],
+    "options": [],
+    "text_simplified": "[EN] Verlasse das Haus vorsichtig."
+  }
+}

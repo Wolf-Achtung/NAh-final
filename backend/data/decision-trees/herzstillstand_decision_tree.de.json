@@ -1,0 +1,76 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Person bewusstlos und keine normale Atmung?",
+    "options": [
+      { "label": "Ja – Reanimation starten", "nextId": "reanimation" },
+      { "label": "Unsicher", "nextId": "unsicher" },
+      { "label": "Nein", "nextId": "ende" }
+    ]
+  },
+  "reanimation": {
+    "id": "reanimation",
+    "text": "⚠️ Herzstillstand!\n- Sofort 112 rufen (Lautsprecher einschalten).\n- Herzdruckmassage: 100–120/Minute, 5–6 cm tief.\n- AED, wenn verfügbar: sofort einsetzen.\n\nWähle eine Anleitung:",
+    "options": [
+      { "label": "Wie funktioniert die Beatmung?", "nextId": "beatmung_howto" },
+      { "label": "So führst du die Herzdruckmassage korrekt durch", "nextId": "druck_howto" },
+      { "label": "Nur Herzdruckmassage", "nextId": "only_compressions" },
+      { "label": "Wie lange muss ich drücken? / Wann aufhören?", "nextId": "when_stop" },
+      { "label": "Herzstillstand erkennen / Lebenszeichen", "nextId": "recognize" },
+      { "label": "Bewusstlosigkeit – was tun?", "nextId": "unconscious" },
+      { "label": "Allein am Notfallort – so gehst du vor", "nextId": "alone" },
+      { "label": "Kinder & Säuglinge – Unterschiede", "nextId": "kids_diff" },
+      { "label": "Zum Start", "nextId": "root" }
+    ]
+  },
+  "beatmung_howto": {
+    "id": "beatmung_howto",
+    "text": "So beatmen Sie eine Person richtig:\n\n1. Kopf überstrecken (Hand an Stirn, Kinn anheben).\n2. Nase zuhalten.\n3. Mund öffnen, eigenen Mund dicht umschließen.\n4. 2× je 1 Sekunde langsam und kontrolliert in den Mund blasen.\n5. Brustkorb muss sich sichtbar heben.\n6. Danach weiter Herzdruckmassage (30:2).\n\nNur beatmen, wenn Sie sich sicher fühlen. Im Zweifel nur drücken!",
+    "options": [{ "label": "Zurück", "nextId": "reanimation" }]
+  },
+  "druck_howto": {
+    "id": "druck_howto",
+    "text": "Herzdruckmassage – Schritt für Schritt:\n\n1. Person auf Rücken, fester Untergrund.\n2. Handballen auf Mitte Brustkorb, zweite Hand obenauf.\n3. Arme gestreckt, senkrecht über Brustkorb.\n4. Kräftig und schnell drücken: 30×, 5–6 cm tief, 100–120/Minute.\n5. Danach 2× beatmen (falls möglich), dann weiter.",
+    "options": [{ "label": "Zurück", "nextId": "reanimation" }]
+  },
+  "only_compressions": {
+    "id": "only_compressions",
+    "text": "Nur Herzdruckmassage (empfohlen, wenn Beatmung unsicher):\n- Ohne Unterbrechung mit 100–120/Minute auf die Mitte des Brustkorbs drücken.\n- Nicht aufhören bis Hilfe da ist oder Atmung zurückkehrt.",
+    "options": [{ "label": "Zurück", "nextId": "reanimation" }]
+  },
+  "when_stop": {
+    "id": "when_stop",
+    "text": "So lange drücken, bis:\n• Rettungsdienst übernimmt\n• Person wieder normal atmet oder sich bewegt\n• Sie völlig erschöpft sind\n\nWichtig: Nicht zu früh aufhören!",
+    "options": [{ "label": "Zurück", "nextId": "reanimation" }]
+  },
+  "recognize": {
+    "id": "recognize",
+    "text": "Herzstillstand erkennen:\n• Keine Reaktion\n• Keine normale Atmung\n• Haut blass oder blau\n\nIm Zweifel sofort Herzdruckmassage beginnen!",
+    "options": [{ "label": "Zurück", "nextId": "reanimation" }]
+  },
+  "unconscious": {
+    "id": "unconscious",
+    "text": "Bewusstlosigkeit:\n1. Ansprechen, vorsichtig rütteln.\n2. Atmung prüfen.\n   • Atmet → stabile Seitenlage\n   • Atmet nicht → 112 und Reanimation",
+    "options": [{ "label": "Zurück", "nextId": "reanimation" }]
+  },
+  "alone": {
+    "id": "alone",
+    "text": "Allein am Notfallort:\n1. Sofort 112 (Lautsprecher) anrufen.\n2. Handy neben Person, dabei drücken.\n3. Kinder: erst 1 Minute Wiederbelebung, dann Notruf.",
+    "options": [{ "label": "Zurück", "nextId": "reanimation" }]
+  },
+  "kids_diff": {
+    "id": "kids_diff",
+    "text": "Kinder & Säuglinge:\n• Säugling: Zwei Finger, 4 cm tief, immer beatmen.\n• Kleinkind: eine Hand, 4 cm tief.\n• Schulkind: wie Erwachsener, 5–6 cm tief.\n\nImmer zuerst 5× beatmen, dann 30× drücken.",
+    "options": [{ "label": "Zurück", "nextId": "reanimation" }]
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "Im Zweifel sofort 112 rufen. Leitstelle gibt dir genaue Anweisungen.",
+    "options": [{ "label": "Zurück", "nextId": "root" }]
+  },
+  "ende": {
+    "id": "ende",
+    "text": "Keine Reanimation nötig. Weiter beobachten.",
+    "options": [{ "label": "Zurück", "nextId": "root" }]
+  }
+}

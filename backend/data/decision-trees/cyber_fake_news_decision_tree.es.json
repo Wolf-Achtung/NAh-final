@@ -1,0 +1,70 @@
+{
+  "root": {
+    "id": "root",
+    "text": "[ES] Digitale Bedrohung festgestellt – was trifft zu?",
+    "options": [
+      {
+        "label": "Vorbereitung / IT-Sicherheit",
+        "nextId": "prepare"
+      },
+      {
+        "label": "Ich erkenne Fake News / Desinformation",
+        "nextId": "fake"
+      },
+      {
+        "label": "Es liegt ein Cyberangriff vor",
+        "nextId": "cyber"
+      }
+    ],
+    "context": [
+      "digitale Umgebung",
+      "Medien",
+      "Jugendliche"
+    ],
+    "related": [
+      "pandemie"
+    ]
+  },
+  "prepare": {
+    "id": "prepare",
+    "text": "[ES] Sichere Passwörter, Zwei-Faktor-Auth, Updates aktivieren, Behördenportale kennen, Offline-Kontakte vorbereiten.",
+    "options": [],
+    "context": [
+      "digitale Umgebung",
+      "Medien",
+      "Jugendliche"
+    ],
+    "related": [
+      "pandemie"
+    ],
+    "text_simplified": "[ES] Nutze sichere Passwörter, mache Updates."
+  },
+  "fake": {
+    "id": "fake",
+    "text": "[ES] Nicht weiterverbreiten. Quelle prüfen. Offizielle Stellen gegenchecken. Meldung an Plattform oder Polizei.",
+    "options": [],
+    "context": [
+      "digitale Umgebung",
+      "Medien",
+      "Jugendliche"
+    ],
+    "related": [
+      "pandemie"
+    ],
+    "text_simplified": "[ES] Teile keine Falschinfos, prüfe Quellen."
+  },
+  "cyber": {
+    "id": "cyber",
+    "text": "[ES] Gerät ggf. trennen. Auf Radio oder analoge Infos umschalten. Treffpunkte nutzen. Auf Behördenanweisungen warten.",
+    "options": [],
+    "context": [
+      "digitale Umgebung",
+      "Medien",
+      "Jugendliche"
+    ],
+    "related": [
+      "pandemie"
+    ],
+    "text_simplified": "[ES] Trenne Gerät vom Netz, höre Radio."
+  }
+}

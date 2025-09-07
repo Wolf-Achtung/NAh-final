@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "En cas de fuite de produits chimiques, de substances toxiques ou de chaleur et sécheresse extrêmes, allez immédiatement en lieu sûr, de préférence à l'intérieur. Évitez tout contact avec la substance et respirez de l'air frais. Appelez les services d'urgence et informez les autres.",
+    "context": ["facility", "public_space", "home", "outside"],
+    "options": [],
+    "text_simplified": "Substances dangereuses : se mettre à l'abri et respirer de l'air frais."
+  }
+}

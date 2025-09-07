@@ -1,0 +1,28 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Nach Allergen-Kontakt (z. B. Insekt, Nuss) plötzlich Atemnot/Schwellung/Kreislaufprobleme?",
+    "options": [
+      { "label": "Ja – Anaphylaxie", "nextId": "sofort" },
+      { "label": "Unsicher", "nextId": "unsicher" },
+      { "label": "Nein", "nextId": "ende" }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ Anaphylaxie (Allergischer Schock)!\n1. Sofort 112 rufen.\n2. Adrenalin-Autoinjektor sofort anwenden (falls vorhanden) – durch Kleidung möglich.\n3. Lagerung:\n   • Atemnot → Oberkörper hoch\n   • Kreislaufproblem → flach + Beine hoch\n4. Enge Kleidung öffnen, beruhigen.",
+    "options": [
+      { "label": "Zurück", "nextId": "root" }
+    ]
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "Bei Zweifel 112 rufen: Schildern, was zu sehen ist (Atemnot, Hautausschlag, Schwellung).",
+    "options": [{ "label": "Zurück", "nextId": "root" }]
+  },
+  "ende": {
+    "id": "ende",
+    "text": "Derzeit keine schweren Symptome. Weiter beobachten.",
+    "options": [{ "label": "Zurück", "nextId": "root" }]
+  }
+}

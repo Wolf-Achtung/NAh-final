@@ -1,0 +1,28 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Plötzliche starke Atemnot (pfeifend, flach, Angst)?",
+    "options": [
+      { "label": "Ja – Atemnot", "nextId": "sofort" },
+      { "label": "Unsicher", "nextId": "unsicher" },
+      { "label": "Nein", "nextId": "ende" }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ Akute Atemnot!\n1. Aufrecht hinsetzen (Kutschersitz), beruhigen.\n2. Enge Kleidung öffnen, frische Luft.\n3. Eigenes Spray/Inhalator anwenden lassen (falls vorhanden).\n4. Keine Besserung/Alarmzeichen → 112 rufen.",
+    "options": [
+      { "label": "Zurück", "nextId": "root" }
+    ]
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "Im Zweifel 112 anrufen – Atemnot ist immer ernst zu nehmen.",
+    "options": [{ "label": "Zurück", "nextId": "root" }]
+  },
+  "ende": {
+    "id": "ende",
+    "text": "Aktuell keine akute Atemnot. Beobachten.",
+    "options": [{ "label": "Zurück", "nextId": "root" }]
+  }
+}

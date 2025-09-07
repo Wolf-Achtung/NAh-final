@@ -1,0 +1,88 @@
+{
+  "root": {
+    "id": "root",
+    "text": "[EN] Gefahrstoff- oder Gasaustritt festgestellt – wo befinden Sie sich?",
+    "options": [
+      {
+        "label": "Vorbereitung",
+        "nextId": "prepare"
+      },
+      {
+        "label": "Ich bin im Gebäude",
+        "nextId": "indoors"
+      },
+      {
+        "label": "Ich bin draußen",
+        "nextId": "outside"
+      },
+      {
+        "label": "Nach Freigabe / Entwarnung",
+        "nextId": "after"
+      }
+    ],
+    "context": [
+      "drinnen",
+      "unterwegs",
+      "Sammelstelle"
+    ],
+    "related": [
+      "blackout"
+    ]
+  },
+  "prepare": {
+    "id": "prepare",
+    "text": "[EN] Informiere dich über Warnsysteme (NINA etc.), halte Klebeband, Masken, Notradio & Batterien bereit. Evakuierungspläne kennen.",
+    "options": [],
+    "context": [
+      "drinnen",
+      "unterwegs",
+      "Sammelstelle"
+    ],
+    "related": [
+      "blackout"
+    ],
+    "text_simplified": "[EN] Hab Klebeband, Radio, Masken da."
+  },
+  "indoors": {
+    "id": "indoors",
+    "text": "[EN] Fenster/Türen schließen, Lüftungen aus. Abdichten mit Klebeband. Innenraum aufsuchen. Radio/Warn-App einschalten.",
+    "options": [],
+    "context": [
+      "drinnen",
+      "unterwegs",
+      "Sammelstelle"
+    ],
+    "related": [
+      "blackout"
+    ],
+    "text_simplified": "[EN] Fenster zu, abdichten, bleib drin."
+  },
+  "outside": {
+    "id": "outside",
+    "text": "[EN] Quer zur Windrichtung gehen, Mund/Nase bedecken, nächstes Gebäude aufsuchen, nicht im Auto bleiben.",
+    "options": [],
+    "context": [
+      "drinnen",
+      "unterwegs",
+      "Sammelstelle"
+    ],
+    "related": [
+      "blackout"
+    ],
+    "text_simplified": "[EN] Geh quer zum Wind, Mund bedecken."
+  },
+  "after": {
+    "id": "after",
+    "text": "[EN] Nur nach offizieller Entwarnung lüften. Kleidung wechseln, duschen. Bei Symptomen: Behörden kontaktieren.",
+    "options": [],
+    "context": [
+      "drinnen",
+      "unterwegs",
+      "Sammelstelle"
+    ],
+    "related": [
+      "blackout"
+    ],
+    "text_simplified": "[EN] Dusche, lüfte, zieh frische Kleidung an."
+  }
+}

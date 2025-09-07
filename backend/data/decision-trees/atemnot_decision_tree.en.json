@@ -1,0 +1,26 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Sudden severe shortness of breath (wheezing, shallow, anxiety)?",
+    "options": [
+      { "label": "Yes – breathing difficulty", "nextId": "sofort" },
+      { "label": "Unsure", "nextId": "unsicher" },
+      { "label": "No", "nextId": "ende" }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ Acute breathing difficulty!\n1. Sit upright (tripod position), reassure.\n2. Loosen tight clothing, fresh air.\n3. Use own inhaler (if available).\n4. No improvement → call 112.",
+    "options": [{ "label": "Back", "nextId": "root" }]
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "When in doubt, call 112 – breathing problems are serious.",
+    "options": [{ "label": "Back", "nextId": "root" }]
+  },
+  "ende": {
+    "id": "ende",
+    "text": "No acute breathing difficulty. Monitor.",
+    "options": [{ "label": "Back", "nextId": "root" }]
+  }
+}

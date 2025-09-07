@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Si se produce un derrame de productos químicos, sustancias tóxicas o calor y sequía extremos, dirígete inmediatamente a un lugar seguro, preferiblemente en interiores. Evita el contacto con la sustancia y respira aire fresco. Llama a los servicios de emergencia e informa a los demás.",
+    "context": ["facility", "public_space", "home", "outside"],
+    "options": [],
+    "text_simplified": "Sustancias peligrosas: busca un lugar seguro y aire fresco."
+  }
+}

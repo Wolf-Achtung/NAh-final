@@ -1,0 +1,94 @@
+{
+  "root": {
+    "id": "root",
+    "text": "[IT] Brand oder Feuer festgestellt – wo befinden Sie sich?",
+    "options": [
+      {
+        "label": "Vorbereitung / Prävention",
+        "nextId": "prepare"
+      },
+      {
+        "label": "Ich bin im Gebäude",
+        "nextId": "indoors"
+      },
+      {
+        "label": "Ich bin draußen / beobachte",
+        "nextId": "outside"
+      },
+      {
+        "label": "Ich leiste Erste Hilfe",
+        "nextId": "help"
+      },
+      {
+        "label": "Nach dem Brand",
+        "nextId": "after"
+      }
+    ],
+    "context": [
+      "Gebäude",
+      "unterwegs",
+      "Erste Hilfe"
+    ],
+    "related": []
+  },
+  "prepare": {
+    "id": "prepare",
+    "text": "[IT] Installiere Rauchmelder, kenne Fluchtwege, halte Feuerlöscher und Notfalltasche bereit. Notrufnummer: 112.",
+    "options": [],
+    "context": [
+      "Gebäude",
+      "unterwegs",
+      "Erste Hilfe"
+    ],
+    "related": [],
+    "text_simplified": "[IT] Rauchmelder und Feuerlöscher bereitstellen."
+  },
+  "indoors": {
+    "id": "indoors",
+    "text": "[IT] Verlasse das Gebäude sofort, ohne Aufzug. Türen schließen. Andere warnen. Draußen Notruf 112 wählen.",
+    "options": [],
+    "context": [
+      "Gebäude",
+      "unterwegs",
+      "Erste Hilfe"
+    ],
+    "related": [],
+    "text_simplified": "[IT] Verlasse das Haus, keine Aufzüge."
+  },
+  "outside": {
+    "id": "outside",
+    "text": "[IT] Notruf 112 wählen, Abstand halten, Anfahrtswege freihalten, Feuerwehr informieren.",
+    "options": [],
+    "context": [
+      "Gebäude",
+      "unterwegs",
+      "Erste Hilfe"
+    ],
+    "related": [],
+    "text_simplified": "[IT] Ruf 112, halte Abstand."
+  },
+  "help": {
+    "id": "help",
+    "text": "[IT] Nur helfen, wenn gefahrlos möglich. Prüfe Atmung, leiste Erste Hilfe. Anweisungen der Leitstelle folgen.",
+    "options": [],
+    "context": [
+      "Gebäude",
+      "unterwegs",
+      "Erste Hilfe"
+    ],
+    "related": [],
+    "text_simplified": "[IT] Hilf nur, wenn sicher. Ruf Hilfe."
+  },
+  "after": {
+    "id": "after",
+    "text": "[IT] Betrete Gebäude nur mit Freigabe. Dokumentiere Schäden. Nutze psychologische Hilfe. Ersetze Rauchmelder.",
+    "options": [],
+    "context": [
+      "Gebäude",
+      "unterwegs",
+      "Erste Hilfe"
+    ],
+    "related": [],
+    "text_simplified": "[IT] Nur zurück, wenn erlaubt. Schäden melden."
+  }
+}

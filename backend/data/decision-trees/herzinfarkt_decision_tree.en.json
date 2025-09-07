@@ -1,0 +1,34 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Severe chest pain/pressure, shortness of breath, nausea, cold sweat?",
+    "options": [
+      { "label": "Yes – suspected heart attack", "nextId": "sofort" },
+      { "label": "Unsure", "nextId": "unsicher" },
+      { "label": "No", "nextId": "ende" }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ Suspected heart attack!\n1. Call 112 immediately.\n2. Sit upright, loosen tight clothing.\n3. Reassure and keep warm.\n4. No food.\n5. If unconscious/no normal breathing → start CPR.",
+    "options": [
+      { "label": "Warning signs", "nextId": "zeichen" },
+      { "label": "Back", "nextId": "root" }
+    ]
+  },
+  "zeichen": {
+    "id": "zeichen",
+    "text": "Warning signs: dull pressure/tightness in chest, radiation to arm/jaw/back, breathlessness, anxiety, sweat, nausea.",
+    "options": [{ "label": "Back", "nextId": "sofort" }]
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "If unsure, call 112 and describe symptoms.",
+    "options": [{ "label": "Back", "nextId": "root" }]
+  },
+  "ende": {
+    "id": "ende",
+    "text": "No acute suspicion. If symptoms return: act immediately.",
+    "options": [{ "label": "Back", "nextId": "root" }]
+  }
+}

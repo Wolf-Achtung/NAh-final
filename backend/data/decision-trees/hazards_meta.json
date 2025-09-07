@@ -1,0 +1,183 @@
+{
+  "schlaganfall": {
+    "name": {
+      "de": "Schlaganfall",
+      "en": "Stroke"
+    },
+    "description": {
+      "de": "Plötzliche Durchblutungsstörung im Gehirn. Typische Symptome: hängender Mundwinkel, Lähmung, Sprachstörung. Sofort 112 anrufen.",
+      "en": "Sudden disruption of blood flow in the brain. Typical signs: drooping face, paralysis, speech disorder. Call emergency immediately."
+    },
+    "synonyms": {
+      "de": [
+        "Apoplex",
+        "Hirnschlag"
+      ],
+      "en": [
+        "stroke",
+        "apoplexy"
+      ]
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ]
+  },
+  "herzinfarkt": {
+    "name": {
+      "de": "Herzinfarkt",
+      "en": "Heart Attack"
+    },
+    "description": {
+      "de": "Akute Minderdurchblutung des Herzmuskels. Symptome: Brustschmerz, Atemnot, Schweiß. Sofort 112 rufen.",
+      "en": "Acute lack of blood supply to the heart muscle. Symptoms: chest pain, shortness of breath, sweating. Call emergency immediately."
+    },
+    "synonyms": {
+      "de": [
+        "Herzanfall",
+        "Myokardinfarkt"
+      ],
+      "en": [
+        "heart attack",
+        "myocardial infarction"
+      ]
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ]
+  },
+  "herzstillstand": {
+    "name": {
+      "de": "Herzstillstand",
+      "en": "Cardiac Arrest"
+    },
+    "description": {
+      "de": "Das Herz pumpt nicht mehr. Bewusstlosigkeit, keine Atmung. Sofort Reanimation und 112.",
+      "en": "The heart has stopped pumping. Unconscious, no breathing. Start CPR and call emergency."
+    },
+    "synonyms": {
+      "de": [
+        "Reanimation",
+        "Herz-Kreislauf-Stillstand"
+      ],
+      "en": [
+        "cardiac arrest",
+        "CPR"
+      ]
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ]
+  },
+  "krampfanfall": {
+    "name": {
+      "de": "Epileptischer Anfall",
+      "en": "Seizure"
+    },
+    "description": {
+      "de": "Unkontrollierte Krämpfe oder Zuckungen. Umgebung sichern, nicht festhalten, stabile Seitenlage nach Anfall. 112 bei Dauer >5 Min.",
+      "en": "Uncontrolled convulsions or seizures. Ensure safety, do not restrain, recovery position after seizure. Call emergency if >5 min."
+    },
+    "synonyms": {
+      "de": [
+        "Epilepsieanfall",
+        "Krampfanfall"
+      ],
+      "en": [
+        "seizure",
+        "epileptic fit"
+      ]
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ]
+  },
+  "atemnot": {
+    "name": {
+      "de": "Akute Atemnot",
+      "en": "Acute Breathing Difficulty"
+    },
+    "description": {
+      "de": "Plötzliche Atemnot, oft bei Asthma oder COPD. Sofort aufrecht hinsetzen, Inhalator nutzen, 112 rufen.",
+      "en": "Sudden shortness of breath, often in asthma or COPD. Sit upright, use inhaler, call emergency."
+    },
+    "synonyms": {
+      "de": [
+        "Asthmaanfall",
+        "COPD-Anfall"
+      ],
+      "en": [
+        "shortness of breath",
+        "asthma attack"
+      ]
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ]
+  },
+  "hypoglykaemie": {
+    "name": {
+      "de": "Unterzuckerung (Hypoglykämie)",
+      "en": "Hypoglycemia"
+    },
+    "description": {
+      "de": "Diabetes-Notfall mit Verwirrtheit, Schweiß, Zittern. Sofort Zucker geben, bei Bewusstlosigkeit 112.",
+      "en": "Diabetes emergency with confusion, sweating, trembling. Give sugar immediately, call emergency if unconscious."
+    },
+    "synonyms": {
+      "de": [
+        "Unterzuckerung",
+        "Diabetes Notfall"
+      ],
+      "en": [
+        "hypoglycemia",
+        "low blood sugar"
+      ]
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ]
+  },
+  "anaphylaxie": {
+    "name": {
+      "de": "Anaphylaxie (Allergischer Schock)",
+      "en": "Anaphylaxis"
+    },
+    "description": {
+      "de": "Schwere allergische Reaktion mit Atemnot und Kreislaufproblemen. Adrenalin-Autoinjektor verwenden, 112 rufen.",
+      "en": "Severe allergic reaction with breathing and circulatory problems. Use epinephrine autoinjector, call emergency."
+    },
+    "synonyms": {
+      "de": [
+        "Allergischer Schock"
+      ],
+      "en": [
+        "anaphylaxis",
+        "allergic shock"
+      ]
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ]
+  }
+}

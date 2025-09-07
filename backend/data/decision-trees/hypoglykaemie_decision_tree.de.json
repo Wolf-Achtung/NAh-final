@@ -1,0 +1,26 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Diabetiker*in mit Verwirrtheit, Zittern, Schwitzen?",
+    "options": [
+      { "label": "Ja – Unterzuckerung", "nextId": "sofort" },
+      { "label": "Unsicher", "nextId": "unsicher" },
+      { "label": "Nein", "nextId": "ende" }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ Hypoglykämie!\n• Bewusst: schnell Zucker geben (Traubenzucker, Saft, Cola).\n• Bewusstlos: nichts einflößen → stabile Seitenlage, 112 rufen.\n• Nach Gabe weiter beobachten, ggf. wiederholen.",
+    "options": [{ "label": "Zurück", "nextId": "root" }]
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "Bei Unsicherheit 112 rufen – besser einmal zu viel als zu wenig.",
+    "options": [{ "label": "Zurück", "nextId": "root" }]
+  },
+  "ende": {
+    "id": "ende",
+    "text": "Aktuell kein Unterzucker erkennbar. Beobachten.",
+    "options": [{ "label": "Zurück", "nextId": "root" }]
+  }
+}

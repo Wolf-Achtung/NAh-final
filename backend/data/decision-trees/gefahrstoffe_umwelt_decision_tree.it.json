@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "In caso di fuoriuscita di sostanze chimiche, sostanze tossiche o caldo e siccità estremi, recati immediatamente in un luogo sicuro, preferibilmente al chiuso. Evita il contatto con la sostanza e respira aria fresca. Chiama i servizi di emergenza e informa gli altri.",
+    "context": ["facility", "public_space", "home", "outside"],
+    "options": [],
+    "text_simplified": "Sostanze pericolose: trovare un luogo sicuro e aria fresca."
+  }
+}

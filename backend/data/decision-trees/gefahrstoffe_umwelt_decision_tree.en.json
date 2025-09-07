@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "In the event of a release of chemicals, toxic substances or extreme heat and drought, move immediately to a safe place, preferably indoors. Avoid contact with the substance and breathe fresh air. Call emergency services and inform others.",
+    "context": ["facility", "public_space", "home", "outside"],
+    "options": [],
+    "text_simplified": "Hazardous substances: find a safe place and fresh air."
+  }
+}

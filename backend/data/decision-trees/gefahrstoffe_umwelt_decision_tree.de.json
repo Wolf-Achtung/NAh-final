@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Bei einem Austritt von Chemikalien, giftigen Stoffen oder extremer Hitze und Trockenheit bring dich sofort an einen sicheren Ort, möglichst in einen geschlossenen Raum. Vermeide den Kontakt mit dem Stoff und atme frische Luft. Rufe die Notdienste und informiere andere Personen.",
+    "context": ["facility", "public_space", "home", "outside"],
+    "options": [],
+    "text_simplified": "Gefahrstoffe: Sicheren Ort aufsuchen und frische Luft."
+  }
+}

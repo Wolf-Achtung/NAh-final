@@ -1,0 +1,36 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Starke Brustschmerzen/Druck, Atemnot, Übelkeit, kalter Schweiß?",
+    "options": [
+      { "label": "Ja – Verdacht auf Herzinfarkt", "nextId": "sofort" },
+      { "label": "Unsicher", "nextId": "unsicher" },
+      { "label": "Nein", "nextId": "ende" }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ Verdacht auf Herzinfarkt!\n1. Sofort 112 rufen.\n2. Oberkörper hoch lagern, beengende Kleidung öffnen.\n3. Beruhigen, warm halten.\n4. Keine Nahrung.\n5. Bei Bewusstlosigkeit/keine normale Atmung → Reanimation starten.",
+    "options": [
+      { "label": "Warnzeichen", "nextId": "zeichen" },
+      { "label": "Zurück", "nextId": "root" }
+    ]
+  },
+  "zeichen": {
+    "id": "zeichen",
+    "text": "Warnzeichen: dumpfer Druck/Enge in der Brust, Ausstrahlung in Arm/Kiefer/Rücken, Luftnot, Angst, Schweiß, Übelkeit.",
+    "options": [
+      { "label": "Zurück", "nextId": "sofort" }
+    ]
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "Lieber vorsichtig: 112 rufen und Symptome schildern.",
+    "options": [{ "label": "Zurück", "nextId": "root" }]
+  },
+  "ende": {
+    "id": "ende",
+    "text": "Kein akuter Verdacht. Bei neuen Beschwerden: sofort handeln.",
+    "options": [{ "label": "Zurück", "nextId": "root" }]
+  }
+}

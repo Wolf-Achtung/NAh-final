@@ -1,0 +1,93 @@
+{
+  "root": {
+    "id": "root",
+    "text": "[EN] Großflächiger Stromausfall festgestellt – wo befinden Sie sich?",
+    "options": [
+      {
+        "label": "Vorbereitung",
+        "nextId": "prepare"
+      },
+      {
+        "label": "Ich bin zu Hause",
+        "nextId": "indoors"
+      },
+      {
+        "label": "Ich bin draußen",
+        "nextId": "outside"
+      },
+      {
+        "label": "Nach Wiederherstellung",
+        "nextId": "after"
+      }
+    ],
+    "context": [
+      "drinnen",
+      "ältere Menschen",
+      "Familie"
+    ],
+    "related": [
+      "pandemie",
+      "krieg"
+    ]
+  },
+  "prepare": {
+    "id": "prepare",
+    "text": "[EN] Wasser, Lebensmittel, Taschenlampen, Batterien, Radio, Powerbanks, Bargeld & Treffpunkte vorbereiten.",
+    "options": [],
+    "context": [
+      "drinnen",
+      "ältere Menschen",
+      "Familie"
+    ],
+    "related": [
+      "pandemie",
+      "krieg"
+    ],
+    "text_simplified": "[EN] Bereite Wasser, Essen und Batterien vor."
+  },
+  "indoors": {
+    "id": "indoors",
+    "text": "[EN] Sicherungen prüfen, keine offenen Flammen, Kühlschrank zu, Energie sparen, Radio nutzen.",
+    "options": [],
+    "context": [
+      "drinnen",
+      "ältere Menschen",
+      "Familie"
+    ],
+    "related": [
+      "pandemie",
+      "krieg"
+    ],
+    "text_simplified": "[EN] Schalte Geräte aus, spare Strom, höre Radio."
+  },
+  "outside": {
+    "id": "outside",
+    "text": "[EN] Orientierung bewahren, Notfalltreffpunkte suchen, möglichst wenig unterwegs sein.",
+    "options": [],
+    "context": [
+      "drinnen",
+      "ältere Menschen",
+      "Familie"
+    ],
+    "related": [
+      "pandemie",
+      "krieg"
+    ],
+    "text_simplified": "[EN] Bleib ruhig und suche Treffpunkte."
+  },
+  "after": {
+    "id": "after",
+    "text": "[EN] Lebensmittel prüfen, Geräte vorsichtig einschalten, über Ursache informieren.",
+    "options": [],
+    "context": [
+      "drinnen",
+      "ältere Menschen",
+      "Familie"
+    ],
+    "related": [
+      "pandemie",
+      "krieg"
+    ],
+    "text_simplified": "[EN] Starte Geräte nacheinander, prüfe Essen."
+  }
+}

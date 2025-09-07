@@ -1,0 +1,35 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Improvviso cedimento del viso, paralisi o disturbo del linguaggio?",
+    "options": [
+      {
+        "label": "Sì",
+        "nextId": "sofort"
+      },
+      {
+        "label": "Non sicuro",
+        "nextId": "unsicher"
+      },
+      {
+        "label": "No",
+        "nextId": "ende"
+      }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ Sospetto ictus!\n- Eseguire il test FAST (Face, Arms, Speech, Time).\n- Chiamare subito il 112.\n- Annotare l’ora dei sintomi.\n- Tranquillizzare la persona, niente cibo o bevande.",
+    "options": []
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "In caso di dubbio, chiamare il 112 e descrivere i sintomi.",
+    "options": []
+  },
+  "ende": {
+    "id": "ende",
+    "text": "Nessun sospetto di ictus acuto. Monitorare.",
+    "options": []
+  }
+}

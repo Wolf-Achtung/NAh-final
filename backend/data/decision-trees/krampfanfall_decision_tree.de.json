@@ -1,0 +1,28 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Krampft die Person (Zuckungen, Bewusstsein gestört)?",
+    "options": [
+      { "label": "Ja – Krampfanfall", "nextId": "sofort" },
+      { "label": "Unsicher", "nextId": "unsicher" },
+      { "label": "Nein", "nextId": "ende" }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ Krampfanfall!\n1. Umgebung sichern (harte/ spitze Gegenstände entfernen).\n2. Person nicht festhalten, nichts in den Mund stecken.\n3. Kopf vorsichtig vor Verletzungen schützen.\n4. Nach Anfall: stabile Seitenlage, Atmung prüfen.\n5. Anfall >5 Min, Serienanfälle oder Verletzung → 112 rufen.",
+    "options": [
+      { "label": "Zurück", "nextId": "root" }
+    ]
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "Bei Unsicherheit: 112 rufen und beschreiben, was du siehst.",
+    "options": [{ "label": "Zurück", "nextId": "root" }]
+  },
+  "ende": {
+    "id": "ende",
+    "text": "Kein akuter Anfall erkennbar. Beobachten.",
+    "options": [{ "label": "Zurück", "nextId": "root" }]
+  }
+}

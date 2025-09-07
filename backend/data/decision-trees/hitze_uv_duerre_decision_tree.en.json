@@ -1,0 +1,62 @@
+{
+  "root": {
+    "id": "root",
+    "text": "[EN] Extreme Hitze / UV-Strahlung – was ist Ihre Lage?",
+    "options": [
+      {
+        "label": "Vorbereitung",
+        "nextId": "prepare"
+      },
+      {
+        "label": "Ich bin drinnen",
+        "nextId": "indoors"
+      },
+      {
+        "label": "Ich bin draußen",
+        "nextId": "outside"
+      },
+      {
+        "label": "Jemand zeigt Symptome",
+        "nextId": "symptoms"
+      }
+    ]
+  },
+  "prepare": {
+    "id": "prepare",
+    "text": "[EN] Hitzewarnungen beachten, Trinkwasser bereitstellen, Sonnenschutz, Nachbarschaftshilfe planen.",
+    "context": [
+      "zu Hause",
+      "mit älteren Menschen"
+    ],
+    "options": [],
+    "text_simplified": "[EN] Trinke genug, bleib im Schatten."
+  },
+  "indoors": {
+    "id": "indoors",
+    "text": "[EN] Fenster tagsüber schließen, abends lüften, Räume abdunkeln, viel trinken.",
+    "context": [
+      "drinnen"
+    ],
+    "options": [],
+    "text_simplified": "[EN] Räume kühl halten, viel trinken."
+  },
+  "outside": {
+    "id": "outside",
+    "text": "[EN] Sonne meiden, Wasser mitnehmen, helle Kleidung und Kopfbedeckung tragen.",
+    "context": [
+      "unterwegs"
+    ],
+    "options": [],
+    "text_simplified": "[EN] Meide Sonne, trage Hut."
+  },
+  "symptoms": {
+    "id": "symptoms",
+    "text": "[EN] Schatten aufsuchen, Wasser geben, bei Bewusstlosigkeit 112 anrufen.",
+    "context": [
+      "unterwegs",
+      "Erste Hilfe"
+    ],
+    "options": [],
+    "text_simplified": "[EN] Gib Wasser, ruf 112 bei Bewusstlosigkeit."
+  }
+}
