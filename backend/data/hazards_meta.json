@@ -1,0 +1,559 @@
+{
+  "anaphylaxie": {
+    "description": {
+      "de": "Schwere allergische Reaktion: Adrenalin-Autoinjektor anwenden, 112 rufen. Flach lagern, Beine hoch; bei Atemnot Oberkörper hoch.",
+      "en": "Severe allergic reaction: use epinephrine autoinjector, call emergency. Lie flat with legs raised; if breathless, sit up.",
+      "es": "Reacción alérgica grave: usar autoinyector de adrenalina, llamar al 112. Tumbado con piernas elevadas; si hay disnea, incorporarse.",
+      "fr": "Réaction allergique sévère : utiliser l’auto-injecteur d’adrénaline, appeler le 112. Allonger à plat, jambes surélevées; en cas de dyspnée, relever le buste.",
+      "it": "Reazione allergica grave: usare autoiniettore di adrenalina, chiamare il 112. Sdraiato con gambe sollevate; se dispnea, busto sollevato."
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ],
+    "name": {
+      "de": "Anaphylaxie (Allergischer Schock)",
+      "en": "Anaphylaxis",
+      "es": "Anafilaxia (choque alérgico)",
+      "fr": "Anaphylaxie (choc allergique)",
+      "it": "Anafilassi (shock allergico)"
+    },
+    "synonyms": {
+      "de": [
+        "Allergischer Schock",
+        "schwere Allergie"
+      ],
+      "en": [
+        "anaphylaxis",
+        "allergic shock",
+        "severe allergy"
+      ]
+    }
+  },
+  "atemnot": {
+    "description": {
+      "de": "Aufrecht hinsetzen, Inhalator nutzen (falls vorhanden), Kleidung lockern, 112 rufen bei fehlender Besserung.",
+      "en": "Sit upright, use inhaler if available, loosen clothing; call emergency if no improvement.",
+      "es": "Sentarse erguido, usar inhalador si disponible, aflojar ropa; llamar al 112 si no mejora.",
+      "fr": "Asseyez-vous, utilisez l’inhalateur si disponible, desserrez les vêtements; appelez le 112 si pas d’amélioration.",
+      "it": "Sedersi eretti, usare l’inalatore se disponibile, allentare i vestiti; chiamare il 112 se non migliora."
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ],
+    "name": {
+      "de": "Akute Atemnot",
+      "en": "Acute Breathing Difficulty",
+      "es": "Dificultad respiratoria aguda",
+      "fr": "Détresse respiratoire aiguë",
+      "it": "Dispnea acuta"
+    },
+    "synonyms": {
+      "de": [
+        "Asthmaanfall",
+        "COPD-Schub"
+      ],
+      "en": [
+        "shortness of breath",
+        "asthma attack",
+        "COPD exacerbation"
+      ]
+    }
+  },
+  "blutung_stark": {
+    "description": {
+      "de": "Starke Blutung stoppen: Druck ausüben, Druckverband anlegen, verletzte Person beruhigen, 112 rufen.",
+      "en": "Stop severe bleeding: apply pressure, apply a pressure bandage, calm the injured person, call 112.",
+      "es": "Detener una hemorragia grave: aplicar presión, poner un vendaje compresivo, calmar a la persona herida, llamar al 112.",
+      "fr": "Arrêter un saignement abondant : exercer une pression, appliquer un bandage compressif, calmer la personne blessée, appeler le 112.",
+      "it": "Fermare un'emorragia grave: esercitare pressione, applicare un bendaggio compressivo, calmare la persona ferita, chiamare il 112."
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ],
+    "name": {
+      "de": "Starke Blutung",
+      "en": "Severe bleeding",
+      "es": "Hemorragia grave",
+      "fr": "Saignement abondant",
+      "it": "Emorragia grave"
+    },
+    "synonyms": {
+      "de": [
+        "starke blutung",
+        "blutung",
+        "blutverlust",
+        "blut",
+        "verletzung blutet",
+        "schnittwunde",
+        "druckverband"
+      ],
+      "en": [
+        "severe bleeding"
+      ],
+      "es": [
+        "hemorragia"
+      ],
+      "fr": [
+        "hémorragie"
+      ],
+      "it": [
+        "emorragia"
+      ]
+    }
+  },
+  "brand_feuer": {
+    "description": {
+      "de": "Feuer mit Rauchentwicklung. Sofort in Sicherheit bringen, 112 rufen.",
+      "en": "Fire with smoke. Get to safety immediately, call emergency services.",
+      "es": "Fuego con humo. Póngase a salvo de inmediato, llame al 112.",
+      "fr": "Feu avec fumée. Mettez-vous immédiatement en sécurité, appelez le 112.",
+      "it": "Incendio con fumo. Mettersi subito in sicurezza, chiamare il 112."
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ],
+    "name": {
+      "de": "Brand / Feuer",
+      "en": "Fire",
+      "es": "Incendio",
+      "fr": "Incendie",
+      "it": "Incendio"
+    },
+    "synonyms": {
+      "de": [
+        "Feuer",
+        "Flammen"
+      ],
+      "en": [
+        "fire",
+        "flames"
+      ]
+    }
+  },
+  "herzinfarkt": {
+    "description": {
+      "de": "Starker Brustschmerz, Atemnot, Schweiß. Oberkörper hoch lagern, 112 rufen.",
+      "en": "Severe chest pain, shortness of breath, sweating. Sit upright, call emergency.",
+      "es": "Dolor torácico intenso, disnea, sudoración. Elevar el torso y llamar al 112.",
+      "fr": "Douleur thoracique intense, essoufflement, sueurs. Surélever le buste, appeler le 112.",
+      "it": "Forte dolore toracico, dispnea, sudorazione. Tenere il busto sollevato e chiamare il 112."
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ],
+    "name": {
+      "de": "Herzinfarkt",
+      "en": "Heart Attack",
+      "es": "Infarto de miocardio",
+      "fr": "Crise cardiaque (Infarctus)",
+      "it": "Infarto"
+    },
+    "synonyms": {
+      "de": [
+        "Herzanfall",
+        "Myokardinfarkt"
+        ,
+        "Brustschmerz",
+        "Brustschmerzen",
+        "Engegefühl Brust",
+        "Druck auf der Brust"
+      ],
+      "en": [
+        "heart attack",
+        "myocardial infarction",
+        "MI"
+      ]
+    }
+  },
+  "herzstillstand": {
+    "description": {
+      "de": "Bewusstlos und keine normale Atmung: sofort Reanimation starten und 112 rufen.",
+      "en": "Unconscious and not breathing normally: start CPR immediately and call emergency.",
+      "es": "Inconsciente y sin respiración normal: iniciar RCP de inmediato y llamar al 112.",
+      "fr": "Inconscient et ne respire pas normalement : commencez la RCP immédiatement et appelez le 112.",
+      "it": "Incosciente e senza respiro normale: iniziare subito la RCP e chiamare il 112."
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ],
+    "name": {
+      "de": "Herzstillstand",
+      "en": "Cardiac Arrest",
+      "es": "Paro cardiaco",
+      "fr": "Arrêt cardiaque",
+      "it": "Arresto cardiaco"
+    },
+    "synonyms": {
+      "de": [
+        "Herz-Kreislauf-Stillstand",
+        "Reanimation",
+        "bewusstlos",
+        "bewusstlosigkeit",
+        "keine atmung",
+        "kein puls"
+      ],
+      "en": [
+        "cardiac arrest",
+        "sudden cardiac arrest",
+        "SCA"
+      ]
+    }
+  },
+  "hypoglykaemie": {
+    "description": {
+      "de": "Bei Bewusstsein: schnell Zucker geben. Bei Bewusstlosigkeit: nichts einflößen, stabile Seitenlage, 112 rufen.",
+      "en": "If conscious: give fast-acting sugar. If unconscious: do not give anything, recovery position, call emergency.",
+      "es": "Consciente: dar azúcar de acción rápida. Inconsciente: nada por boca, PLS, llamar al 112.",
+      "fr": "Conscient : donner du sucre rapide. Inconscient : rien par la bouche, PLS, appeler le 112.",
+      "it": "Cosciente: somministrare zuccheri rapidi. Incosciente: nulla per bocca, PLS, chiamare il 112."
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ],
+    "name": {
+      "de": "Unterzuckerung (Hypoglykämie)",
+      "en": "Hypoglycemia",
+      "es": "Hipoglucemia",
+      "fr": "Hypoglycémie",
+      "it": "Ipoglicemia"
+    },
+    "synonyms": {
+      "de": [
+        "Unterzuckerung",
+        "Diabetes-Notfall"
+      ],
+      "en": [
+        "low blood sugar",
+        "diabetic emergency"
+      ]
+    }
+  },
+  "krampfanfall": {
+    "description": {
+      "de": "Krämpfe/Zuckungen: Umgebung sichern, nicht festhalten, nach Anfall stabile Seitenlage. 112 bei >5 Min.",
+      "en": "Convulsions/twitching: make area safe, do not restrain, recovery position after. Call emergency if >5 min.",
+      "es": "Convulsiones: asegurar el entorno, no sujetar, PLS después. Llamar al 112 si >5 min.",
+      "fr": "Convulsions : sécuriser l’environnement, ne pas retenir, PLS après. Appelez le 112 si >5 min.",
+      "it": "Convulsioni: mettere in sicurezza, non trattenere, PLS dopo. Chiamare il 112 se >5 min."
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ],
+    "name": {
+      "de": "Epileptischer Anfall",
+      "en": "Seizure",
+      "es": "Crisis epiléptica",
+      "fr": "Crise épileptique",
+      "it": "Crisi epilettica"
+    },
+    "synonyms": {
+      "de": [
+        "Krampfanfall",
+        "Anfall"
+      ],
+      "en": [
+        "seizure",
+        "epileptic seizure"
+      ]
+    }
+  },
+  "lawine": {
+    "description": {
+      "de": "Lawinenwarnung: aktuelle Lage prüfen, Route sorgfältig planen, Sicherheitsausrüstung nutzen, Gefahrenzonen meiden.",
+      "en": "Avalanche warning: check the current situation, plan the route carefully, use safety equipment, avoid hazard zones.",
+      "es": "Alerta de avalancha: comprobar la situación actual, planificar cuidadosamente la ruta, usar equipo de seguridad, evitar zonas de peligro.",
+      "fr": "Alerte aux avalanches : vérifier la situation, planifier soigneusement l'itinéraire, utiliser du matériel de sécurité, éviter les zones dangereuses.",
+      "it": "Avviso di valanga: controllare la situazione attuale, pianificare con cura il percorso, utilizzare l’attrezzatura di sicurezza, evitare le zone di pericolo."
+    },
+    "locations": [
+      "mountain_sea",
+      "outside"
+    ],
+    "name": {
+      "de": "Lawine",
+      "en": "Avalanche",
+      "es": "Avalancha",
+      "fr": "Avalanche",
+      "it": "Valanga"
+    },
+    "synonyms": {
+      "de": [
+        "lawine"
+      ],
+      "en": [
+        "avalanche"
+      ],
+      "es": [
+        "avalancha"
+      ],
+      "fr": [
+        "avalanche"
+      ],
+      "it": [
+        "valanga"
+      ]
+    }
+  },
+  "notruf": {
+    "description": {
+      "de": "Wie man den Notruf richtig absetzt: die fünf W‑Fragen beantworten, ruhig bleiben, auf Rückfragen warten.",
+      "en": "How to call emergency services correctly: answer the five W questions, stay calm and await further questions.",
+      "es": "Cómo llamar correctamente a los servicios de emergencia: responder a las cinco preguntas W, mantener la calma y esperar más preguntas.",
+      "fr": "Comment appeler correctement les secours : répondre aux cinq questions W, rester calme et attendre d’autres questions.",
+      "it": "Come chiamare correttamente i servizi di emergenza: rispondere alle cinque domande W, rimanere calmi e attendere ulteriori domande."
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ],
+    "name": {
+      "de": "Notruf 112",
+      "en": "Emergency Call 112",
+      "es": "Llamada de emergencia 112",
+      "fr": "Appel d’urgence 112",
+      "it": "Chiamata d’emergenza 112"
+    },
+    "synonyms": {
+      "de": [
+        "notruf",
+        "112"
+      ],
+      "en": [
+        "emergency call",
+        "112"
+      ],
+      "es": [
+        "llamada de emergencia",
+        "112"
+      ],
+      "fr": [
+        "appel d’urgence",
+        "112"
+      ],
+      "it": [
+        "chiamata d’emergenza",
+        "112"
+      ]
+    }
+  },
+  "schlaganfall": {
+    "description": {
+      "de": "Plötzliche Durchblutungsstörung im Gehirn: hängender Mundwinkel, Lähmung, Sprachstörung. Sofort 112 rufen.",
+      "en": "Sudden disruption of brain blood flow: drooping face, weakness, speech problems. Call emergency immediately.",
+      "es": "Interrupción súbita del flujo sanguíneo cerebral: cara caída, debilidad, problemas del habla. Llame al 112 de inmediato.",
+      "fr": "Trouble soudain de la circulation cérébrale : visage asymétrique, faiblesse, trouble de la parole. Appelez le 112 immédiatement.",
+      "it": "Improvvisa interruzione del flusso sanguigno cerebrale: asimmetria del volto, debolezza, disturbi del linguaggio. Chiama subito il 112."
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ],
+    "name": {
+      "de": "Schlaganfall",
+      "en": "Stroke",
+      "es": "Ictus",
+      "fr": "AVC (Accident vasculaire cérébral)",
+      "it": "Ictus"
+    },
+    "synonyms": {
+      "de": [
+        "Apoplex",
+        "Hirnschlag",
+        "Stroke"
+        ,
+        "Gesichtslähmung",
+        "Lähmung",
+        "Sprachstörung",
+        "schwäche"
+      ],
+      "en": [
+        "stroke",
+        "cerebrovascular accident",
+        "CVA"
+      ]
+    }
+  },
+  "stabile_seitenlage": {
+    "description": {
+      "de": "Bewusstlose Person in die stabile Seitenlage bringen, Atmung kontrollieren, 112 rufen.",
+      "en": "Place unconscious person in the recovery position, check breathing, call 112.",
+      "es": "Colocar a la persona inconsciente en posición lateral de seguridad, comprobar la respiración, llamar al 112.",
+      "fr": "Mettre la personne inconsciente en position latérale de sécurité, vérifier la respiration, appeler le 112.",
+      "it": "Mettere la persona incosciente in posizione di sicurezza laterale, controllare la respirazione, chiamare il 112."
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ],
+    "name": {
+      "de": "Stabile Seitenlage",
+      "en": "Stabile Seitenlage",
+      "es": "Stabile Seitenlage",
+      "fr": "Stabile Seitenlage",
+      "it": "Stabile Seitenlage"
+    },
+    "synonyms": {
+      "de": [
+        "stabile seitenlage",
+        "PLS"
+      ],
+      "en": [
+        "recovery position"
+      ],
+      "es": [
+        "posición lateral de seguridad"
+      ],
+      "fr": [
+        "position latérale de sécurité"
+      ],
+      "it": [
+        "posizione laterale di sicurezza"
+      ]
+    }
+  },
+  "strom_infrastruktur": {
+    "description": {
+      "de": "Ausfall der Energieversorgung oder Infrastruktur.",
+      "en": "Failure of energy supply or infrastructure.",
+      "es": "Fallo en el suministro de energía o infraestructura.",
+      "fr": "Panne de l’approvisionnement énergétique ou de l’infrastructure.",
+      "it": "Interruzione della fornitura energetica o delle infrastrutture."
+    },
+    "locations": [
+      "home",
+      "outside"
+    ],
+    "name": {
+      "de": "Strom- & Infrastrukturausfall",
+      "en": "Power Outage",
+      "es": "Corte de energía / infraestructura",
+      "fr": "Panne d’électricité / infrastructure",
+      "it": "Blackout / guasto infrastrutturale"
+    },
+    "synonyms": {
+      "de": [
+        "Blackout",
+        "Stromausfall"
+      ],
+      "en": [
+        "blackout",
+        "power outage"
+      ]
+    }
+  },
+  "unfall": {
+    "description": {
+      "de": "Allgemeiner Unfall: Unfallstelle sichern, Erste Hilfe leisten, Verletzte betreuen, 112 rufen.",
+      "en": "General accident: secure the scene, provide first aid, care for injured persons, call 112.",
+      "es": "Accidente general: asegurar el lugar, prestar primeros auxilios, atender a los heridos, llamar al 112.",
+      "fr": "Accident général : sécuriser le lieu, prodiguer les premiers secours, s'occuper des blessés, appeler le 112.",
+      "it": "Incidente generico: mettere in sicurezza il luogo, prestare primo soccorso, assistere i feriti, chiamare il 112."
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ],
+    "name": {
+      "de": "Unfall",
+      "en": "Accident",
+      "es": "Accidente",
+      "fr": "Accident",
+      "it": "Incidente"
+    },
+    "synonyms": {
+      "de": [
+        "unfall",
+        "verkehrsunfall",
+        "arbeitsunfall"
+      ],
+      "en": [
+        "accident",
+        "traffic accident"
+      ],
+      "es": [
+        "accidente",
+        "accidente de tráfico"
+      ],
+      "fr": [
+        "accident",
+        "accident de la route"
+      ],
+      "it": [
+        "incidente",
+        "incidente stradale"
+      ]
+    }
+  },
+  "unfall_sofortmassnahmen": {
+    "description": {
+      "de": "Unfall passiert – Sofortmaßnahmen: Unfallstelle sichern, Warnzeichen setzen, Erste Hilfe leisten, 112 rufen.",
+      "en": "Accident happened – immediate measures: secure the site, set warning signs, give first aid, call 112.",
+      "es": "Accidente ocurrido – medidas inmediatas: asegurar el lugar, colocar señales de advertencia, prestar primeros auxilios, llamar al 112.",
+      "fr": "Accident survenu – mesures immédiates : sécuriser le site, poser des signaux d’alerte, donner les premiers secours, appeler le 112.",
+      "it": "Incidente avvenuto – misure immediate: mettere in sicurezza il luogo, posizionare segnali di avviso, prestare il primo soccorso, chiamare il 112."
+    },
+    "locations": [
+      "home",
+      "outside",
+      "car",
+      "public_space"
+    ],
+    "name": {
+      "de": "Unfall – Sofortmaßnahmen",
+      "en": "Accident – Immediate measures",
+      "es": "Accidente – Medidas inmediatas",
+      "fr": "Accident – Mesures immédiates",
+      "it": "Incidente – Misure immediate"
+    },
+    "synonyms": {
+      "de": [
+        "sofortmaßnahmen",
+        "unfallhilfe"
+      ],
+      "en": [
+        "immediate measures"
+      ],
+      "es": [
+        "medidas inmediatas"
+      ],
+      "fr": [
+        "mesures immédiates"
+      ],
+      "it": [
+        "misure immediate"
+      ]
+    }
+  }
+}
