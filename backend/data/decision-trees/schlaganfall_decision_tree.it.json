@@ -1,0 +1,34 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Cedimento improvviso del viso, debolezza di un lato o disturbi del linguaggio?",
+    "options": [
+      { "label": "Sì – sospetto ictus", "nextId": "sofort" },
+      { "label": "Non sicuro", "nextId": "unsicher" },
+      { "label": "No", "nextId": "ende" }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ Sospetto ictus (FAST):\n• Face: sorriso → asimmetria?\n• Arms: alzare entrambe → un braccio scende?\n• Speech: linguaggio confuso o assente?\n• Time: chiamare subito il 112.\n\nCose da fare:\n1. Tranquillizzare, non lasciare soli.\n2. Annotare l’orario di inizio dei sintomi.\n3. Niente cibo o bevande.",
+    "options": [
+      { "label": "FAST spiegato", "nextId": "fast" },
+      { "label": "Indietro", "nextId": "root" }
+    ]
+  },
+  "fast": {
+    "id": "fast",
+    "text": "FAST in breve:\nF – Asimmetria del volto?\nA – Caduta del braccio?\nS – Linguaggio alterato?\nT – Tempo: se sì → chiamare 112.",
+    "options": [{ "label": "Indietro", "nextId": "sofort" }]
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "Nel dubbio chiamare SEMPRE il 112 e descrivere i sintomi.",
+    "options": [{ "label": "Indietro", "nextId": "root" }]
+  },
+  "ende": {
+    "id": "ende",
+    "text": "Nessun sospetto di ictus al momento. Se i sintomi ritornano, agire subito.",
+    "options": [{ "label": "Indietro", "nextId": "root" }]
+  }
+}

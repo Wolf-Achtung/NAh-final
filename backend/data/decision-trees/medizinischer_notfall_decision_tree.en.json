@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "In a medical emergency such as a heart attack, stroke or unconsciousness, immediately call emergency services (112). Provide first aid: check breathing, start resuscitation if necessary, and place the person in the recovery position. Keep them warm and do not leave them alone.",
+    "context": ["home", "public_space", "car", "facility"],
+    "options": [],
+    "text_simplified": "Medical emergency: call 112 and provide first aid."
+  }
+}

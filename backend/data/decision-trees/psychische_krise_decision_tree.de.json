@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Bei einer psychischen Krise wie einer Panikattacke oder extremer Angst versuche, ruhig zu atmen und dich auf etwas Stabiles zu konzentrieren. Setze dich, wenn möglich, an einen ruhigen Ort. Sprich mit einer vertrauten Person oder dem Notruf, wenn du dich oder andere in Gefahr siehst.",
+    "context": ["home", "public_space", "facility"],
+    "options": [],
+    "text_simplified": "Psychische Krise: Tief atmen, Ruhe suchen, Hilfe holen."
+  }
+}

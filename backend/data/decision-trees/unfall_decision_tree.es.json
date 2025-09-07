@@ -1,0 +1,61 @@
+{
+  "root": {
+    "id": "root",
+    "text": "[ES] Unfall beobachtet oder passiert – was ist Ihre Rolle?",
+    "options": [
+      {
+        "label": "Vorbereitung / Erste Hilfe",
+        "nextId": "prepare"
+      },
+      {
+        "label": "Unfallstelle sichern",
+        "nextId": "secure"
+      },
+      {
+        "label": "Ich leiste Erste Hilfe",
+        "nextId": "aid"
+      },
+      {
+        "label": "Nach dem Notruf",
+        "nextId": "after"
+      }
+    ]
+  },
+  "prepare": {
+    "id": "prepare",
+    "text": "[ES] Erste-Hilfe-Kurs auffrischen, Notrufnummern griffbereit, Verbandkasten prüfen, ICE-Kontakte speichern.",
+    "context": [
+      "allgemein"
+    ],
+    "options": [],
+    "text_simplified": "[ES] Mach einen Erste-Hilfe-Kurs. Speichere Notrufnummern."
+  },
+  "secure": {
+    "id": "secure",
+    "text": "[ES] Sich selbst absichern, Unfallstelle mit Warnblinker/Warndreieck absichern, Überblick verschaffen.",
+    "context": [
+      "unterwegs",
+      "Straße"
+    ],
+    "options": [],
+    "text_simplified": "[ES] Sichere die Stelle ab. Warnblinker an."
+  },
+  "aid": {
+    "id": "aid",
+    "text": "[ES] Atmung prüfen, stabile Seitenlage oder Reanimation, Blutstillung, Notruf 112 absetzen.",
+    "context": [
+      "Erste Hilfe"
+    ],
+    "options": [],
+    "text_simplified": "[ES] Atmung prüfen. Hilfe rufen."
+  },
+  "after": {
+    "id": "after",
+    "text": "[ES] Für Rückfragen erreichbar bleiben, ggf. Fotos/Zeit/Zeugen dokumentieren, professionelle Hilfe abwarten.",
+    "context": [
+      "nach Notruf"
+    ],
+    "options": [],
+    "text_simplified": "[ES] Bereit für Fragen. Notiere, was passiert ist."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "During floods or severe storms, stay away from flooded areas and fast-flowing water. Move to higher ground or upper floors. Keep electrical devices turned off and wait for instructions from authorities.",
+    "context": ["home", "outside", "public_space", "car"],
+    "options": [],
+    "text_simplified": "Floods & storms: move to higher ground, avoid danger."
+  }
+}

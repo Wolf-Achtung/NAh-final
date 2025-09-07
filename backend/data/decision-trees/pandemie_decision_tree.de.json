@@ -1,0 +1,93 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Pandemie- oder Epidemie-Lage festgestellt – wie ist Ihre Situation?",
+    "options": [
+      {
+        "label": "Vorbereitung",
+        "nextId": "prepare"
+      },
+      {
+        "label": "Erste Krankheitsfälle in Umgebung",
+        "nextId": "localcases"
+      },
+      {
+        "label": "Ich bin selbst erkrankt",
+        "nextId": "sick"
+      },
+      {
+        "label": "Nach der Genesung",
+        "nextId": "after"
+      }
+    ],
+    "context": [
+      "drinnen",
+      "mit Kindern",
+      "erkrankt"
+    ],
+    "related": [
+      "fake-news",
+      "blackout"
+    ]
+  },
+  "prepare": {
+    "id": "prepare",
+    "text": "Halte Masken, Desinfektionsmittel, Hausapotheke, Kontaktdaten Arzt/Gesundheitsamt bereit.",
+    "options": [],
+    "context": [
+      "drinnen",
+      "mit Kindern",
+      "erkrankt"
+    ],
+    "related": [
+      "fake-news",
+      "blackout"
+    ],
+    "text_simplified": "Hab Masken und Desinfektionsmittel."
+  },
+  "localcases": {
+    "id": "localcases",
+    "text": "Kontakte meiden, Maske tragen, regelmäßig lüften, Hygiene beachten, vertrauenswürdige Quellen nutzen.",
+    "options": [],
+    "context": [
+      "drinnen",
+      "mit Kindern",
+      "erkrankt"
+    ],
+    "related": [
+      "fake-news",
+      "blackout"
+    ],
+    "text_simplified": "Meide Menschen, trag Maske."
+  },
+  "sick": {
+    "id": "sick",
+    "text": "Isoliere dich, informiere andere, kontaktiere Arzt/116117, Symptome beobachten, Anweisungen folgen.",
+    "options": [],
+    "context": [
+      "drinnen",
+      "mit Kindern",
+      "erkrankt"
+    ],
+    "related": [
+      "fake-news",
+      "blackout"
+    ],
+    "text_simplified": "Isoliere dich, ruf Arzt an."
+  },
+  "after": {
+    "id": "after",
+    "text": "Medizinische Freigabe einholen, Gesundheit stärken, Vorsorgepläne überdenken.",
+    "options": [],
+    "context": [
+      "drinnen",
+      "mit Kindern",
+      "erkrankt"
+    ],
+    "related": [
+      "fake-news",
+      "blackout"
+    ],
+    "text_simplified": "Stärke deine Gesundheit."
+  }
+}

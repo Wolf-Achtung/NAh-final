@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "In situazioni di guerra o crisi, durante evacuazioni, panico di massa o attacchi terroristici, mantieni la calma e cerca riparo. Segui le istruzioni ufficiali ed evita le zone pericolose. Aiuta gli altri solo se è sicuro.",
+    "context": ["home", "public_space", "facility", "public_transport"],
+    "options": [],
+    "text_simplified": "Crisi & conflitto: resta calmo, cerca riparo."
+  }
+}

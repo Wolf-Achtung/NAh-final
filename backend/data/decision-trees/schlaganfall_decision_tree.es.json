@@ -1,0 +1,34 @@
+{
+  "root": {
+    "id": "root",
+    "text": "¿Rostro caído repentinamente, debilidad de un lado o trastorno del habla?",
+    "options": [
+      { "label": "Sí – sospecha de ictus", "nextId": "sofort" },
+      { "label": "No seguro", "nextId": "unsicher" },
+      { "label": "No", "nextId": "ende" }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ Sospecha de ictus (FAST):\n• Face: sonrisa → ¿asimetría?\n• Arms: levantar ambos → ¿un brazo cae?\n• Speech: ¿habla alterada o ausente?\n• Time: llame al 112 inmediatamente.\n\nAcciones:\n1. Tranquilizar, no dejar sola a la persona.\n2. Anotar hora de inicio de los síntomas.\n3. No dar comida ni bebida.",
+    "options": [
+      { "label": "FAST explicado", "nextId": "fast" },
+      { "label": "Volver", "nextId": "root" }
+    ]
+  },
+  "fast": {
+    "id": "fast",
+    "text": "FAST en breve:\nF – ¿Rostro asimétrico?\nA – ¿Brazo desciende?\nS – ¿Habla alterada?\nT – Tiempo: si sí → llamar al 112.",
+    "options": [{ "label": "Volver", "nextId": "sofort" }]
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "En caso de duda, LLAME SIEMPRE al 112 y describa los síntomas.",
+    "options": [{ "label": "Volver", "nextId": "root" }]
+  },
+  "ende": {
+    "id": "ende",
+    "text": "Sin sospecha de ictus por ahora. Si reaparecen síntomas, actúe de inmediato.",
+    "options": [{ "label": "Volver", "nextId": "root" }]
+  }
+}

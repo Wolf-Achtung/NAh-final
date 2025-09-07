@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Durante inundaciones o tormentas, aléjate de las zonas inundadas y del agua de corriente rápida. Dirígete a terrenos elevados o pisos superiores. Mantén apagados los dispositivos eléctricos y espera instrucciones de las autoridades.",
+    "context": ["home", "outside", "public_space", "car"],
+    "options": [],
+    "text_simplified": "Inundaciones & tormentas: sube a lugares altos, evita el peligro."
+  }
+}

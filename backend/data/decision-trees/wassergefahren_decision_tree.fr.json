@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "En cas d'inondation ou de tempête, restez à l'écart des zones inondées et des eaux rapides. Réfugiez-vous en hauteur ou dans les étages supérieurs. Coupez les appareils électriques et attendez les instructions des autorités.",
+    "context": ["home", "outside", "public_space", "car"],
+    "options": [],
+    "text_simplified": "Inondations & tempêtes : se mettre en hauteur, éviter le danger."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Lors de catastrophes naturelles comme des tremblements de terre ou des avalanches, votre sécurité est la priorité. Mettez-vous à l'abri sous une table solide ou dans l'encadrement d'une porte, éloignez-vous des fenêtres et des objets lourds. Restez vigilant après l'événement en cas de répliques et attendez les instructions officielles.",
+    "context": ["home", "public_space", "mountain_sea"],
+    "options": [],
+    "text_simplified": "Restez en sécurité : mettez-vous à l'abri et évitez le danger."
+  }
+}

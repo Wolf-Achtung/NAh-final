@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "In Kriegs- oder Krisensituationen, bei Evakuierungen, Massenpanik oder Terrorangriffen, bleibe ruhig und suche Schutz. Folge den Anweisungen der Behörden und meide gefährliche Bereiche. Hilf anderen nur, wenn es sicher ist.",
+    "context": ["home", "public_space", "facility", "public_transport"],
+    "options": [],
+    "text_simplified": "Krise & Konflikt: Ruhe bewahren, Schutz suchen."
+  }
+}

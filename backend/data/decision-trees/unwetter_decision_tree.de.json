@@ -1,0 +1,58 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Unwetterwarnung! Bitte wählen Sie den passenden Bereich:",
+    "options": [
+      {
+        "label": "Vorbereitung (vor dem Sturm)",
+        "nextId": "prepare"
+      },
+      {
+        "label": "Ich bin in einem Gebäude",
+        "nextId": "indoors"
+      },
+      {
+        "label": "Ich bin draußen",
+        "nextId": "outside"
+      },
+      {
+        "label": "Ich bin im Auto",
+        "nextId": "car"
+      },
+      {
+        "label": "Nach dem Sturm",
+        "nextId": "after"
+      }
+    ]
+  },
+  "prepare": {
+    "id": "prepare",
+    "text": "Parke dein Auto nicht unter Bäumen oder in der Nähe von Häusern; sichere lose Gegenstände, halte Wasserabläufe frei und verfolge Wetterwarnungen【501900770635410†L1168-L1183】【501900770635410†L1176-L1183】【501900770635410†L1178-L1181】【501900770635410†L1168-L1172】.",
+    "options": [],
+    "text_simplified": "Sichere draußen alles. Verfolge das Wetter."
+  },
+  "indoors": {
+    "id": "indoors",
+    "text": "Bleibe im Haus, meide Räume direkt unter dem Dach; schließe Fenster und Türen; suche einen innenliegenden Raum im Erdgeschoss (Keller meiden); ziehe empfindliche Geräte vom Stromnetz; beruhige Haustiere und informiere Nachbarn【501900770635410†L1181-L1183】【338176753017033†L239-L241】【338176753017033†L249-L250】【338176753017033†L254-L256】【501900770635410†L1189-L1193】.",
+    "options": [],
+    "text_simplified": "Fenster zu. Bleib im Erdgeschoss. Geräte ausstecken."
+  },
+  "outside": {
+    "id": "outside",
+    "text": "Suche Schutz in einem Gebäude oder Fahrzeug; vermeide Kontakt mit Metallgegenständen; halte Abstand zu Bäumen, Masten und Überlandleitungen; lege dich bei Hagel flach auf den Boden und schütze Kopf und Nacken oder knie in einer Mulde; meide offenes Gelände【338176753017033†L259-L263】【501900770635410†L1204-L1207】【338176753017033†L292-L293】【501900770635410†L1210-L1212】【338176753017033†L284-L289】【338176753017033†L270-L276】【338176753017033†L279-L284】.",
+    "options": [],
+    "text_simplified": "Geh ins Haus. Meide Bäume und Strommasten."
+  },
+  "car": {
+    "id": "car",
+    "text": "Bleibe im Auto, berühre keine blanken Metallteile; parke nicht unter Bäumen oder in der Nähe von Baugerüsten; fahre langsam und vermeide unnötige Fahrten【338176753017033†L259-L264】【501900770635410†L1176-L1189】【501900770635410†L1185-L1188】【501900770635410†L1215-L1217】.",
+    "options": [],
+    "text_simplified": "Bleib im Auto. Fahr langsam."
+  },
+  "after": {
+    "id": "after",
+    "text": "Kontrolliere dein Haus auf Schäden und dokumentiere sie für die Versicherung; nimm elektrische Geräte erst wieder in Betrieb, wenn sie trocken sind; entferne umgestürzte Bäume nur ohne Gefahr; wähle den Notruf 112 nur bei akuter Gefahr für Leib und Leben【338176753017033†L230-L233】【501900770635410†L1142-L1154】【501900770635410†L1129-L1139】.",
+    "options": [],
+    "text_simplified": "Prüfe Schäden. Nur Geräte benutzen, wenn trocken."
+  }
+}

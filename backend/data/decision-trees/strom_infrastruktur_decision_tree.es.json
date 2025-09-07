@@ -1,0 +1,10 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Se ha producido un fallo en la infraestructura eléctrica o de comunicaciones. Mantén la calma, utiliza una radio a pilas y busca un lugar seguro. Evita el pánico y ayuda a los demás si es posible.",
+    "options": [],
+    "context": ["home", "public_transport", "facility"],
+    "related": [],
+    "text_simplified": "¿Fallo de energía/comunicaciones? Mantén la calma, usa una radio y busca un lugar seguro."
+  }
+}

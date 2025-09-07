@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Bei einem akuten medizinischen Notfall wie Herzinfarkt, Schlaganfall oder Bewusstlosigkeit rufe sofort den Notruf 112. Leiste Erste Hilfe: prüfe die Atmung, beginne mit Wiederbelebung wenn nötig, und lege die Person in die stabile Seitenlage. Halte die Person warm und lasse sie nicht alleine.",
+    "context": ["home", "public_space", "car", "facility"],
+    "options": [],
+    "text_simplified": "Med. Notfall: Notruf 112 wählen und Erste Hilfe leisten."
+  }
+}

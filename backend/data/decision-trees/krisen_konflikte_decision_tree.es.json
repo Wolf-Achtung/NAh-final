@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "En situaciones de guerra o crisis, durante evacuaciones, pánico masivo o atentados, mantén la calma y busca refugio. Sigue las instrucciones oficiales y evita las zonas peligrosas. Ayuda a los demás sólo si es seguro.",
+    "context": ["home", "public_space", "facility", "public_transport"],
+    "options": [],
+    "text_simplified": "Crisis & conflicto: mantén la calma, busca refugio."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "root": {
+    "id": "root",
+    "text": "La personne convulse (mouvements saccadés, conscience altérée) ?",
+    "options": [
+      { "label": "Oui – crise d’épilepsie", "nextId": "sofort" },
+      { "label": "Incertain", "nextId": "unsicher" },
+      { "label": "Non", "nextId": "ende" }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ Crise !\n1. Sécuriser l’environnement (retirer objets durs/coupants).\n2. Ne pas retenir, rien dans la bouche.\n3. Protéger doucement la tête.\n4. Après la crise : PLS, vérifier la respiration.\n5. >5 min, crises répétées ou blessure → 112.",
+    "options": [{ "label": "Retour", "nextId": "root" }]
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "En cas de doute, appelez le 112 et décrivez la scène.",
+    "options": [{ "label": "Retour", "nextId": "root" }]
+  },
+  "ende": {
+    "id": "ende",
+    "text": "Pas de crise aiguë observée. Surveiller.",
+    "options": [{ "label": "Retour", "nextId": "root" }]
+  }
+}

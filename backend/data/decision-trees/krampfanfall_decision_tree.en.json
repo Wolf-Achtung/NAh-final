@@ -1,0 +1,26 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Is the person seizing (twitching, impaired consciousness)?",
+    "options": [
+      { "label": "Yes – seizure", "nextId": "sofort" },
+      { "label": "Unsure", "nextId": "unsicher" },
+      { "label": "No", "nextId": "ende" }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ Seizure!\n1. Make area safe (remove hard/sharp objects).\n2. Do not restrain, nothing in the mouth.\n3. Gently protect the head.\n4. After seizure: recovery position, check breathing.\n5. >5 minutes, repeated seizures, or injury → call 112.",
+    "options": [{ "label": "Back", "nextId": "root" }]
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "If unsure, call 112 and describe what you see.",
+    "options": [{ "label": "Back", "nextId": "root" }]
+  },
+  "ende": {
+    "id": "ende",
+    "text": "No acute seizure observed. Monitor.",
+    "options": [{ "label": "Back", "nextId": "root" }]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Bei Hochwasser, Überschwemmung oder Unwettern halte dich fern von überfluteten Gebieten und schnell fließendem Wasser. Begib dich auf höhere Ebenen oder in obere Stockwerke. Lass elektrische Geräte ausgeschaltet und warte auf Anweisungen der Behörden.",
+    "context": ["home", "outside", "public_space", "car"],
+    "options": [],
+    "text_simplified": "Hochwasser & Unwetter: Auf höhere Ebenen fliehen, Gefahr meiden."
+  }
+}

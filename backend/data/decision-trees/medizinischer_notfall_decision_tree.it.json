@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "In un'emergenza medica come un infarto, un ictus o perdita di coscienza, chiama immediatamente il numero di emergenza (112). Presta il primo soccorso: controlla la respirazione, inizia la rianimazione se necessario e metti la persona in posizione laterale di sicurezza. Mantienila al caldo e non lasciarla sola.",
+    "context": ["home", "public_space", "car", "facility"],
+    "options": [],
+    "text_simplified": "Emergenza medica: chiamare il 112 e fornire primo soccorso."
+  }
+}

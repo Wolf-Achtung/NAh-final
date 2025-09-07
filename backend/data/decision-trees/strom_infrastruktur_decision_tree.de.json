@@ -1,0 +1,10 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Es liegt ein Ausfall der Strom- oder Kommunikationsinfrastruktur vor. Bleiben Sie ruhig, nutzen Sie ein batteriebetriebenes Radio und suchen Sie einen sicheren Ort. Vermeiden Sie Panik und unterstützen Sie andere nach Möglichkeit.",
+    "options": [],
+    "context": ["home", "public_transport", "facility"],
+    "related": [],
+    "text_simplified": "Strom/Kommunikation ausgefallen? Ruhig bleiben, Radio nutzen, sicheren Ort suchen."
+  }
+}

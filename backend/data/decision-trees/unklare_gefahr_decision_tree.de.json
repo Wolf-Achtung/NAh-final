@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Wenn du nicht weißt, welche Gefahr vorliegt, bleibe ruhig und achte auf Anzeichen wie Rauch, Geräusche oder das Verhalten anderer. Suche einen sicheren Ort, halte Abstand zu möglichen Gefahrenquellen und versuche, Informationen über die Situation zu erhalten. Kontaktiere im Zweifel die Notdienste.",
+    "context": ["home", "public_space", "car", "facility"],
+    "options": [],
+    "text_simplified": "Unklare Gefahr: Ruhe bewahren, sichere Umgebung suchen."
+  }
+}

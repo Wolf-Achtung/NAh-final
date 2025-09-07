@@ -1,0 +1,29 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Lawinenwarnung! Bitte wählen Sie den passenden Bereich:",
+    "options": [
+      { "label": "Vorbereitung (vor der Tour)", "nextId": "prepare" },
+      { "label": "Ich bin im Gelände", "nextId": "onMountain" },
+      { "label": "Ich bin im Gebäude", "nextId": "indoors" }
+    ]
+  },
+  "prepare": {
+    "id": "prepare",
+    "text": "Informiere dich über die aktuelle Lawinenlage, plane deine Route sorgfältig, prüfe Sicherheitsausrüstung und übe die Anwendung von LVS-Gerät und Lawinensonde.",
+    "options": [],
+    "text_simplified": "Informiere dich über Lawinen, plane die Route und prüfe deine Ausrüstung."
+  },
+  "onMountain": {
+    "id": "onMountain",
+    "text": "Achte auf Hangneigung, Schneeoberfläche und Warnzeichen wie Risse oder 'Wumm'-Geräusche; meide steile Hänge über 30°, quere Gefahrenzonen einzeln und halte Abstand zu anderen Personen.",
+    "options": [],
+    "text_simplified": "Meide steile Hänge, halte Abstand und achte auf Warnzeichen."
+  },
+  "indoors": {
+    "id": "indoors",
+    "text": "Bleibe in einem sicheren Gebäude, informiere dich über die Situation und vermeide das Betreten von gefährdeten Bereichen.",
+    "options": [],
+    "text_simplified": "Bleib im Haus und meide gefährliche Zonen."
+  }
+}

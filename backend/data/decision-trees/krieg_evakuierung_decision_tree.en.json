@@ -1,0 +1,93 @@
+{
+  "root": {
+    "id": "root",
+    "text": "[EN] Kriegerische Lage oder Sirenenalarm – was ist Ihre Situation?",
+    "options": [
+      {
+        "label": "Vorbereitung / Notfallplanung",
+        "nextId": "prepare"
+      },
+      {
+        "label": "Sirene / Alarm ertönt",
+        "nextId": "alarm"
+      },
+      {
+        "label": "Evakuierung angeordnet",
+        "nextId": "evacuate"
+      },
+      {
+        "label": "Nach Rückkehr / Entwarnung",
+        "nextId": "after"
+      }
+    ],
+    "context": [
+      "mit Familie",
+      "unterwegs",
+      "Schutzraum"
+    ],
+    "related": [
+      "blackout",
+      "gefahrstoffe"
+    ]
+  },
+  "prepare": {
+    "id": "prepare",
+    "text": "[EN] Sirenensignale kennen, Schutzräume recherchieren, Notgepäck vorbereiten, Warn-Apps installieren.",
+    "options": [],
+    "context": [
+      "mit Familie",
+      "unterwegs",
+      "Schutzraum"
+    ],
+    "related": [
+      "blackout",
+      "gefahrstoffe"
+    ],
+    "text_simplified": "[EN] Pack Notfalltasche, kenn Sirenen."
+  },
+  "alarm": {
+    "id": "alarm",
+    "text": "[EN] Gebäude oder Schutzraum aufsuchen, Fenster/Türen schließen, Radio & Rucksack bereithalten.",
+    "options": [],
+    "context": [
+      "mit Familie",
+      "unterwegs",
+      "Schutzraum"
+    ],
+    "related": [
+      "blackout",
+      "gefahrstoffe"
+    ],
+    "text_simplified": "[EN] Such Schutz, Fenster zu."
+  },
+  "evacuate": {
+    "id": "evacuate",
+    "text": "[EN] Anweisungen folgen, Notgepäck mitnehmen, Strom/Gas/Wasser abschalten, hilfsbedürftigen helfen.",
+    "options": [],
+    "context": [
+      "mit Familie",
+      "unterwegs",
+      "Schutzraum"
+    ],
+    "related": [
+      "blackout",
+      "gefahrstoffe"
+    ],
+    "text_simplified": "[EN] Nimm das Nötigste, helfe anderen."
+  },
+  "after": {
+    "id": "after",
+    "text": "[EN] Schäden prüfen, Angehörige informieren, aktuelle Lage über offizielle Quellen einholen.",
+    "options": [],
+    "context": [
+      "mit Familie",
+      "unterwegs",
+      "Schutzraum"
+    ],
+    "related": [
+      "blackout",
+      "gefahrstoffe"
+    ],
+    "text_simplified": "[EN] Prüfe Schäden, informiere Familie."
+  }
+}

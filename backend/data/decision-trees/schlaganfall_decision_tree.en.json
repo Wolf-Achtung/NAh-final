@@ -1,0 +1,34 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Sudden drooping face, weakness on one side or speech disorder?",
+    "options": [
+      { "label": "Yes – suspected stroke", "nextId": "sofort" },
+      { "label": "Unsure", "nextId": "unsicher" },
+      { "label": "No", "nextId": "ende" }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ Suspected stroke (FAST):\n• Face: smile → drooping corner?\n• Arms: raise both → one drifts down?\n• Speech: slurred or missing?\n• Time: call 112 immediately.\n\nTo-dos:\n1. Reassure, do not leave alone.\n2. Note symptom onset time.\n3. No food or drink.",
+    "options": [
+      { "label": "FAST explained", "nextId": "fast" },
+      { "label": "Back", "nextId": "root" }
+    ]
+  },
+  "fast": {
+    "id": "fast",
+    "text": "FAST quick check:\nF – Face asymmetry?\nA – Arm drift?\nS – Speech disturbed?\nT – Time: if yes → call 112 now.",
+    "options": [{ "label": "Back", "nextId": "sofort" }]
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "If in doubt ALWAYS call 112 and describe the symptoms. Stroke is time-critical.",
+    "options": [{ "label": "Back", "nextId": "root" }]
+  },
+  "ende": {
+    "id": "ende",
+    "text": "No current stroke suspicion. If symptoms recur: act immediately.",
+    "options": [{ "label": "Back", "nextId": "root" }]
+  }
+}

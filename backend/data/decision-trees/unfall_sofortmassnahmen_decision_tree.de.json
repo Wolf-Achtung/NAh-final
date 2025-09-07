@@ -1,0 +1,16 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Unfall passiert – Sofortmaßnahmen:",
+    "options": [
+      { "label": "Anzeigen", "nextId": "steps" }
+    ]
+  },
+  "steps": {
+    "id": "steps",
+    "text": "1. Unfallstelle sichern: Warnblinker, Warnweste, Warndreieck.\n2. Erste Hilfe leisten – verletzte Personen betreuen.\n3. 112/110 rufen, Lage schildern.\n4. Eigene Sicherheit beachten: nicht selbst in Gefahr bringen.",
+    "options": [
+      { "label": "Fertig", "nextId": "root" }
+    ]
+  }
+}

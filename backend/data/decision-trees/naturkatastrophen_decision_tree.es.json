@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Durante desastres naturales como terremotos o avalanchas, tu seguridad es la prioridad. Refúgiate bajo una mesa resistente o en un marco de puerta, mantente alejado de las ventanas y objetos pesados. Permanece alerta después del evento ante posibles réplicas y espera instrucciones oficiales.",
+    "context": ["home", "public_space", "mountain_sea"],
+    "options": [],
+    "text_simplified": "Mantente seguro: busca refugio y evita el peligro."
+  }
+}

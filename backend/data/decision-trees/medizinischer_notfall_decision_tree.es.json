@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "En una emergencia médica como un ataque al corazón, un derrame cerebral o la pérdida de consciencia, llama inmediatamente al servicio de emergencia (112). Proporciona primeros auxilios: comprueba la respiración, comienza la reanimación si es necesario y coloca a la persona en posición lateral de seguridad. Mantenla abrigada y no la dejes sola.",
+    "context": ["home", "public_space", "car", "facility"],
+    "options": [],
+    "text_simplified": "Emergencia médica: llamar al 112 y dar primeros auxilios."
+  }
+}

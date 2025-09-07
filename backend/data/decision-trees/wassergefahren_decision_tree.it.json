@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Durante alluvioni o temporali, stai lontano dalle aree allagate e dall'acqua che scorre rapidamente. Raggiungi piani elevati o superiori. Mantieni spenti i dispositivi elettrici e attendi le istruzioni delle autorità.",
+    "context": ["home", "outside", "public_space", "car"],
+    "options": [],
+    "text_simplified": "Alluvioni & tempeste: salire su piani più alti, evitare il pericolo."
+  }
+}

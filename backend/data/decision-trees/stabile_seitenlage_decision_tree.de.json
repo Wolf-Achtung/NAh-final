@@ -1,0 +1,16 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Stabile Seitenlage – Schritt für Schritt:",
+    "options": [
+      { "label": "Anleitung anzeigen", "nextId": "steps" }
+    ]
+  },
+  "steps": {
+    "id": "steps",
+    "text": "1. Ansprechen, Atmung prüfen.\n2. Arm auf deiner Seite im rechten Winkel anwinkeln.\n3. Gegenüberliegenden Arm über die Brust legen, Hand an die Wange.\n4. Gegenüberliegendes Bein am Knie anwinkeln.\n5. Person vorsichtig zu dir drehen.\n6. Kopf überstrecken, Mund leicht öffnen.\n7. Atemwege frei halten, regelmäßig kontrollieren.\n\n⚠️ Bleibe bei der Person und rufe 112, falls noch nicht geschehen.",
+    "options": [
+      { "label": "Fertig", "nextId": "root" }
+    ]
+  }
+}

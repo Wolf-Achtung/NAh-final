@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Bei Naturkatastrophen wie Erdbeben oder Lawinen steht deine Sicherheit an erster Stelle. Suche Schutz unter einem stabilen Tisch oder in einem Türrahmen, halte dich fern von Fenstern und schweren Gegenständen. Bleibe nach dem Ereignis aufmerksam für Nachbeben und warte offizielle Anweisungen ab.",
+    "context": ["home", "public_space", "mountain_sea"],
+    "options": [],
+    "text_simplified": "Sicherheit hat Vorrang: Schutz suchen, fern von Gefahren."
+  }
+}

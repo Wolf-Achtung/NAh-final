@@ -1,0 +1,34 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Affaissement soudain du visage, faiblesse d’un côté ou trouble de la parole ?",
+    "options": [
+      { "label": "Oui – AVC suspecté", "nextId": "sofort" },
+      { "label": "Incertain", "nextId": "unsicher" },
+      { "label": "Non", "nextId": "ende" }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ AVC suspecté (FAST) :\n• Face : sourire → asymétrie ?\n• Arms : lever les deux → un bras tombe ?\n• Speech : parole trouble ou absente ?\n• Time : appeler le 112 immédiatement.\n\nÀ faire :\n1. Rassurer, ne pas laisser seul.\n2. Noter l’heure de début des symptômes.\n3. Pas de nourriture ni de boisson.",
+    "options": [
+      { "label": "FAST expliqué", "nextId": "fast" },
+      { "label": "Retour", "nextId": "root" }
+    ]
+  },
+  "fast": {
+    "id": "fast",
+    "text": "FAST en bref :\nF – Visage asymétrique ?\nA – Bras qui tombe ?\nS – Parole troublée ?\nT – Temps : si oui → appeler le 112.",
+    "options": [{ "label": "Retour", "nextId": "sofort" }]
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "En cas de doute, appelez TOUJOURS le 112 et décrivez les symptômes.",
+    "options": [{ "label": "Retour", "nextId": "root" }]
+  },
+  "ende": {
+    "id": "ende",
+    "text": "Pas de suspicion d’AVC pour l’instant. Si les signes réapparaissent, agissez immédiatement.",
+    "options": [{ "label": "Retour", "nextId": "root" }]
+  }
+}

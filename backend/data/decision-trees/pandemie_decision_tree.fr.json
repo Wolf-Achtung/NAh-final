@@ -1,0 +1,93 @@
+{
+  "root": {
+    "id": "root",
+    "text": "[FR] Pandemie- oder Epidemie-Lage festgestellt – wie ist Ihre Situation?",
+    "options": [
+      {
+        "label": "Vorbereitung",
+        "nextId": "prepare"
+      },
+      {
+        "label": "Erste Krankheitsfälle in Umgebung",
+        "nextId": "localcases"
+      },
+      {
+        "label": "Ich bin selbst erkrankt",
+        "nextId": "sick"
+      },
+      {
+        "label": "Nach der Genesung",
+        "nextId": "after"
+      }
+    ],
+    "context": [
+      "drinnen",
+      "mit Kindern",
+      "erkrankt"
+    ],
+    "related": [
+      "fake-news",
+      "blackout"
+    ]
+  },
+  "prepare": {
+    "id": "prepare",
+    "text": "[FR] Halte Masken, Desinfektionsmittel, Hausapotheke, Kontaktdaten Arzt/Gesundheitsamt bereit.",
+    "options": [],
+    "context": [
+      "drinnen",
+      "mit Kindern",
+      "erkrankt"
+    ],
+    "related": [
+      "fake-news",
+      "blackout"
+    ],
+    "text_simplified": "[FR] Hab Masken und Desinfektionsmittel."
+  },
+  "localcases": {
+    "id": "localcases",
+    "text": "[FR] Kontakte meiden, Maske tragen, regelmäßig lüften, Hygiene beachten, vertrauenswürdige Quellen nutzen.",
+    "options": [],
+    "context": [
+      "drinnen",
+      "mit Kindern",
+      "erkrankt"
+    ],
+    "related": [
+      "fake-news",
+      "blackout"
+    ],
+    "text_simplified": "[FR] Meide Menschen, trag Maske."
+  },
+  "sick": {
+    "id": "sick",
+    "text": "[FR] Isoliere dich, informiere andere, kontaktiere Arzt/116117, Symptome beobachten, Anweisungen folgen.",
+    "options": [],
+    "context": [
+      "drinnen",
+      "mit Kindern",
+      "erkrankt"
+    ],
+    "related": [
+      "fake-news",
+      "blackout"
+    ],
+    "text_simplified": "[FR] Isoliere dich, ruf Arzt an."
+  },
+  "after": {
+    "id": "after",
+    "text": "[FR] Medizinische Freigabe einholen, Gesundheit stärken, Vorsorgepläne überdenken.",
+    "options": [],
+    "context": [
+      "drinnen",
+      "mit Kindern",
+      "erkrankt"
+    ],
+    "related": [
+      "fake-news",
+      "blackout"
+    ],
+    "text_simplified": "[FR] Stärke deine Gesundheit."
+  }
+}

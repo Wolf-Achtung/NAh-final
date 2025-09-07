@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Si vous ne savez pas quel est le danger, restez calme et prêtez attention aux signes comme la fumée, les bruits ou le comportement des autres. Trouvez un endroit sûr, restez à l'écart des sources potentielles de danger et essayez d'obtenir des informations sur la situation. Contactez les services d'urgence en cas de doute.",
+    "context": ["home", "public_space", "car", "facility"],
+    "options": [],
+    "text_simplified": "Danger inconnu : rester calme et se mettre en sécurité."
+  }
+}

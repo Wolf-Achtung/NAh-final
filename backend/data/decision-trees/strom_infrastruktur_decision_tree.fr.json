@@ -1,0 +1,10 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Une panne de l’infrastructure électrique ou de communication est survenue. Restez calme, utilisez une radio à piles et cherchez un endroit sûr. Évitez la panique et soutenez les autres si possible.",
+    "options": [],
+    "context": ["home", "public_transport", "facility"],
+    "related": [],
+    "text_simplified": "Panne d’électricité/communication ? Restez calme, utilisez une radio et trouvez un endroit sûr."
+  }
+}

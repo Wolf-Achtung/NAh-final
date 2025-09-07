@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "If you're unsure about the nature of the hazard, stay calm and pay attention to signs such as smoke, noises or the behaviour of others. Find a safe place, keep away from potential danger sources and try to get information about the situation. Contact emergency services if in doubt.",
+    "context": ["home", "public_space", "car", "facility"],
+    "options": [],
+    "text_simplified": "Unknown hazard: stay calm, find safety."
+  }
+}

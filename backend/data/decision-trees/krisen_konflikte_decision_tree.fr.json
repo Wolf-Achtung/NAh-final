@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "En cas de guerre ou de crise, lors d'évacuations, de panique de masse ou d'attentats, restez calme et mettez-vous à l'abri. Suivez les instructions officielles et évitez les zones dangereuses. Aidez les autres seulement si c'est sans danger.",
+    "context": ["home", "public_space", "facility", "public_transport"],
+    "options": [],
+    "text_simplified": "Crise & conflit : rester calme, chercher un abri."
+  }
+}

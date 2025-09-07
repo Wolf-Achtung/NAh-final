@@ -1,0 +1,10 @@
+{
+  "root": {
+    "id": "root",
+    "text": "A failure of the power or communication infrastructure has occurred. Stay calm, use a battery‑powered radio and seek a safe place. Avoid panic and support others if possible.",
+    "options": [],
+    "context": ["home", "public_transport", "facility"],
+    "related": [],
+    "text_simplified": "Power/communication failure? Stay calm, use a radio, find a safe place."
+  }
+}

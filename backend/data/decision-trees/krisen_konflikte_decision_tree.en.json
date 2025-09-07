@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "In situations of war or crisis, during evacuations, mass panic or terror attacks, remain calm and seek shelter. Follow official instructions and avoid dangerous areas. Help others only if it is safe.",
+    "context": ["home", "public_space", "facility", "public_transport"],
+    "options": [],
+    "text_simplified": "Crisis & conflict: stay calm, seek shelter."
+  }
+}

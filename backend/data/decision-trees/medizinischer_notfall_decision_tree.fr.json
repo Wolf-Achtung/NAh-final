@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "En cas d'urgence médicale telle qu'une crise cardiaque, un AVC ou une perte de connaissance, appelez immédiatement les secours (112). Apportez les premiers soins : vérifiez la respiration, commencez la réanimation si nécessaire et placez la personne en position latérale de sécurité. Gardez-la au chaud et ne la laissez pas seule.",
+    "context": ["home", "public_space", "car", "facility"],
+    "options": [],
+    "text_simplified": "Urgence médicale : appeler le 112 et donner les premiers soins."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Durante una crisis psicológica como un ataque de pánico o ansiedad extrema, intenta respirar lentamente y concentrarte en algo estable. Si es posible, siéntate en un lugar tranquilo. Habla con alguien de confianza o llama a emergencias si crees que tú u otros están en peligro.",
+    "context": ["home", "public_space", "facility"],
+    "options": [],
+    "text_simplified": "Crisis psicológica: respirar, buscar calma, pedir ayuda."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Si è verificato un guasto alla rete elettrica o di comunicazione. Mantieni la calma, utilizza una radio a batterie e cerca un luogo sicuro. Evita il panico e aiuta gli altri se possibile.",
+    "options": [],
+    "context": ["home", "public_transport", "facility"],
+    "related": [],
+    "text_simplified": "Blackout/comunicazioni? Mantieni la calma, usa una radio e trova un luogo sicuro."
+  }
+}

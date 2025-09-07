@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Si no sabes cuál es el peligro, mantén la calma y presta atención a señales como humo, ruidos o el comportamiento de los demás. Busca un lugar seguro, mantente alejado de posibles fuentes de peligro e intenta obtener información sobre la situación. Contacta con los servicios de emergencia si tienes dudas.",
+    "context": ["home", "public_space", "car", "facility"],
+    "options": [],
+    "text_simplified": "Peligro desconocido: mantenerse calmado y a salvo."
+  }
+}

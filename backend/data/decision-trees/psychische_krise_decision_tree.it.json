@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Durante una crisi psicologica come un attacco di panico o ansia estrema, prova a respirare lentamente e a concentrarti su qualcosa di stabile. Se possibile, siediti in un luogo tranquillo. Parla con una persona di fiducia o chiama i servizi di emergenza se ritieni che tu o altri siate in pericolo.",
+    "context": ["home", "public_space", "facility"],
+    "options": [],
+    "text_simplified": "Crisi psicologica: respirare, cercare calma, chiedere aiuto."
+  }
+}

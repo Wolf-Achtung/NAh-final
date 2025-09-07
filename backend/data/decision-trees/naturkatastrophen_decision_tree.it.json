@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Durante calamità naturali come terremoti o valanghe, la tua sicurezza è la priorità assoluta. Riparati sotto un tavolo robusto o in una porta, stai lontano da finestre e oggetti pesanti. Rimani vigile dopo l'evento per eventuali scosse di assestamento e attendi istruzioni ufficiali.",
+    "context": ["home", "public_space", "mountain_sea"],
+    "options": [],
+    "text_simplified": "Stai al sicuro: cerca riparo ed evita i pericoli."
+  }
+}

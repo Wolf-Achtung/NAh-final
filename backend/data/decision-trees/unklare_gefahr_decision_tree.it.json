@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Se non sai quale sia il pericolo, resta calmo e osserva segni come fumo, rumori o il comportamento degli altri. Trova un luogo sicuro, stai lontano da possibili fonti di pericolo e cerca di ottenere informazioni sulla situazione. Contatta i servizi di emergenza in caso di dubbio.",
+    "context": ["home", "public_space", "car", "facility"],
+    "options": [],
+    "text_simplified": "Pericolo sconosciuto: mantieni la calma e cerca un rifugio."
+  }
+}

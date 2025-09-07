@@ -1,0 +1,32 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Notruf 112 – kurz, klar, vollständig:",
+    "options": [
+      { "label": "Die 5 W-Fragen", "nextId": "fragen" },
+      { "label": "Vorlage", "nextId": "template" },
+      { "label": "Beispiele", "nextId": "examples" }
+    ]
+  },
+  "fragen": {
+    "id": "fragen",
+    "text": "Die 5 W:\n1. Wo ist es passiert?\n2. Was ist passiert?\n3. Wie viele Personen sind betroffen?\n4. Welche Verletzungen liegen vor?\n5. Warten auf Rückfragen, nicht auflegen.",
+    "options": [
+      { "label": "Zurück", "nextId": "root" }
+    ]
+  },
+  "template": {
+    "id": "template",
+    "text": "Vorlage:\n„Hallo, hier ist [Name]. Unfall an [Ort/Adresse]. Es gibt [Anzahl] Verletzte, eine Person ist [z. B. bewusstlos / blutet stark]. Bitte schicken Sie schnell Hilfe. Meine Telefonnummer: [Nummer].“",
+    "options": [
+      { "label": "Zurück", "nextId": "root" }
+    ]
+  },
+  "examples": {
+    "id": "examples",
+    "text": "Beispiele:\n• Blutung: „Die Person blutet stark am Arm.“\n• Atemnot: „Die Person bekommt keine Luft.“\n• Knochenbruch: „Das Bein ist verdreht und geschwollen.“",
+    "options": [
+      { "label": "Zurück", "nextId": "root" }
+    ]
+  }
+}

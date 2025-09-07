@@ -1,0 +1,40 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Plötzlich hängender Mundwinkel, Lähmung einer Seite oder Sprachstörung?",
+    "options": [
+      { "label": "Ja – Verdacht auf Schlaganfall", "nextId": "sofort" },
+      { "label": "Unsicher", "nextId": "unsicher" },
+      { "label": "Nein", "nextId": "ende" }
+    ]
+  },
+  "sofort": {
+    "id": "sofort",
+    "text": "⚠️ Verdacht auf Schlaganfall (FAST):\n• Face: Lächeln → hängt ein Mundwinkel?\n• Arms: Beide Arme heben → sinkt einer ab?\n• Speech: Satz nachsprechen → verwaschen/fehlend?\n• Time: Sofort 112 anrufen.\n\nTo-dos:\n1. Person beruhigen, nicht alleine lassen.\n2. Uhrzeit der Symptome merken.\n3. Keine Nahrung/Flüssigkeit geben.",
+    "options": [
+      { "label": "FAST erklärt", "nextId": "fast" },
+      { "label": "Zurück", "nextId": "root" }
+    ]
+  },
+  "fast": {
+    "id": "fast",
+    "text": "FAST-Schema kurz:\nF – Gesicht schief?\nA – Arm sinkt ab?\nS – Sprache gestört?\nT – Time: Bei Ja → sofort 112.",
+    "options": [
+      { "label": "Zurück", "nextId": "sofort" }
+    ]
+  },
+  "unsicher": {
+    "id": "unsicher",
+    "text": "Bei Unsicherheit IMMER 112 rufen und Symptome schildern. Schlaganfälle sind Zeitnotfälle.",
+    "options": [
+      { "label": "Zurück", "nextId": "root" }
+    ]
+  },
+  "ende": {
+    "id": "ende",
+    "text": "Aktuell kein Schlaganfallverdacht. Bei neuen Symptomen sofort reagieren.",
+    "options": [
+      { "label": "Zurück", "nextId": "root" }
+    ]
+  }
+}

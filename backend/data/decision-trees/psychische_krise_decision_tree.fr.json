@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "Lors d'une crise psychologique comme une attaque de panique ou une anxiété extrême, essayez de respirer lentement et de vous concentrer sur quelque chose de stable. Si possible, asseyez-vous dans un endroit calme. Parlez à une personne de confiance ou appelez les services d'urgence si vous pensez que vous ou d'autres êtes en danger.",
+    "context": ["home", "public_space", "facility"],
+    "options": [],
+    "text_simplified": "Crise psychologique : respirer, chercher le calme, demander de l'aide."
+  }
+}

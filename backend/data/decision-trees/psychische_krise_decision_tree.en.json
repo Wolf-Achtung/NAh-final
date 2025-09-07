@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "During a psychological crisis such as a panic attack or extreme anxiety, try to breathe slowly and focus on something stable. If possible, sit down in a quiet place. Talk to a trusted person or call emergency services if you think you or others are in danger.",
+    "context": ["home", "public_space", "facility"],
+    "options": [],
+    "text_simplified": "Psychological crisis: breathe, find calm, seek help."
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "root": {
+    "id": "root",
+    "text": "[EN] Massenpanik, Amok oder Terrorlage erkannt – wie ist Ihre Situation?",
+    "options": [
+      {
+        "label": "Vorbereitung / Veranstaltung",
+        "nextId": "prepare"
+      },
+      {
+        "label": "Panik bricht aus",
+        "nextId": "panic"
+      },
+      {
+        "label": "Verdacht auf Anschlag / Amok",
+        "nextId": "amok"
+      },
+      {
+        "label": "Nach der Lage",
+        "nextId": "after"
+      }
+    ]
+  },
+  "prepare": {
+    "id": "prepare",
+    "text": "[EN] Fluchtwege kennen, Treffpunkt vereinbaren, Sicherheitsinfos lesen, Notfallkontakte parat haben.",
+    "context": [
+      "unterwegs",
+      "mit Familie",
+      "Veranstaltung"
+    ],
+    "options": [],
+    "text_simplified": "[EN] Kenne Notausgänge, Treffpunkte."
+  },
+  "panic": {
+    "id": "panic",
+    "text": "[EN] Kopf schützen, nicht gegen die Masse laufen, seitlich ausweichen, Ruhe bewahren.",
+    "context": [
+      "Menge",
+      "Panik"
+    ],
+    "options": [],
+    "text_simplified": "[EN] Schütze dich, bewege dich seitlich."
+  },
+  "amok": {
+    "id": "amok",
+    "text": "[EN] In Deckung, Handy lautlos, Türen sichern, nicht fliehen. Polizei folgen.",
+    "context": [
+      "drinnen",
+      "Gefahr"
+    ],
+    "options": [],
+    "text_simplified": "[EN] Türen zu, Handy lautlos."
+  },
+  "after": {
+    "id": "after",
+    "text": "[EN] Angehörige informieren, Hilfe anbieten, psychologische Hilfe annehmen.",
+    "context": [
+      "nach Einsatz"
+    ],
+    "options": [],
+    "text_simplified": "[EN] Hol Hilfe, rede mit anderen."
+  }
+}

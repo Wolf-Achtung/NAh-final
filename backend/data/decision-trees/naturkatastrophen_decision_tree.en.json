@@ -1,0 +1,9 @@
+{
+  "root": {
+    "id": "root",
+    "text": "During natural disasters such as earthquakes or avalanches, your safety is the top priority. Take cover under a sturdy table or in a doorway, stay away from windows and heavy objects. Remain alert after the event for aftershocks and wait for official instructions.",
+    "context": ["home", "public_space", "mountain_sea"],
+    "options": [],
+    "text_simplified": "Stay safe: take cover and avoid danger."
+  }
+}
