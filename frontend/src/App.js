@@ -545,8 +545,8 @@ function App() {
   // Gefahrenlage identifiziert. Nach Abschluss wird onComplete
   // aufgerufen und der Navigator geschlossen.
   const [navigatorOpen, setNavigatorOpen] = useState(false);
-  // Einstellungen-Dialog ein-/ausblenden
-  const [settingsOpen, setSettingsOpen] = useState(false);
+  // Die Einstellungen‑Dialog wird weiter oben deklariert. Hier KEIN weiteres
+  // settingsOpen definieren, sonst kommt es zu einem Syntaxfehler.
 
   // -------------------------
   // State for the POI map overlay
