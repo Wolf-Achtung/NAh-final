@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cpr-depth",
+    "title": "Drucktiefe bei CPR",
+    "question": "Wie tief sollen die Brustkompressionen bei einem Erwachsenen ungefähr sein?",
+    "choices": [
+      "1–2 Zentimeter",
+      "5–6 Zentimeter",
+      "8–10 Zentimeter"
+    ],
+    "answer": 1,
+    "explain": "Die Kompressionen sollen den Brustkorb etwa 5 bis 6 cm eindrücken, um eine ausreichende Blutzirkulation zu erreichen."
+  },
+  {
+    "id": "cpr-rate",
+    "title": "Frequenz der Herzdruckmassage",
+    "question": "Mit welcher Frequenz führt man die Herzdruckmassage durch?",
+    "choices": [
+      "40–60 pro Minute",
+      "80–100 pro Minute",
+      "100–120 pro Minute"
+    ],
+    "answer": 2,
+    "explain": "Empfohlen werden 100 bis 120 Kompressionen pro Minute."
+  }
+]

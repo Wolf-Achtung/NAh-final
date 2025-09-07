@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <!-- Für iOS: Ermögliche die Ausführung der Web‑App im Vollbildmodus und
+             setze die Farbe der Statusleiste.  Dies kann Probleme mit
+             Rendering auf dem iPhone beheben. -->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <!--
+          Die Beschreibung darf gerne länger sein und Schlüsselbegriffe enthalten, damit Suchmaschinen den Zweck der Seite besser verstehen.
+        -->
+        <meta name="description" content="N.A.H. – Notfallhilfe für jeden Notfall: schnelle, mehrsprachige Unterstützung, medizinische Versorgung und hilfreiche Services für Europa." />
+        <meta name="keywords" content="Notfallhilfe, Krisenapp, Erste Hilfe, Katastrophenschutz, Europa, medizinische Versorgung, Notruf" />
+        <meta name="robots" content="index, follow" />
+        <!-- Open Graph Tags für Social Media Vorschauen -->
+        <meta property="og:title" content="N.A.H. – Need A Hand" />
+        <meta property="og:description" content="Notfallhilfe für jeden Notfall: schnelle und mehrsprachige Unterstützung in ganz Europa." />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="%PUBLIC_URL%/logo192.png" />
+        <meta property="og:url" content="https://nah-app.example.com" />
+        <!-- Twitter Card Daten -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="N.A.H. – Need A Hand" />
+        <meta name="twitter:description" content="Notfallhilfe für jeden Notfall: schnelle und mehrsprachige Unterstützung in ganz Europa." />
+
+        <!-- Progressive Web App Manifest -->
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <!--
+          manifest.json liefert Meta-Informationen, wenn die Web‑App auf einem mobilen Gerät
+          oder Desktop installiert wird. Für eine progressive Web‑App kann hier später
+          ein manifest und Icons eingebunden werden.
+        -->
+        <title>N.A.H. – Need A Hand | Intelligente Krisen‑Ortssuche für Europa</title>
+
+  <!-- ✅ Leaflet Styles -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+    </head>
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root"></div>
+        <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    
+<script>
+  window.addEventListener('load', () => {
+    const isOnline = navigator.onLine;
+    if (isOnline) {
+      localStorage.setItem("NAH_MODE", "GPT");
+      console.log("💬 GPT-Modus aktiviert");
+    } else {
+      localStorage.setItem("NAH_MODE", "DECISION_TREE");
+      console.log("🧭 Offline-Modus: Decision Tree aktiviert");
+    }
+  });
+</script>
+
+</body>
+</html>

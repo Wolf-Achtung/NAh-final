@@ -1,0 +1,81 @@
+[
+  {
+    "slug": "starke_blutung",
+    "name": { "de": "Starke Blutung", "en": "Severe Bleeding" },
+    "synonyms_de": [
+      "spritzendes blut", "blutet stark", "arterielle blutung", "blutet ohne stopp", "blutsee",
+      "blut strömt", "tiefer schnitt blutet", "amputation", "viel blutverlust", "wunde pumpt blut",
+      "druck hilft nicht"
+    ],
+    "synonyms_en": [
+      "spurting blood", "severe bleeding", "arterial bleed", "bleeding won't stop", "pool of blood",
+      "streaming blood", "deep cut bleeding", "amputation", "heavy blood loss"
+    ],
+    "poi_types": ["hospital", "pharmacy", "aed"],
+    "risk_default": "high"
+  },
+  {
+    "slug": "herzstillstand",
+    "name": { "de": "Herzstillstand", "en": "Cardiac Arrest" },
+    "synonyms_de": [
+      "kein puls", "keine atmung", "atmet nicht", "bewusstlos ohne atmung", "apnoe", "reanimation nötig", "kollabiert"
+    ],
+    "synonyms_en": [
+      "no pulse", "not breathing", "unresponsive not breathing", "apnea", "CPR needed", "collapsed"
+    ],
+    "poi_types": ["aed", "hospital"],
+    "risk_default": "high"
+  },
+  {
+    "slug": "krampfanfall",
+    "name": { "de": "Krampfanfall", "en": "Seizure" },
+    "synonyms_de": [
+      "krampft", "epileptischer anfall", "zittern stark", "tonisch-klonisch", "schaum am mund", "anfall >5 minuten"
+    ],
+    "synonyms_en": [
+      "seizure", "convulsing", "tonic clonic", "foaming mouth", "seizure >5 minutes"
+    ],
+    "poi_types": ["hospital"],
+    "risk_default": "medium"
+  },
+  {
+    "slug": "stabile_seitenlage",
+    "name": { "de": "Stabile Seitenlage", "en": "Recovery Position" },
+    "synonyms_de": [
+      "seitenlage", "bewusstlos aber atmet", "rettungslage", "auf die seite drehen", "stabile lage"
+    ],
+    "synonyms_en": [
+      "recovery position", "unconscious but breathing", "lateral position"
+    ],
+    "poi_types": [],
+    "risk_default": "low"
+  },
+  {
+    "slug": "unfall_sofortmassnahmen",
+    "name": { "de": "Unfall-Sofortmaßnahmen", "en": "Accident Immediate Measures" },
+    "synonyms_de": [
+      "autounfall", "zusammenstoß", "sturz", "arbeitsunfall", "motorradunfall", "fahrradunfall",
+      "kopfanprall", "heimunfall", "elektroschock", "gasgeruch", "brandverletzung"
+    ],
+    "synonyms_en": [
+      "car crash", "collision", "fall", "work accident", "motorcycle crash", "bike crash", "head bump",
+      "home accident", "electric shock", "gas smell", "burn injury"
+    ],
+    "poi_types": ["hospital", "pharmacy"],
+    "risk_default": "medium"
+  },
+  {
+    "slug": "lawine",
+    "name": { "de": "Lawine", "en": "Avalanche" },
+    "synonyms_de": [
+      "lawinenabgang", "verschüttet", "lvs-suche", "piepser", "schneebrett", "sonde", "schaufeln",
+      "skifahrer verschüttet", "verschwindet im schnee"
+    ],
+    "synonyms_en": [
+      "avalanche", "buried", "transceiver search", "beacon", "snow slide", "probe", "shovel",
+      "skier buried"
+    ],
+    "poi_types": ["aed"],
+    "risk_default": "high"
+  }
+]

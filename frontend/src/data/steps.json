@@ -1,0 +1,106 @@
+{
+  "herzstillstand": {
+    "risk": "high",
+    "steps": [
+      { "id": "check", "de": "Laut ansprechen, Atmung prüfen.", "en": "Shout loudly, check breathing." },
+      { "id": "call", "de": "Sofort 112 anrufen.", "en": "Call 112 immediately.", "cta": "notruf" },
+      { "id": "cpr_start", "de": "Mit Druckmassage starten.", "en": "Start chest compressions.", "haptic": "cpr_110" },
+      { "id": "cpr_rate", "de": "100–120 pro Minute drücken.", "en": "Press 100–120 per minute." },
+      { "id": "depth", "de": "Fünf bis sechs Zentimeter tief.", "en": "Press five to six centimeters." },
+      { "id": "aer", "de": "AED holen, einschalten, folgen.", "en": "Get AED, switch on, follow.", "cta": "aed" },
+      { "id": "swap", "de": "Helfer wechseln, nicht aufhören.", "en": "Switch helpers, do not stop." }
+    ]
+  },
+  "starke_blutung": {
+    "risk": "high",
+    "steps": [
+      { "id": "pressure", "de": "Direkten Druck auf die Wunde.", "en": "Direct pressure on the wound." },
+      { "id": "call", "de": "Sofort 112 anrufen.", "en": "Call 112 immediately.", "cta": "notruf" },
+      { "id": "pad", "de": "Druckverband anlegen.", "en": "Apply pressure bandage." },
+      { "id": "elevate", "de": "Falls möglich, hochlagern.", "en": "Elevate if possible." },
+      { "id": "tourniquet", "de": "Nur geschult: Abbindesystem nutzen.", "en": "Trained only: use tourniquet." }
+    ]
+  },
+  "schlaganfall": {
+    "risk": "high",
+    "steps": [
+      { "id": "fast", "de": "FAST prüfen: Gesicht, Arm, Sprache.", "en": "Check FAST: face, arm, speech." },
+      { "id": "call", "de": "Sofort 112 anrufen.", "en": "Call 112 immediately.", "cta": "notruf" },
+      { "id": "time", "de": "Beginn der Symptome merken.", "en": "Note symptom onset time." },
+      { "id": "rest", "de": "Ruhig lagern, nicht essen.", "en": "Rest, no food or drink." }
+    ]
+  },
+  "herzinfarkt": {
+    "risk": "high",
+    "steps": [
+      { "id": "call", "de": "Sofort 112 anrufen.", "en": "Call 112 immediately.", "cta": "notruf" },
+      { "id": "position", "de": "Oberkörper hoch, bequem lagern.", "en": "Half-sitting, comfortable position." },
+      { "id": "loosen", "de": "Enge Kleidung öffnen.", "en": "Loosen tight clothing." },
+      { "id": "calm", "de": "Beruhigen, warm halten.", "en": "Reassure, keep warm." }
+    ]
+  },
+  "krampfanfall": {
+    "risk": "medium",
+    "steps": [
+      { "id": "protect", "de": "Kopf schützen, Umgebung räumen.", "en": "Protect head, clear surroundings." },
+      { "id": "no_hold", "de": "Nicht festhalten, nichts in den Mund.", "en": "Do not restrain or put items in mouth." },
+      { "id": "time", "de": "Dauer messen, nach Atmung schauen.", "en": "Time the seizure, check breathing." },
+      { "id": "112if", "de": "Über 5 Minuten: 112 anrufen.", "en": "Over 5 minutes: call 112.", "cta": "notruf" },
+      { "id": "recovery", "de": "Nachher stabile Seitenlage.", "en": "Afterwards recovery position." }
+    ]
+  },
+  "atemnot": {
+    "risk": "medium",
+    "steps": [
+      { "id": "sit", "de": "Aufrecht hinsetzen, nach vorne stützen.", "en": "Sit upright, lean forward." },
+      { "id": "loosen", "de": "Enge Kleidung öffnen.", "en": "Loosen tight clothing." },
+      { "id": "calm", "de": "Ruhig atmen, beruhigen.", "en": "Breathe calmly, reassure." },
+      { "id": "112if", "de": "Bei starker Not: 112 anrufen.", "en": "Severe distress: call 112.", "cta": "notruf" }
+    ]
+  },
+  "hypoglykaemie": {
+    "risk": "medium",
+    "steps": [
+      { "id": "check", "de": "Ansprechbar? Schlucken möglich?", "en": "Responsive? Can swallow?" },
+      { "id": "sugar", "de": "Zuckerhaltiges geben, langsam.", "en": "Give sugary drink/food slowly." },
+      { "id": "recheck", "de": "Nach 10 Minuten prüfen.", "en": "Recheck after 10 minutes." },
+      { "id": "112if", "de": "Nicht ansprechbar: 112 anrufen.", "en": "Unresponsive: call 112.", "cta": "notruf" },
+      { "id": "recovery", "de": "Bewusstlos: Seitenlage.", "en": "Unconscious: recovery position." }
+    ]
+  },
+  "anaphylaxie": {
+    "risk": "high",
+    "steps": [
+      { "id": "call", "de": "Sofort 112 anrufen.", "en": "Call 112 immediately.", "cta": "notruf" },
+      { "id": "remove", "de": "Allergen entfernen, falls möglich.", "en": "Remove allergen if possible." },
+      { "id": "position", "de": "Hinlegen, Beine hoch.", "en": "Lie down, raise legs." },
+      { "id": "epi", "de": "Eigenen Autoinjektor? Anwenden.", "en": "Own auto-injector? Use it." }
+    ]
+  },
+  "stabile_seitenlage": {
+    "risk": "low",
+    "steps": [
+      { "id": "open", "de": "Atmung prüfen, Atemwege freihalten.", "en": "Check breathing, keep airway open." },
+      { "id": "turn", "de": "Seitlich drehen, Kopf überstrecken.", "en": "Turn sideways, tilt head back." },
+      { "id": "monitor", "de": "Atmung überwachen, warm halten.", "en": "Monitor breathing, keep warm." }
+    ]
+  },
+  "unfall_sofortmassnahmen": {
+    "risk": "medium",
+    "steps": [
+      { "id": "secure", "de": "Unfallstelle sichern, warnen.", "en": "Secure scene, warn others." },
+      { "id": "gloves", "de": "Eigenschutz beachten.", "en": "Ensure self-protection." },
+      { "id": "call", "de": "112 anrufen, Lage schildern.", "en": "Call 112, describe situation.", "cta": "notruf" },
+      { "id": "care", "de": "Betroffene ansprechen, prüfen.", "en": "Talk to casualty, assess." }
+    ]
+  },
+  "lawine": {
+    "risk": "high",
+    "steps": [
+      { "id": "safety", "de": "Eigenschutz zuerst, Nachlawinen beachten.", "en": "Self-safety first, watch for slides." },
+      { "id": "mark", "de": "Letzten Sichtpunkt markieren.", "en": "Mark last seen point." },
+      { "id": "call", "de": "Sofort 112 anrufen.", "en": "Call 112 immediately.", "cta": "notruf" },
+      { "id": "search", "de": "LVS suchen, sondieren, schaufeln.", "en": "Use beacon, probe, shovel." }
+    ]
+  }
+}

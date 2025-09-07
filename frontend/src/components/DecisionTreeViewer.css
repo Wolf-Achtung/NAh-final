@@ -1,0 +1,111 @@
+
+.tree-container {
+  padding: 1rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* Breadcrumb‑Leiste für den aktuellen Pfad */
+.breadcrumb {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0.5rem 0 1rem;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.breadcrumb-item {
+  margin-right: 0.25rem;
+}
+.breadcrumb-current {
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Optionen unterhalb des aktuellen Textes */
+.tree-options {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.tree-options .option-btn {
+  background-color: #004080;
+  color: white;
+  border: none;
+  padding: 0.7rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.tree-options .option-btn:hover,
+.tree-options .option-btn:focus {
+  background-color: #0059b3;
+}
+
+.back-btn {
+  background: #004080;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.back-btn:focus,
+.back-btn:hover {
+  outline: 2px solid #0066cc;
+  background-color: #0059b3;
+}
+
+.tree-node {
+  background: #ffffff;
+  border-left: 6px solid #0077cc;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+  transition: box-shadow 0.2s;
+}
+
+.tree-node:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.tree-header {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #003366;
+}
+
+.tree-content {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Optional: icon left of content if node.icon exists */
+.tree-icon {
+  font-size: 1.5rem;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Mobile optimization */
+@media (max-width: 600px) {
+  .tree-container {
+    padding: 0.5rem;
+  }
+
+  .tree-node {
+    padding: 0.75rem;
+  }
+
+  .back-btn {
+    width: 100%;
+    font-size: 1.1rem;
+  }
+}

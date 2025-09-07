@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Charité – Notaufnahme",
+    "type": "hospital",
+    "lat": 52.523403,
+    "lng": 13.376759
+  },
+  {
+    "name": "Feuerwache Mitte",
+    "type": "firestation",
+    "lat": 52.519938,
+    "lng": 13.401644
+  },
+  {
+    "name": "Polizeiabschnitt 31",
+    "type": "police",
+    "lat": 52.524599,
+    "lng": 13.392341
+  },
+  {
+    "name": "Apotheke Unter den Linden",
+    "type": "pharmacy",
+    "lat": 52.517146,
+    "lng": 13.390467
+  },
+  {
+    "name": "Notunterkunft Lehrter Straße",
+    "type": "shelter",
+    "lat": 52.526425,
+    "lng": 13.366293
+  }
+]

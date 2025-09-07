@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>akut.jetzt – Mobilansicht</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f4f8;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .phone-frame {
+      width: 375px;
+      height: 812px;
+      border: 2px solid #333;
+      border-radius: 32px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      background-color: #fff;
+      position: relative;
+    }
+    .phone-frame::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 30px;
+      background: #000;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+    }
+    .phone-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Diese Seite zeigt die akut.jetzt-Anwendung in einer simulierten Smartphone-Ansicht. -->
+  <div class="phone-frame">
+    <!-- Passe die src-URL an die gehostete Anwendung an (z. B. https://akut.jetzt). -->
+    <iframe src="/" title="akut.jetzt"></iframe>
+  </div>
+</body>
+</html>

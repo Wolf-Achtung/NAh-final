@@ -1,0 +1,132 @@
+{
+  "herzstillstand": {
+    "de": [
+      "kein puls", "keine atmung", "atmet nicht", "bewusstlos ohne atmung", "reanimationspflichtig",
+      "herz hört auf", "plötzlich zusammengesackt", "blau anlaufen", "keine reaktion", "atemstillstand",
+      "kein brustkorb hebt", "pulslos", "ohnmächtig und atmet nicht", "keine lebenszeichen", "apnoe",
+      "röcheln aufgehört", "sofort reanimation", "herz steht", "notfall reanimation", "kollabiert"
+    ],
+    "en": [
+      "no pulse", "not breathing", "unresponsive not breathing", "cardiac arrest", "pulseless",
+      "collapsed", "stopped breathing", "apnea", "blue lips", "no chest rise", "gasping stopped",
+      "CPR needed", "no signs of life", "heart stopped"
+    ]
+  },
+  "schlaganfall": {
+    "de": [
+      "hängender mundwinkel", "arm kann nicht heben", "schiefe mimik", "lallende sprache",
+      "wortfindungsstörung", "taubheit einseitig", "plötzliche sehprobleme", "halbseitig gelähmt",
+      "gesicht schief", "verständnisprobleme", "plötzlicher schwindel", "plötzlicher starker kopfschmerz",
+      "FAST positiv", "spricht verwaschen", "kribbeln arm/bein"
+    ],
+    "en": [
+      "drooping face", "arm weakness", "slurred speech", "can't raise arm", "one-sided numbness",
+      "face asymmetry", "sudden vision loss", "sudden severe headache", "FAST positive", "sudden confusion",
+      "one side paralyzed"
+    ]
+  },
+  "herzinfarkt": {
+    "de": [
+      "starke brustschmerzen", "druck auf der brust", "engegefühl brust", "ausstrahlen linker arm",
+      "kieferschmerz", "kalter schweiß", "übelkeit", "angstgefühl", "atemnot mit brustdruck",
+      "brennende brust", "schmerz >5 minuten", "zieht in rücken", "oberbauchdruck", "belastungsabhängig",
+      "nitro hilft nicht"
+    ],
+    "en": [
+      "chest pain", "chest pressure", "tightness chest", "pain to left arm", "jaw pain",
+      "cold sweat", "nausea", "short of breath with chest pain", "burning chest", "pain >5 minutes",
+      "heart attack", "acute coronary syndrome"
+    ]
+  },
+  "krampfanfall": {
+    "de": [
+      "krampft", "epileptischer anfall", "zittern ganzer körper", "starrer blick", "schüttelt stark",
+      "nicht ansprechbar krampft", "zungenbiss", "schaum am mund", "nach anfall schläfrig", "tonisch-klonisch",
+      "anfall >5 minuten", "mehrere anfälle", "absence", "aura vor anfall"
+    ],
+    "en": [
+      "seizure", "convulsing", "epileptic fit", "shaking", "staring spell", "tonic clonic", "bit tongue",
+      "foaming mouth", "postictal sleepy", "seizure >5 minutes", "repeated seizures"
+    ]
+  },
+  "atemnot": {
+    "de": [
+      "luftnot", "keine luft", "keuchend", "pfeifen beim atmen", "asthmaanfall", "enge brust",
+      "schnelles atmen", "blaue lippen", "panisch atmet", "atemarbeit hoch", "dyspnoe", "spricht nur wortweise",
+      "rasselnde geräusche"
+    ],
+    "en": [
+      "shortness of breath", "can't breathe", "wheezing", "asthma attack", "gasping", "blue lips",
+      "rapid breathing", "can’t speak full sentences", "dyspnea", "noisy breathing"
+    ]
+  },
+  "hypoglykaemie": {
+    "de": [
+      "unterzuckerung", "zittert", "schwitzig", "blass", "verwirrt", "aggressiv", "heißhunger", "benommen",
+      "diabetiker low", "kollaps", "unsicherer gang", "wert niedrig", "zucker fehlt"
+    ],
+    "en": [
+      "low blood sugar", "hypoglycemia", "shaky", "sweaty", "pale", "confused", "hungry",
+      "dizzy", "diabetic low", "collapse", "unsteady"
+    ]
+  },
+  "anaphylaxie": {
+    "de": [
+      "allergischer schock", "starke allergie", "hals schwillt", "atemnot allergie", "quaddeln überall",
+      "starker juckreiz", "kreislauf bricht zusammen", "epipen nötig", "bienenstich atemnot", "zunge schwillt",
+      "pfeifende atmung", "erbrechen nach allergen", "kloß im hals"
+    ],
+    "en": [
+      "anaphylaxis", "severe allergy", "throat swelling", "trouble breathing allergy", "widespread hives",
+      "intense itching", "collapse after allergen", "EpiPen", "bee sting trouble breathing",
+      "tongue swelling", "wheezing", "tight throat"
+    ]
+  },
+  "starke_blutung": {
+    "de": [
+      "spritzendes blut", "blutet stark", "arterielle blutung", "blutet ohne stopp", "blutsee",
+      "blut strömt", "tiefer schnitt blutet", "amputation", "viel blutverlust", "wunde pumpt blut",
+      "druck reicht nicht"
+    ],
+    "en": [
+      "severe bleeding", "spurting blood", "arterial bleed", "bleeding won't stop", "pool of blood",
+      "streaming blood", "deep cut bleeding", "amputation", "heavy blood loss"
+    ]
+  },
+  "stabile_seitenlage": {
+    "de": [
+      "seitenlage", "bewusstlos aber atmet", "rettungslage", "auf die seite drehen", "stabile lage"
+    ],
+    "en": [
+      "recovery position", "unconscious but breathing", "lateral position"
+    ]
+  },
+  "unfall_sofortmassnahmen": {
+    "de": [
+      "autounfall", "zusammenstoß", "sturz", "arbeitsunfall", "motorradunfall", "fahrradunfall",
+      "kopfanprall", "heimunfall", "elektroschock", "gasgeruch", "brandverletzung"
+    ],
+    "en": [
+      "car crash", "collision", "fall", "work accident", "motorcycle crash", "bike crash",
+      "head bump", "home accident", "electric shock", "gas smell", "burn injury"
+    ]
+  },
+  "notruf": {
+    "de": [
+      "112", "notruf", "rettungsdienst rufen", "ambulanz rufen", "hilfe rufen", "feuerwehr rufen", "polizei rufen"
+    ],
+    "en": [
+      "call 112", "emergency call", "call ambulance", "call emergency services", "call for help"
+    ]
+  },
+  "lawine": {
+    "de": [
+      "lawinenabgang", "verschüttet", "lvs-suche", "piepser", "schneebrett", "sonde", "schaufeln",
+      "skifahrer verschüttet", "verschwindet im schnee"
+    ],
+    "en": [
+      "avalanche", "buried", "transceiver search", "beacon", "snow slide", "probe", "shovel",
+      "skier buried"
+    ]
+  }
+}

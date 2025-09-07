@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N.A.H. - Need A Hand | Smart European Location Finder</title>
+    <meta name="description" content="AI-powered location finder for all Europeans. 45 comprehensive business categories, accessibility intelligence, and natural language search across Europe.">
+    <meta name="keywords" content="European location finder, accessibility, AI search, German business directory, tourist guide, wheelchair accessible">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nah-app.com/">
+    <meta property="og:title" content="N.A.H. - Smart European Location Finder">
+    <meta property="og:description" content="Find any business across Europe with AI. 45 categories, accessibility intelligence, supports 750M+ Europeans.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://nah-app.com/">
+    <meta property="twitter:title" content="N.A.H. - Smart European Location Finder">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .float { animation: float 3s ease-in-out infinite; }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.6); }
+        }
+        .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .category-red { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); border-color: #f87171; }
+        .category-orange { background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%); border-color: #fb923c; }
+        .category-green { background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); border-color: #4ade80; }
+        .category-blue { background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-color: #60a5fa; }
+        .category-purple { background: linear-gradient(135deg, #e9d5ff 0%, #ddd6fe 100%); border-color: #a78bfa; }
+        .category-lightblue { background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 100%); border-color: #22d3ee; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-blue-600">N.A.H.</span>
+                    <span class="ml-2 text-gray-700">Need A Hand</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#features" class="text-gray-700 hover:text-blue-600 transition-colors">Features</a>
+                    <a href="#categories" class="text-gray-700 hover:text-blue-600 transition-colors">Categories</a>
+                    <a href="#demo" class="text-gray-700 hover:text-blue-600 transition-colors">Demo</a>
+                    <a href="http://localhost:3000" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors pulse-glow">
+                        Try Now →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-12 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    <span class="gradient-text">Smart European</span><br>
+                    <span class="text-gray-900">Location Finder</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto">
+                    Find any business across Europe with AI-powered search. 
+                    <strong>45 comprehensive categories</strong>, 
+                    <strong>accessibility intelligence</strong>, and 
+                    <strong>natural language understanding</strong> 
+                    in German and English.
+                </p>
+                
+                <!-- Key Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 max-w-4xl mx-auto">
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <div class="text-2xl font-bold text-blue-600">750M+</div>
+                        <div class="text-sm text-gray-600">Europeans Served</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <div class="text-2xl font-bold text-green-600">45</div>
+                        <div class="text-sm text-gray-600">Business Categories</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <div class="text-2xl font-bold text-purple-600">10</div>
+                        <div class="text-sm text-gray-600">Major Cities</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <div class="text-2xl font-bold text-orange-600">2</div>
+                        <div class="text-sm text-gray-600">Languages</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="http://localhost:3000" class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors pulse-glow">
+                        🚀 Start Searching Now
+                    </a>
+                    <a href="#demo" class="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors">
+                        📹 Watch Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Overview -->
+    <section id="features" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose N.A.H.?</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    The first AI-powered location finder designed specifically for Europeans, 
+                    with comprehensive accessibility intelligence and local business expertise.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- AI-Powered -->
+                <div class="text-center p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 float">
+                    <div class="text-4xl mb-4">🤖</div>
+                    <h3 class="text-xl font-bold mb-3">AI-Powered Intelligence</h3>
+                    <p class="text-gray-600 mb-4">
+                        Natural language search with GPT-4o. Say "I need a wheelchair accessible pharmacy" 
+                        and get intelligent, contextual results.
+                    </p>
+                    <div class="bg-white p-3 rounded-lg text-sm">
+                        <strong>Example:</strong> "Ich brauche eine rollstuhlgerechte Apotheke"
+                    </div>
+                </div>
+
+                <!-- Accessibility First -->
+                <div class="text-center p-6 rounded-xl bg-gradient-to-br from-green-50 to-green-100 float" style="animation-delay: 0.5s">
+                    <div class="text-4xl mb-4">♿</div>
+                    <h3 class="text-xl font-bold mb-3">Accessibility Intelligence</h3>
+                    <p class="text-gray-600 mb-4">
+                        WCAG 2.1 AA compliant with comprehensive accessibility information. 
+                        Perfect for disabled users, elderly, families with strollers.
+                    </p>
+                    <div class="bg-white p-3 rounded-lg text-sm">
+                        <strong>Features:</strong> Wheelchair access, large fonts, high contrast
+                    </div>
+                </div>
+
+                <!-- European Focus -->
+                <div class="text-center p-6 rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 float" style="animation-delay: 1s">
+                    <div class="text-4xl mb-4">🌍</div>
+                    <h3 class="text-xl font-bold mb-3">European Expertise</h3>
+                    <p class="text-gray-600 mb-4">
+                        Designed for Europeans by Europeans. Local business types, 
+                        cultural understanding, and German-first approach.
+                    </p>
+                    <div class="bg-white p-3 rounded-lg text-sm">
+                        <strong>Coverage:</strong> Berlin, Paris, London, Rome, Barcelona...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Showcase -->
+    <section id="categories" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">45 Comprehensive Categories</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    From medical emergencies to leisure activities - we've got every European business need covered 
+                    with our comprehensive German-engineered categorization system.
+                </p>
+            </div>
+
+            <!-- Category Groups -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Emergency & Essential -->
+                <div class="category-red border-2 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl mr-3">🚨</span>
+                        <h3 class="text-xl font-bold text-red-800">Emergency & Essential</h3>
+                    </div>
+                    <div class="space-y-2 text-sm text-red-700">
+                        <div>🏥 Medical Emergencies</div>
+                        <div>🦷 Dental Pain</div>
+                        <div>💊 Medication & Emergency Supply</div>
+                        <div>👮 Theft or Emergency</div>
+                        <div>🏧 ATMs & Banking</div>
+                        <div class="text-xs italic">+ 1 more emergency category</div>
+                    </div>
+                </div>
+
+                <!-- Food & Services -->
+                <div class="category-orange border-2 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl mr-3">🍽️</span>
+                        <h3 class="text-xl font-bold text-orange-800">Food & Services</h3>
+                    </div>
+                    <div class="space-y-2 text-sm text-orange-700">
+                        <div>🛒 Grocery Shopping</div>
+                        <div>🥤 Late Night Drinks & Snacks</div>
+                        <div>☕ Cafés & Breaks</div>
+                        <div>🍴 Restaurants & Dining</div>
+                        <div>🖨️ Print & Copy Services</div>
+                        <div class="text-xs italic">+ 10 more service categories</div>
+                    </div>
+                </div>
+
+                <!-- Transportation -->
+                <div class="category-green border-2 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl mr-3">🚌</span>
+                        <h3 class="text-xl font-bold text-green-800">Transportation</h3>
+                    </div>
+                    <div class="space-y-2 text-sm text-green-700">
+                        <div>🚌 Public Transport</div>
+                        <div>🛴 E-Scooters (Tier, Lime)</div>
+                        <div>🚂 Train Station & Travel</div>
+                        <div>🧳 Luggage Storage</div>
+                        <div>🅿️ Parking & Car Rental</div>
+                        <div class="text-xs italic">+ 2 more transport categories</div>
+                    </div>
+                </div>
+
+                <!-- Personal Care -->
+                <div class="category-blue border-2 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl mr-3">💇</span>
+                        <h3 class="text-xl font-bold text-blue-800">Personal Care</h3>
+                    </div>
+                    <div class="space-y-2 text-sm text-blue-700">
+                        <div>💇 Hair Styling & Salons</div>
+                        <div>💄 Cosmetics & Beauty</div>
+                        <div>🧴 Travel Essentials</div>
+                        <div>👕 Laundry Services</div>
+                    </div>
+                </div>
+
+                <!-- Entertainment & Leisure -->
+                <div class="category-purple border-2 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl mr-3">🗽</span>
+                        <h3 class="text-xl font-bold text-purple-800">Entertainment & Leisure</h3>
+                    </div>
+                    <div class="space-y-2 text-sm text-purple-700">
+                        <div>🗽 Tourist Attractions</div>
+                        <div>🏨 Accommodation</div>
+                        <div>🎫 Tickets & Tours</div>
+                        <div>⚽ Fan Zones & Sports</div>
+                        <div>📶 Mobile Internet</div>
+                        <div class="text-xs italic">+ 4 more leisure categories</div>
+                    </div>
+                </div>
+
+                <!-- Culture & Work -->
+                <div class="category-lightblue border-2 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl mr-3">🎨</span>
+                        <h3 class="text-xl font-bold text-cyan-800">Culture & Work</h3>
+                    </div>
+                    <div class="space-y-2 text-sm text-cyan-700">
+                        <div>🎨 Art Galleries & Museums</div>
+                        <div>🎬 Cinemas & Movies</div>
+                        <div>🌳 Parks & Nature</div>
+                        <div>💻 Coworking & WiFi</div>
+                        <div>🧘 Relaxation & Wellness</div>
+                        <div class="text-xs italic">+ 1 more culture category</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">How N.A.H. Works</h2>
+                <p class="text-xl text-gray-600">Simple, intelligent, accessible - just how location finding should be</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🗣️</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">1. Ask Naturally</h3>
+                    <p class="text-gray-600">
+                        Use natural language in German or English. Say what you need, how you need it.
+                    </p>
+                    <div class="bg-gray-100 p-3 rounded-lg mt-3 text-sm">
+                        "Ich brauche eine Apotheke mit Rollstuhlzugang"
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🤖</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">2. AI Understands</h3>
+                    <p class="text-gray-600">
+                        Our GPT-4o AI analyzes your request, understands context, and suggests the best category.
+                    </p>
+                    <div class="bg-gray-100 p-3 rounded-lg mt-3 text-sm">
+                        Category: Medication & Accessibility ♿
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">📍</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">3. Get Perfect Results</h3>
+                    <p class="text-gray-600">
+                        Receive curated results with accessibility info, opening hours, contact details, and directions.
+                    </p>
+                    <div class="bg-gray-100 p-3 rounded-lg mt-3 text-sm">
+                        ♿ Wheelchair accessible • 📞 Call • 📍 Directions
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">See N.A.H. in Action</h2>
+                <p class="text-xl text-gray-600">Watch how easy it is to find exactly what you need</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <!-- Demo Video Placeholder -->
+                <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+                    <div class="bg-gray-100 rounded-lg p-12 mb-6">
+                        <div class="text-6xl mb-4">🎥</div>
+                        <h3 class="text-2xl font-bold mb-2">Interactive Demo</h3>
+                        <p class="text-gray-600 mb-6">
+                            Experience the power of AI-driven location finding with accessibility intelligence
+                        </p>
+                        <a href="http://localhost:3000" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                            Try Live Demo →
+                        </a>
+                    </div>
+                    
+                    <!-- Demo Features -->
+                    <div class="grid md:grid-cols-3 gap-4 text-sm">
+                        <div class="bg-blue-50 p-3 rounded">
+                            <strong>🇩🇪 German First</strong><br>
+                            Default German interface with local business understanding
+                        </div>
+                        <div class="bg-green-50 p-3 rounded">
+                            <strong>♿ Accessibility</strong><br>
+                            High contrast, large fonts, screen reader support
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded">
+                            <strong>🚀 Instant Results</strong><br>
+                            AI analysis + real business data in seconds
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Perfect For Everyone</h2>
+                <p class="text-xl text-gray-600">N.A.H. serves all Europeans - from tourists to locals, from families to business travelers</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100">
+                    <div class="text-4xl mb-3">🧳</div>
+                    <h3 class="font-bold mb-2">Tourists & Travelers</h3>
+                    <p class="text-sm text-gray-600">Navigate European cities with confidence. Find attractions, restaurants, services.</p>
+                </div>
+
+                <div class="text-center p-6 rounded-xl bg-gradient-to-br from-green-50 to-green-100">
+                    <div class="text-4xl mb-3">♿</div>
+                    <h3 class="font-bold mb-2">Accessibility Users</h3>
+                    <p class="text-sm text-gray-600">Wheelchair users, visually impaired, elderly - find fully accessible businesses.</p>
+                </div>
+
+                <div class="text-center p-6 rounded-xl bg-gradient-to-br from-purple-50 to-purple-100">
+                    <div class="text-4xl mb-3">👨‍💼</div>
+                    <h3 class="font-bold mb-2">Business Travelers</h3>
+                    <p class="text-sm text-gray-600">Find services quickly during business trips. Print shops, hotels, transport.</p>
+                </div>
+
+                <div class="text-center p-6 rounded-xl bg-gradient-to-br from-orange-50 to-orange-100">
+                    <div class="text-4xl mb-3">👨‍👩‍👧‍👦</div>
+                    <h3 class="font-bold mb-2">Families</h3>
+                    <p class="text-sm text-gray-600">Family-friendly locations with accessibility for strollers and children.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Advantages -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Why N.A.H. Beats the Competition</h2>
+                <p class="text-xl text-gray-600">The first truly European, accessibility-first, AI-powered location finder</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- N.A.H. Advantages -->
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold mb-6 text-blue-600">✅ N.A.H. - Need A Hand</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-3">✓</span>
+                            <span><strong>45 comprehensive German categories</strong> - from emergencies to leisure</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-3">✓</span>
+                            <span><strong>AI-powered natural language</strong> - "I need wheelchair accessible pharmacy"</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-3">✓</span>
+                            <span><strong>WCAG 2.1 AA compliant</strong> - legally accessible across EU</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-3">✓</span>
+                            <span><strong>German-first approach</strong> - understands Späti, Fanmeile, local terms</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-3">✓</span>
+                            <span><strong>Predictive intelligence</strong> - "still open when you arrive"</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-3">✓</span>
+                            <span><strong>European focus</strong> - built for 750M Europeans</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Competition -->
+                <div class="bg-gray-100 rounded-xl p-8">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-600">❌ Google Maps & Others</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3">✗</span>
+                            <span>Basic categories only - no German business specialization</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3">✗</span>
+                            <span>No AI understanding - just keyword matching</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3">✗</span>
+                            <span>Limited accessibility information</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3">✗</span>
+                            <span>Generic global approach - not European-focused</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3">✗</span>
+                            <span>No predictive features or smart suggestions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3">✗</span>
+                            <span>Poor accessibility compliance</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-blue-600 to-purple-700 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Find Anything in Europe?</h2>
+            <p class="text-xl mb-8 opacity-90">
+                Join thousands of Europeans who've discovered the smarter way to find businesses. 
+                AI-powered, accessibility-first, and designed for you.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <a href="http://localhost:3000" class="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors pulse-glow">
+                    🚀 Start Searching Now - Free
+                </a>
+                <a href="#features" class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+                    📚 Learn More
+                </a>
+            </div>
+
+            <div class="text-sm opacity-75">
+                ✓ No registration required  ✓ Completely free  ✓ Works on all devices  ✓ GDPR compliant
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">N.A.H.</h3>
+                    <p class="text-gray-400 mb-4">
+                        Smart European location finder with AI intelligence and accessibility focus.
+                    </p>
+                    <div class="text-sm text-gray-500">
+                        Serving 750M+ Europeans
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-3">Features</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>45 Business Categories</li>
+                        <li>AI-Powered Search</li>
+                        <li>Accessibility Intelligence</li>
+                        <li>German & English</li>
+                        <li>European Destinations</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-3">For</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>Tourists & Travelers</li>
+                        <li>People with Disabilities</li>
+                        <li>Business Travelers</li>
+                        <li>Families</li>
+                        <li>Elderly Users</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-3">Coverage</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>🇩🇪 Germany</li>
+                        <li>🇫🇷 France</li>
+                        <li>🇬🇧 United Kingdom</li>
+                        <li>🇮🇹 Italy</li>
+                        <li>+ 6 more countries</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2024 N.A.H. - Need A Hand. Making Europe accessible for everyone.</p>
+                <p class="mt-2">🌍♿🤖 Smart • Accessible • European</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Demo Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="http://localhost:3000" class="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors pulse-glow float">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+        </a>
+    </div>
+
+</body>
+</html>

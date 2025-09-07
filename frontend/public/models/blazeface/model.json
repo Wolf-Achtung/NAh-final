@@ -1,0 +1,5 @@
+{
+  "format": "graph-model",
+  "generated": "placeholder",
+  "note": "This is a placeholder for the BlazeFace model manifest. Replace with the real TensorFlow.js model.json when deploying."
+}

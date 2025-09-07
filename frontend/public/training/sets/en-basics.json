@@ -1,0 +1,50 @@
+[
+  {
+    "id": "cpr-1",
+    "title": "Airway and breathing check",
+    "question": "A person lies motionless on the ground. What is your first step?",
+    "choices": [
+      "Dial 112",
+      "Check breathing, speak to them",
+      "Place in recovery position"
+    ],
+    "answer": 1,
+    "explain": "Always check for consciousness and breathing first by loudly addressing the person and observing chest movements."
+  },
+  {
+    "id": "bleed-1",
+    "title": "Severe bleeding",
+    "question": "How do you stop severe spurting bleeding on a leg initially?",
+    "choices": [
+      "Elevate the leg",
+      "Apply a pressure bandage",
+      "Rinse the wound"
+    ],
+    "answer": 1,
+    "explain": "Direct pressure and a pressure bandage are the most effective way to control arterial bleeding. Washing the wound delays clotting."
+  },
+  {
+    "id": "stroke-1",
+    "title": "Recognising a stroke",
+    "question": "Which signs are part of the FAST test for stroke?",
+    "choices": [
+      "Facial droop, arm weakness, speech disturbance",
+      "Chest pain, shortness of breath, nausea",
+      "Fever, cough, fatigue"
+    ],
+    "answer": 0,
+    "explain": "FAST stands for Face, Arm, Speech: one side of the face droops, weakness or numbness in the arm and slurred or garbled speech."
+  },
+  {
+    "id": "hypo-1",
+    "title": "Hypoglycemia",
+    "question": "What should you give a diabetic with low blood sugar who is responsive?",
+    "choices": [
+      "Half a litre of water",
+      "A sugary drink or glucose tablets",
+      "Nothing, call emergency services"
+    ],
+    "answer": 1,
+    "explain": "For low blood sugar, give the person a quick source of sugar such as juice, cola or glucose tablets."
+  }
+]

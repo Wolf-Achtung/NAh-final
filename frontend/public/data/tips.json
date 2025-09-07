@@ -1,0 +1,42 @@
+{
+  "herzstillstand": [
+    "Überprüfe die Atmung und beginne sofort mit der Wiederbelebung (30 Kompressionen, 2 Beatmungen).",
+    "Nutze einen automatisierten externen Defibrillator (AED), wenn vorhanden, und folge den gesprochenen Anweisungen."
+  ],
+  "starke_blutung": [
+    "Drücke direkt mit sauberem Material auf die Wunde, um die Blutung zu stoppen.",
+    "Lagere die verletzte Extremität hoch und fixiere den Druckverband fest." 
+  ],
+  "schlaganfall": [
+    "Nutze das FAST‑Schema: Face, Arms, Speech, Time; bei Auffälligkeiten sofort den Notruf wählen.",
+    "Beruhige die betroffene Person, notiere die Uhrzeit der ersten Symptome und halte sie warm."
+  ],
+  "hypoglykaemie": [
+    "Gib dem Betroffenen schnell wirkende Kohlenhydrate wie Traubenzucker oder Saft.",
+    "Bei Bewusstlosigkeit stabile Seitenlage und Notruf, keinen Zucker einflößen." 
+  ],
+  "anaphylaxie": [
+    "Rufe sofort den Notruf. Die Situation ist lebensbedrohlich.",
+    "Wenn ein Adrenalin‑Autoinjektor (EpiPen) vorhanden ist, sofort anwenden und die Person in eine stabile Position bringen." 
+  ],
+  "unfall_sofortmassnahmen": [
+    "Sichere die Unfallstelle (Warnblinklicht, Warndreieck) und trage eine Warnweste.",
+    "Leiste Erste Hilfe und rufe 112. Verschaffe dir einen Überblick über Verletzte und bleib bei ihnen, bis Hilfe eintrifft." 
+  ],
+  "notruf": [
+    "Rufe die Notrufnummer 112. Nenne deinen Namen, den Ort und beschreibe die Situation kurz. Beantworte Rückfragen.",
+    "Lege erst auf, wenn die Leitstelle es sagt. Halte dich für weitere Fragen bereit." 
+  ],
+  "lawine": [
+    "Merke dir den letzten Punkt, an dem du die verschüttete Person gesehen hast, und markiere die Stelle.",
+    "Rufe 112 und beginne sofort mit der Suche und Freilegung der Person. Arbeite schnell, aber vorsichtig." 
+  ],
+  "krampfanfall": [
+    "Räume gefährliche Gegenstände weg und schütze den Kopf der Person.",
+    "Halte die Person nicht fest. Warte das Ende des Anfalls ab und lege sie anschließend in stabile Seitenlage." 
+  ],
+  "atemnot": [
+    "Setze die Person aufrecht hin, öffne enge Kleidung und sorge für Frischluft.",
+    "Rufe den Notruf, wenn die Atemnot plötzlich auftritt oder stark ausgeprägt ist." 
+  ]
+}

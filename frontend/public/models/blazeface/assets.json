@@ -1,0 +1,10 @@
+{
+  "model": {
+    "path": "/models/blazeface/model.json",
+    "description": "Manifest file for the BlazeFace model (TensorFlow.js)."
+  },
+  "weights": {
+    "path": "/models/blazeface/group1-shard1of1.bin",
+    "description": "Weights file for BlazeFace. Ensure this binary is copied into the public/models/blazeface directory for offline use."
+  }
+}

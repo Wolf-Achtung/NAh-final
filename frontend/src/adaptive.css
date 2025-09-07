@@ -1,0 +1,60 @@
+/*
+  Adaptive UI styles for persona modes.
+
+  - senior-mode: slightly larger fonts and increased line height for better readability.
+  - child-mode: larger fonts and more vivid button styling to aid children.
+  - handicap-mode: high contrast and increased font size to assist users with impairments.
+
+  These classes are applied to the <body> element dynamically based on the
+  selected profilePersona.  See App.js for the logic.
+*/
+
+body.senior-mode {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+body.child-mode {
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+
+body.handicap-mode {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  /* Increase contrast for text and backgrounds */
+  background-color: #f9fafb;
+  color: #000;
+}
+
+/* High contrast mode: strong foreground/background colours and underlined links */
+body.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+body.high-contrast a {
+  color: #0af;
+  text-decoration: underline;
+}
+
+/* Large text mode: scale base font size for improved readability */
+body.large-text {
+  font-size: 1.3rem;
+  line-height: 1.6;
+}
+
+/* Increase button sizes and padding in these modes */
+body.senior-mode button,
+body.child-mode button,
+body.handicap-mode button {
+  font-size: 1.1rem;
+  padding: 0.75rem 1rem;
+}
+
+/* Increase text area font size */
+body.senior-mode textarea,
+body.child-mode textarea,
+body.handicap-mode textarea {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}

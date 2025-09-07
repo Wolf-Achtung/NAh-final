@@ -1,0 +1,15 @@
+[build]
+base = "frontend"
+publish = "build"
+command = "npm install && npm run build"
+
+[context.production.environment]
+NODE_VERSION = "18"
+
+[context.deploy-preview]
+command = "npm install && npm run build"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200

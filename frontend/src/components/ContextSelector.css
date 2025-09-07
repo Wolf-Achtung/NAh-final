@@ -1,0 +1,52 @@
+/*
+ * Styling für die Kontextauswahl.  Dieses Overlay erscheint halbtransparent
+ * über dem Rest der App und lenkt den Fokus auf die Auswahl der aktuellen
+ * Situation (Gebäude, draußen, Auto).  Die Buttons sind groß und gut
+ * klickbar.
+ */
+.context-selector {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Leichtes, helles Overlay: In Stresssituationen wirkt ein weißer
+   * Schleier beruhigender als ein dunkles Overlay. Die Transparenz
+   * von 0,95 lässt den Hintergrund erahnen, ohne abzulenken. */
+  background-color: rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.context-selector-box {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 90%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.context-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.context-btn {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #0d6efd;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.context-btn:hover {
+  background-color: #084298;
+}

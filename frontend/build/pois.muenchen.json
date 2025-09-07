@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Klinikum der Universität München",
+    "type": "hospital",
+    "lat": 48.150716,
+    "lng": 11.582268
+  },
+  {
+    "name": "Feuerwache 1",
+    "type": "firestation",
+    "lat": 48.139126,
+    "lng": 11.567174
+  },
+  {
+    "name": "Polizeipräsidium München",
+    "type": "police",
+    "lat": 48.131231,
+    "lng": 11.56795
+  },
+  {
+    "name": "Apotheke am Sendlinger Tor",
+    "type": "pharmacy",
+    "lat": 48.13261,
+    "lng": 11.565891
+  },
+  {
+    "name": "Notunterkunft Bayernkaserne",
+    "type": "shelter",
+    "lat": 48.204428,
+    "lng": 11.585111
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "cpr-1",
+    "title": "Atemkontrolle",
+    "question": "Eine Person liegt regungslos am Boden. Was ist dein erster Schritt?",
+    "choices": [
+      "112 wählen",
+      "Atem prüfen, Person ansprechen",
+      "Stabile Seitenlage"
+    ],
+    "answer": 1,
+    "explain": "Zuerst Bewusstsein und Atmung prüfen, indem du die Person laut ansprichst und auf Atembewegungen achtest."
+  },
+  {
+    "id": "bleed-1",
+    "title": "Starke Blutung",
+    "question": "Wie stoppst du starkes Spritzbluten am Bein zuerst?",
+    "choices": [
+      "Bein hochlagern",
+      "Druckverband anlegen",
+      "Wunde auswaschen"
+    ],
+    "answer": 1,
+    "explain": "Direkter Druck und ein Druckverband stoppen eine arterielle Blutung am zuverlässigsten. Das Auswaschen verzögert die Blutstillung."
+  },
+  {
+    "id": "stroke-1",
+    "title": "Schlaganfall erkennen",
+    "question": "Welche Anzeichen gehören zum FAST-Test für einen Schlaganfall?",
+    "choices": [
+      "Gesichtslähmung, Armschwäche, Sprachstörung",
+      "Brustschmerz, Atemnot, Übelkeit",
+      "Fieber, Husten, Müdigkeit"
+    ],
+    "answer": 0,
+    "explain": "FAST steht für Face, Arm, Speech: hängender Mundwinkel, Lähmung oder Taubheit im Arm und eine undeutliche oder lallende Sprache."
+  },
+  {
+    "id": "hypo-1",
+    "title": "Unterzuckerung",
+    "question": "Was gibst du einem Diabetiker mit Unterzuckerung, wenn er ansprechbar ist?",
+    "choices": [
+      "Einen halben Liter Wasser",
+      "Ein zuckerhaltiges Getränk oder Traubenzucker",
+      "Gar nichts, Rettungsdienst rufen"
+    ],
+    "answer": 1,
+    "explain": "Bei einer Unterzuckerung soll der Betroffene schnell Zucker zu sich nehmen, z. B. in Form von Saft, Cola oder Traubenzucker." 
+  }
+]
