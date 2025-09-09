@@ -95,7 +95,7 @@ const ChatAssistant = ({
     return () => {
       cancelled = true;
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line
   }, [slug, lang, messages.length]);
 
   // Sendet eine Benachrichtigung an den Buddy via SMS/Telefon. Öffnet die Telefon-App oder den SMS-Client.
