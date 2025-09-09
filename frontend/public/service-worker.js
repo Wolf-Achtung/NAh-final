@@ -17,42 +17,13 @@ const URLS_TO_CACHE = [
   '/icons/icon-512.png'
 ];
 
+// Beim Installieren werden nur die wichtigsten statischen Ressourcen vorgeladen.
+// Entscheidungsbäume werden jetzt on-demand geladen und anschließend automatisch im Cache abgelegt.
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(URLS_TO_CACHE);
     })
-      .then(() => {
-        // Versuche beim Installieren des Service‑Workers zusätzlich die
-        // Entscheidungsbäume für alle Gefahren in den Cache zu laden. Damit
-        // stehen diese Daten auch im Offline‑Modus zur Verfügung. Falls die
-        // Netzwerkverbindung fehlt oder der Backend‑Server nicht erreichbar
-        // ist, wird der Fehler ignoriert und es bleibt bei den statischen
-        // Ressourcen. Da fetch im Service Worker relativ eingeschränkt ist,
-        // verwenden wir relative URLs zum aktuellen Ursprung.
-        return fetch('/api/hazards')
-          .then((resp) => resp.json())
-          .then((data) => {
-            if (!data || !Array.isArray(data.hazards)) return;
-            return Promise.all(
-              data.hazards.map((slug) => {
-                // Für jede Gefahr den detaillierten Entscheidungsbaum abrufen
-                // und im Cache speichern. Wir fügen den Request manuell in
-                // den Cache ein, damit die Antwort für den Offline‑Modus
-                // verfügbar bleibt.
-                const url = `/api/hazards/${slug}`;
-                return fetch(url)
-                  .then((res) => {
-                    if (res && res.status === 200) {
-                      return caches.open(CACHE_NAME).then((c) => c.put(url, res.clone()));
-                    }
-                  })
-                  .catch(() => {});
-              })
-            );
-          })
-          .catch(() => {});
-      })
   );
 });
 
