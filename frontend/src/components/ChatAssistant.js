@@ -72,6 +72,28 @@ const ChatAssistant = ({
   // Chat und wird bei Änderung von slug/lang neu berechnet.
   const [plannedSteps, setPlannedSteps] = useState(null);
 
+  // Freitextbeschreibung des Nutzers für die Frühklassifizierung.  Diese
+  // Beschreibung wird an die GPT‑Klassifizierung gesendet, um das
+  // Gefahren‑Slug und das Risikoniveau zu verfeinern.  Wenn der Nutzer
+  // keine Beschreibung eingibt, verwenden wir die vorhandenen Hazard‑Slug
+  // und offline‑Heuristiken (compactAdvice).
+  const [userDescription, setUserDescription] = useState('');
+  // Ergebnis der GPT‑Klassifikation (hazard, confidence, override_risk, cta).
+  const [classification, setClassification] = useState(null);
+  // Flag, das anzeigt, ob eine Klassifikation durchgeführt wurde.  Erst
+  // danach zeigen wir die Schrittanleitungen an.  Nutzer können dies
+  // auch überspringen.
+  const [classificationDone, setClassificationDone] = useState(false);
+  // Überschreibt den übergebenen Hazard‑Slug, wenn die GPT‑Klassifikation
+  // eine spezifische Gefahrenkategorie zurückliefert.
+  const [slugOverride, setSlugOverride] = useState(null);
+
+  // Effektives Risiko und Gefahrenkategorie: Wird ggf. durch die
+  // GPT‑Klassifikation übersteuert. Wenn kein override vorliegt,
+  // bleiben riskLevel und slug unverändert.
+  const effectiveRiskLevel = classification?.override_risk || riskLevel;
+  const effectiveSlug = slugOverride || slug;
+
   // Plane die Schritte basierend auf Sensorsignalen und Hazard.  Wir lesen
   // einmalig vorhandene Sensoren aus und fragen den Planner.  Der Planner
   // liefert eine Liste von Anweisungen für die angegebene Sprache.  Bei
@@ -80,7 +102,10 @@ const ChatAssistant = ({
     let cancelled = false;
     (async () => {
       // Nur vor Start des Chats planen
-      if (messages.length > 0) return;
+      // Nicht planen, wenn bereits eine Unterhaltung geführt wurde oder die
+      // Klassifikation abgeschlossen ist – die Planung wird durch handleClassification
+      // erneut durchgeführt.
+      if (messages.length > 0 || classificationDone) return;
       try {
         const sensor = await safeReadSensors();
         const locale = lang || 'de';
@@ -96,7 +121,7 @@ const ChatAssistant = ({
       cancelled = true;
     };
   // eslint-disable-next-line
-  }, [slug, lang, messages.length]);
+  }, [slug, slugOverride, lang, messages.length, classificationDone]);
 
   // Sendet eine Benachrichtigung an den Buddy via SMS/Telefon. Öffnet die Telefon-App oder den SMS-Client.
   const handleBuddyPing = () => {
@@ -114,6 +139,53 @@ const ChatAssistant = ({
     } catch {
       // Fallback: Telefonnummer kopieren
       navigator.clipboard?.writeText(buddy).catch(() => {});
+    }
+  };
+
+  // Führe die GPT‑Klassifikation der freien Beschreibung durch.  Die
+  // Eingabe wird gekürzt und an das Backend gesendet, das anhand der
+  // Synonymliste und der OpenAI‑API die wahrscheinlichste Gefahrenkategorie
+  // zurückliefert.  Danach planen wir erneut die Schrittfolge anhand der
+  // Klassifikation und passen das Risikoniveau ggf. an.
+  const handleClassification = async () => {
+    const text = (userDescription || '').trim();
+    if (!text) {
+      // Wenn keine Beschreibung eingegeben wurde, wird die Klassifikation
+      // übersprungen und die vorhandenen Schritte angezeigt.
+      setClassificationDone(true);
+      return;
+    }
+    setLoading(true);
+    try {
+      const res = await fetch('/api/gpt-classify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, persona: 'default' }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setClassification(data);
+        // Wenn das Modell eine spezifische Gefahrenkategorie erkannt hat, nutzen wir diese
+        if (data.hazard && typeof data.hazard === 'string') {
+          setSlugOverride(data.hazard);
+        }
+        // Plan Steps neu anhand der Freitextbeschreibung und Sensoren
+        try {
+          const sensor = await safeReadSensors();
+          const locale = lang || 'de';
+          const { steps } = await planSteps({ text, sensor, locale, online: navigator.onLine });
+          if (steps && Array.isArray(steps) && steps.length > 0) {
+            setPlannedSteps(steps);
+          }
+        } catch {
+          // Ignoriere Fehler im Planner; fallback auf existierende Steps
+        }
+      }
+    } catch (err) {
+      console.error('classification error', err);
+    } finally {
+      setLoading(false);
+      setClassificationDone(true);
     }
   };
 
@@ -193,8 +265,8 @@ const ChatAssistant = ({
         t('Leichte, helle Kleidung tragen.', 'Wear light, light‑coloured clothing.'),
         t('Bei Hitzekollaps Notruf 112 wählen.', 'Call 112 in case of heat collapse.'),
       ],
-    }[slug] || [];
-  }, [slug, lang]);
+    }[effectiveSlug] || [];
+  }, [slug, slugOverride, lang]);
 
   /**
    * Fortschritt durch die Soforthilfe‑Schritte.  Wird aufgerufen,
@@ -220,7 +292,7 @@ const ChatAssistant = ({
   // erscheinen in Rot, mittlere in Orange und niedrige in Grün.  Der
   // default case nutzt Blau.
   const riskColor = useMemo(() => {
-    switch (riskLevel) {
+    switch (effectiveRiskLevel) {
       case 'high':
         return '#dc2626';
       case 'medium':
@@ -230,13 +302,14 @@ const ChatAssistant = ({
       default:
         return '#2563eb';
     }
-  }, [riskLevel]);
+  }, [effectiveRiskLevel]);
 
   // Texte für das Risiko‑Banner.  Wir formulieren die Warnung
   // sprachabhängig und passen die Botschaft an den Schweregrad an.
   const riskMessage = useMemo(() => {
+    const level = effectiveRiskLevel;
     if (lang === 'de') {
-      switch (riskLevel) {
+      switch (level) {
         case 'high':
           return 'Achtung – ernsthafte Gefahr! Bitte beobachte die Situation genau und wähle umgehend 112, wenn sie sich verschlechtert.';
         case 'medium':
@@ -247,7 +320,7 @@ const ChatAssistant = ({
           return 'Hinweis – folge bitte den Anweisungen.';
       }
     } else {
-      switch (riskLevel) {
+      switch (level) {
         case 'high':
           return 'Warning – severe danger! Please monitor closely and dial 112 immediately if conditions worsen.';
         case 'medium':
@@ -258,7 +331,7 @@ const ChatAssistant = ({
           return 'Notice – please follow the instructions.';
       }
     }
-  }, [riskLevel, lang]);
+  }, [effectiveRiskLevel, lang]);
 
   const sendMessage = async (question = null) => {
     const textToSend = question ?? input;
@@ -653,7 +726,7 @@ const ChatAssistant = ({
         <button onClick={onClose}>×</button>
       </div>
       {/* Risiko-Hinweis mit dynamischer Farbe und Handlungsmöglichkeiten */}
-      {riskLevel && (
+      {effectiveRiskLevel && (
         <div
           style={{
             backgroundColor: riskColor,
@@ -664,9 +737,13 @@ const ChatAssistant = ({
           }}
         >
           <div style={{ fontWeight: '700', marginBottom: '0.25rem' }}>{riskMessage}</div>
+          {/* Wenn die GPT‑Klassifikation eine handlungsorientierte CTA liefert, zeigen wir diese als separaten Hinweis an. */}
+          {classification?.cta && (
+            <div style={{ fontWeight: '700', marginBottom: '0.25rem' }}>{classification.cta}</div>
+          )}
           {/* Zusatzaktionen: Bei hoher Gefahr schnelle Handlungen anbieten */}
           <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-            {riskLevel === 'high' && (
+            {effectiveRiskLevel === 'high' && (
               <a
                 href="tel:112"
                 style={{
@@ -681,7 +758,7 @@ const ChatAssistant = ({
                 {lang === 'de' ? '112 anrufen' : 'Call 112'}
               </a>
             )}
-            {riskLevel === 'high' && buddy && (
+            {effectiveRiskLevel === 'high' && buddy && (
               <button
                 onClick={handleBuddyPing}
                 style={{
@@ -696,7 +773,7 @@ const ChatAssistant = ({
                 {lang === 'de' ? 'Buddy benachrichtigen' : 'Notify buddy'}
               </button>
             )}
-            {riskLevel === 'high' && !buddy && onBuddyChange && (
+            {effectiveRiskLevel === 'high' && !buddy && onBuddyChange && (
               <div
                 style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap', alignItems: 'center' }}
               >
@@ -727,7 +804,7 @@ const ChatAssistant = ({
       )}
 
       {/* Unterkategorien für medizinische Notfälle: wenn der slug 'medizinischer_notfall' ist, zeigen wir Auswahloptionen an. */}
-      {slug === 'medizinischer_notfall' && subHazards && subHazards.length > 0 && onSelectHazard && (
+      {effectiveSlug === 'medizinischer_notfall' && subHazards && subHazards.length > 0 && onSelectHazard && (
         <div
           style={{
             marginBottom: '0.75rem',
@@ -765,8 +842,86 @@ const ChatAssistant = ({
       )}
       {/* Hauptrenderbereich der Chat-Assistenz. */}
       <div className="chat-content">
-        {/* Schritt-für-Schritt-Anleitung: nur wenn noch keine Unterhaltung geführt wurde und die Chat-UI nicht aktiviert ist. */}
-        {messages.length === 0 && !showChatUI && ((plannedSteps && plannedSteps.length > 0) || compactAdvice.length > 0) && (
+        {/* Klassifikation: biete dem Nutzer an, die Situation kurz zu beschreiben. */}
+        {messages.length === 0 && !showChatUI && !classificationDone && (
+          <div
+            className="classification-input"
+            style={{
+              marginBottom: '1rem',
+              padding: '0.75rem',
+              border: '1px solid #ddd',
+              borderRadius: '6px',
+              backgroundColor: '#f9f9f9',
+            }}
+          >
+            <p style={{ marginBottom: '0.5rem', fontWeight: '600' }}>
+              {lang === 'de'
+                ? 'Was ist passiert? Bitte beschreibe die Situation kurz:'
+                : 'What happened? Please describe the situation briefly:'}
+            </p>
+            <textarea
+              value={userDescription}
+              onChange={(e) => setUserDescription(e.target.value)}
+              placeholder={lang === 'de' ? 'z. B. Person atmet nicht, starke Blutung …' : 'e.g. person not breathing, heavy bleeding …'}
+              rows={3}
+              style={{
+                width: '100%',
+                padding: '0.5rem',
+                border: '1px solid #ccc',
+                borderRadius: '4px',
+                marginBottom: '0.5rem',
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  handleClassification();
+                }
+              }}
+            ></textarea>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              <button
+                onClick={handleClassification}
+                disabled={loading || !userDescription.trim()}
+                style={{
+                  flexGrow: 1,
+                  backgroundColor: '#2563eb',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '4px',
+                  padding: '0.5rem 1rem',
+                  cursor: userDescription.trim() ? 'pointer' : 'not-allowed',
+                }}
+              >
+                {lang === 'de' ? 'Analyse starten' : 'Run analysis'}
+              </button>
+              <button
+                onClick={() => {
+                  // Klassifikation überspringen und direkt zu den geplanten Schritten wechseln
+                  setClassificationDone(true);
+                }}
+                disabled={loading}
+                style={{
+                  flexGrow: 1,
+                  backgroundColor: '#6b7280',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '4px',
+                  padding: '0.5rem 1rem',
+                  cursor: 'pointer',
+                }}
+              >
+                {lang === 'de' ? 'Überspringen' : 'Skip'}
+              </button>
+            </div>
+            <p style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: '#555' }}>
+              {lang === 'de'
+                ? 'Diese Beschreibung hilft der KI, die richtigen Maßnahmen zu wählen. Du kannst optional per Spracheingabe diktieren.'
+                : 'This description helps the AI choose the right actions. You can optionally dictate via voice input.'}
+            </p>
+          </div>
+        )}
+        {/* Schritt-für-Schritt-Anleitung: zeige nach Abschluss der Klassifikation, solange noch keine Unterhaltung geführt wurde und die Chat-UI nicht aktiviert ist. */}
+        {messages.length === 0 && !showChatUI && classificationDone && ((plannedSteps && plannedSteps.length > 0) || compactAdvice.length > 0) && (
           (() => {
             const stepsList = (plannedSteps && plannedSteps.length > 0) ? plannedSteps : compactAdvice;
             return (
@@ -795,11 +950,11 @@ const ChatAssistant = ({
                     ? (lang === 'de' ? 'Weiter' : 'Next')
                     : (lang === 'de' ? 'Fertig' : 'Done')}
                 </button>
-                {/* Hinweis für Freitextbeschreibung und Datenschutz */}
+                {/* Hinweis für Datenschutz */}
                 <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: '#555' }}>
                   {lang === 'de'
-                    ? 'Du kannst die Situation kurz beschreiben, um weitere Hilfe zu erhalten. Bitte keine Fotos – das könnte die Privatsphäre der Betroffenen verletzen.'
-                    : 'You can briefly describe the situation for further guidance. Please do not send photos – this could violate the privacy of those involved.'}
+                    ? 'Keine Fotos senden – das könnte die Privatsphäre der Betroffenen verletzen.'
+                    : 'Please do not send photos – this could violate the privacy of those involved.'}
                 </p>
               </div>
             );
