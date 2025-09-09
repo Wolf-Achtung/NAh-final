@@ -11,7 +11,10 @@ WORKDIR /app
 
 # Copy package definitions and install dependencies
 COPY frontend/package*.json ./
-RUN npm ci --no-progress
+## Use npm install instead of npm ci to install dependencies based on package.json.  
+## This avoids strict lockfile enforcement and allows new dependencies to be fetched even if package-lock.json
+## is not yet updated.  npm ci would fail when the lock file does not include recently added packages.
+RUN npm install --no-progress
 
 # Copy the rest of the frontend source code
 COPY frontend/ ./
