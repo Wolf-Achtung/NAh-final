@@ -1,4 +1,6 @@
 import React, { useMemo, useState, useEffect, useRef } from 'react';
+import { planSteps } from '../lib/aiPlanner';
+import { safeReadSensors } from '../lib/riskEngine';
 
 /**
  * ChatAssistant – kompakte, barrierearme Notfallhilfe.
@@ -44,6 +46,16 @@ const ChatAssistant = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Index of the currently displayed advice step.  We progress through the
+  // compactAdvice one item at a time to reduce cognitive overload in
+  // stressful situations.  When the last step has been shown, the
+  // chat input becomes visible and the quick‑actions are hidden.
+  const [currentStepIndex, setCurrentStepIndex] = useState(0);
+  // Whether the chat UI (text input + send/microphone) is visible.
+  // Initially hidden until the user has progressed through all
+  // instructions or starts the chat manually.
+  const [showChatUI, setShowChatUI] = useState(false);
+
   // Referenz auf den aktuellen EventSource-Stream (für SSE).  Dies ermöglicht
   // das Abbrechen des Streams, wenn der Nutzer eine neue Anfrage stellt.
   const eventSourceRef = useRef(null);
@@ -53,6 +65,38 @@ const ChatAssistant = ({
 
   // Lokaler Input für Buddy-Telefonnummer. Wenn ein Buddy vorhanden ist, wird dieser vorbelegt.
   const [buddyInput, setBuddyInput] = useState(buddy || '');
+
+  // Dynamisch geplante Schrittfolge.  Wird vom KI‑Planner befüllt, falls
+  // verfügbar.  Wenn null, greift die Komponente auf die statischen
+  // compactAdvice-Schritte zurück.  Die Planung erfolgt nur vor dem ersten
+  // Chat und wird bei Änderung von slug/lang neu berechnet.
+  const [plannedSteps, setPlannedSteps] = useState(null);
+
+  // Plane die Schritte basierend auf Sensorsignalen und Hazard.  Wir lesen
+  // einmalig vorhandene Sensoren aus und fragen den Planner.  Der Planner
+  // liefert eine Liste von Anweisungen für die angegebene Sprache.  Bei
+  // Fehlern oder Offlinebetrieb bleibt plannedSteps null.
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      // Nur vor Start des Chats planen
+      if (messages.length > 0) return;
+      try {
+        const sensor = await safeReadSensors();
+        const locale = lang || 'de';
+        const { steps } = await planSteps({ text: '', sensor, locale, online: navigator.onLine });
+        if (!cancelled && Array.isArray(steps) && steps.length > 0) {
+          setPlannedSteps(steps);
+        }
+      } catch {
+        // ignore planner errors
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug, lang, messages.length]);
 
   // Sendet eine Benachrichtigung an den Buddy via SMS/Telefon. Öffnet die Telefon-App oder den SMS-Client.
   const handleBuddyPing = () => {
@@ -151,6 +195,70 @@ const ChatAssistant = ({
       ],
     }[slug] || [];
   }, [slug, lang]);
+
+  /**
+   * Fortschritt durch die Soforthilfe‑Schritte.  Wird aufgerufen,
+   * wenn der Nutzer den "Weiter"‑Button anklickt.  Nach dem
+   * letzten Schritt wird die Chat‑UI aktiviert.
+   */
+  const advanceStep = () => {
+    // Entscheide anhand der geplanten Schritte oder der statischen Vorschläge
+    const stepsList = (plannedSteps && plannedSteps.length > 0) ? plannedSteps : compactAdvice;
+    if (!stepsList || stepsList.length === 0) {
+      setShowChatUI(true);
+      return;
+    }
+    if (currentStepIndex < stepsList.length - 1) {
+      setCurrentStepIndex((prev) => prev + 1);
+    } else {
+      // Letzter Schritt – Chat aktivieren
+      setShowChatUI(true);
+    }
+  };
+
+  // Wähle eine Farbe für das Risiko‑Banner.  Hohe Risiken
+  // erscheinen in Rot, mittlere in Orange und niedrige in Grün.  Der
+  // default case nutzt Blau.
+  const riskColor = useMemo(() => {
+    switch (riskLevel) {
+      case 'high':
+        return '#dc2626';
+      case 'medium':
+        return '#f97316';
+      case 'low':
+        return '#16a34a';
+      default:
+        return '#2563eb';
+    }
+  }, [riskLevel]);
+
+  // Texte für das Risiko‑Banner.  Wir formulieren die Warnung
+  // sprachabhängig und passen die Botschaft an den Schweregrad an.
+  const riskMessage = useMemo(() => {
+    if (lang === 'de') {
+      switch (riskLevel) {
+        case 'high':
+          return 'Achtung – ernsthafte Gefahr! Bitte beobachte die Situation genau und wähle umgehend 112, wenn sie sich verschlechtert.';
+        case 'medium':
+          return 'Achtung – erhöhte Gefahr. Bitte bleibe aufmerksam und folge den Anweisungen.';
+        case 'low':
+          return 'Leichte Gefahr – Ruhe bewahren und Anweisungen befolgen.';
+        default:
+          return 'Hinweis – folge bitte den Anweisungen.';
+      }
+    } else {
+      switch (riskLevel) {
+        case 'high':
+          return 'Warning – severe danger! Please monitor closely and dial 112 immediately if conditions worsen.';
+        case 'medium':
+          return 'Warning – elevated risk. Please stay alert and follow the instructions.';
+        case 'low':
+          return 'Minor risk – stay calm and follow the instructions.';
+        default:
+          return 'Notice – please follow the instructions.';
+      }
+    }
+  }, [riskLevel, lang]);
 
   const sendMessage = async (question = null) => {
     const textToSend = question ?? input;
@@ -519,8 +627,9 @@ const ChatAssistant = ({
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
     // Wenn noch keine Unterhaltung geführt wurde und es Sofortanweisungen gibt
     if (!ttsEnabled) return;
-    if (messages.length === 0 && compactAdvice.length > 0) {
-      const text = compactAdvice.join('. ');
+    if (messages.length === 0 && ((plannedSteps && plannedSteps.length > 0) || compactAdvice.length > 0)) {
+      const stepsList = (plannedSteps && plannedSteps.length > 0) ? plannedSteps : compactAdvice;
+      const text = stepsList.join('. ');
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = lang === 'de' ? 'de-DE' : 'en-US';
       window.speechSynthesis.cancel();
@@ -535,7 +644,7 @@ const ChatAssistant = ({
         window.speechSynthesis.speak(utterance);
       }
     }
-  }, [messages, compactAdvice, lang, ttsEnabled]);
+  }, [messages, compactAdvice, plannedSteps, lang, ttsEnabled]);
 
   return (
     <div className="chat-assistant">
@@ -543,37 +652,20 @@ const ChatAssistant = ({
         <h3>Chat‑Assistent</h3>
         <button onClick={onClose}>×</button>
       </div>
-      {/* Risiko-Hinweis und Buddy-Optionen */}
-      {riskLevel && riskLevel !== 'low' && (
+      {/* Risiko-Hinweis mit dynamischer Farbe und Handlungsmöglichkeiten */}
+      {riskLevel && (
         <div
           style={{
-            backgroundColor: riskLevel === 'high' ? '#c30000' : '#d97706',
+            backgroundColor: riskColor,
             color: '#fff',
-            padding: '0.5rem',
+            padding: '0.6rem',
             borderRadius: '4px',
             marginBottom: '0.5rem',
           }}
         >
-          <div style={{ fontWeight: '700' }}>
-            {riskLevel === 'high'
-              ? lang === 'de'
-                ? 'Lebensbedrohliche Gefahr!'
-                : 'Life-threatening emergency!'
-              : lang === 'de'
-              ? 'Achtung – ernste Gefahr!'
-              : 'Caution – serious danger!'}
-          </div>
-          <div style={{ marginTop: '0.25rem' }}>
-            {riskLevel === 'high'
-              ? lang === 'de'
-                ? 'Bitte sofort den Notruf 112 wählen.'
-                : 'Please dial 112 immediately.'
-              : lang === 'de'
-              ? 'Bitte beobachte die Situation genau und wähle bei Verschlechterung 112.'
-              : 'Monitor the situation and call emergency services if it deteriorates.'}
-          </div>
-          <div style={{ marginTop: '0.5rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-            {/* CTA: Notruf anrufen */}
+          <div style={{ fontWeight: '700', marginBottom: '0.25rem' }}>{riskMessage}</div>
+          {/* Zusatzaktionen: Bei hoher Gefahr schnelle Handlungen anbieten */}
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
             {riskLevel === 'high' && (
               <a
                 href="tel:112"
@@ -589,7 +681,6 @@ const ChatAssistant = ({
                 {lang === 'de' ? '112 anrufen' : 'Call 112'}
               </a>
             )}
-            {/* Buddy-Ping: falls ein Buddy vorhanden, Button zum Benachrichtigen */}
             {riskLevel === 'high' && buddy && (
               <button
                 onClick={handleBuddyPing}
@@ -605,14 +696,15 @@ const ChatAssistant = ({
                 {lang === 'de' ? 'Buddy benachrichtigen' : 'Notify buddy'}
               </button>
             )}
-            {/* Eingabe zur Buddy-Hinterlegung */}
             {riskLevel === 'high' && !buddy && onBuddyChange && (
-              <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap', alignItems: 'center' }}>
+              <div
+                style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap', alignItems: 'center' }}
+              >
                 <input
                   type="text"
                   value={buddyInput}
                   onChange={(e) => setBuddyInput(e.target.value)}
-                  placeholder={lang === 'de' ? 'Buddy-Telefon…' : 'Buddy phone…'}
+                  placeholder={lang === 'de' ? 'Buddy‑Telefon…' : 'Buddy phone…'}
                   style={{ padding: '0.4rem', border: '1px solid #ccc', borderRadius: '4px' }}
                 />
                 <button
@@ -671,94 +763,204 @@ const ChatAssistant = ({
           </div>
         </div>
       )}
-      <div className="chat-messages">
-        {/* Wenn keine Unterhaltung geführt wurde, Soforthilfe anzeigen */}
-        {messages.length === 0 && compactAdvice.length > 0 && (
-          <div className="chat-placeholder">
-            {compactAdvice.map((line, idx) => (
-              <div key={idx} style={{ margin: '6px 0', fontWeight: '600' }}>
-                {idx + 1}. {line}
+      {/* Hauptrenderbereich der Chat-Assistenz. */}
+      <div className="chat-content">
+        {/* Schritt-für-Schritt-Anleitung: nur wenn noch keine Unterhaltung geführt wurde und die Chat-UI nicht aktiviert ist. */}
+        {messages.length === 0 && !showChatUI && ((plannedSteps && plannedSteps.length > 0) || compactAdvice.length > 0) && (
+          (() => {
+            const stepsList = (plannedSteps && plannedSteps.length > 0) ? plannedSteps : compactAdvice;
+            return (
+              <div className="step-instruction" style={{ marginBottom: '1rem' }}>
+                <div style={{ margin: '6px 0', fontWeight: '600' }}>
+                  {currentStepIndex + 1}. {stepsList[currentStepIndex]}
+                </div>
+                <div style={{ fontSize: '0.8rem', color: '#555' }}>
+                  {lang === 'de'
+                    ? `${currentStepIndex + 1}/${stepsList.length} Schritte`
+                    : `${currentStepIndex + 1}/${stepsList.length} steps`}
+                </div>
+                <button
+                  onClick={advanceStep}
+                  style={{
+                    marginTop: '0.5rem',
+                    backgroundColor: '#2563eb',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '4px',
+                    padding: '0.5rem 1rem',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {currentStepIndex < stepsList.length - 1
+                    ? (lang === 'de' ? 'Weiter' : 'Next')
+                    : (lang === 'de' ? 'Fertig' : 'Done')}
+                </button>
+                {/* Hinweis für Freitextbeschreibung und Datenschutz */}
+                <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: '#555' }}>
+                  {lang === 'de'
+                    ? 'Du kannst die Situation kurz beschreiben, um weitere Hilfe zu erhalten. Bitte keine Fotos – das könnte die Privatsphäre der Betroffenen verletzen.'
+                    : 'You can briefly describe the situation for further guidance. Please do not send photos – this could violate the privacy of those involved.'}
+                </p>
+              </div>
+            );
+          })()
+        )}
+        {/* Chat-Verlauf: anzeigen, sobald die Chat-UI aktiv ist oder Nachrichten vorhanden sind */}
+        {(showChatUI || messages.length > 0) && (
+          <div className="chat-messages">
+            {messages.map((msg, idx) => (
+              <div
+                key={idx}
+                className={msg.role === 'user' ? 'chat-message user' : 'chat-message bot'}
+              >
+                <strong>
+                  {msg.role === 'user'
+                    ? lang === 'de'
+                      ? 'Du'
+                      : 'You'
+                    : lang === 'de'
+                    ? 'Assistent'
+                    : 'Assistant'}
+                  :
+                </strong>{' '}
+                {msg.content}
               </div>
             ))}
-            {/* Hinweis für Freitextbeschreibung und Datenschutz. */}
-            <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: '#555' }}>
-              {lang === 'de'
-                ? 'Du kannst die Situation kurz beschreiben, um weitere Hilfe zu erhalten. Bitte keine Fotos – das könnte die Privatsphäre der Betroffenen verletzen.'
-                : 'You can briefly describe the situation for further guidance. Please do not send photos – this could violate the privacy of those involved.'}
-            </p>
+            {loading && <div className="chat-message bot">…</div>}
+            {error && <div className="chat-error">{error}</div>}
           </div>
         )}
-        {messages.map((msg, idx) => (
-          <div
-            key={idx}
-            className={msg.role === 'user' ? 'chat-message user' : 'chat-message bot'}
-          >
-            <strong>{msg.role === 'user' ? (lang === 'de' ? 'Du' : 'You') : (lang === 'de' ? 'Assistent' : 'Assistant')}:</strong>{' '}
-            {msg.content}
-          </div>
-        ))}
-        {loading && <div className="chat-message bot">…</div>}
-        {error && <div className="chat-error">{error}</div>}
-      </div>
-      {/* Keine Vorschlagsbuttons – direkte Soforthilfe genügt */}
-      <textarea
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        onKeyDown={handleKeyDown}
-        placeholder={lang === 'de' ? 'Deine Frage…' : 'Your question…'}
-        rows={3}
-      ></textarea>
-      {/* Eingabe-Controls: Mikrofon und Senden */}
-      <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem' }}>
-        {/* Mikrofon-Button: nur anzeigen, wenn Spracherkennung verfügbar */}
-        {typeof window !== 'undefined' && (('SpeechRecognition' in window) || ('webkitSpeechRecognition' in window)) && (
+        {/* Chat-Eingabe: nur sichtbar, wenn Chat-UI aktiv ist oder Nachrichten existieren */}
+        {(showChatUI || messages.length > 0) && (
+          <>
+            <textarea
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder={lang === 'de' ? 'Deine Frage…' : 'Your question…'}
+              rows={3}
+              style={{ marginTop: '0.5rem' }}
+            ></textarea>
+            <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem' }}>
+              {typeof window !== 'undefined' && ((
+                'SpeechRecognition' in window
+              ) || ( 'webkitSpeechRecognition' in window)) && (
+                <button
+                  onClick={handleVoice}
+                  disabled={loading}
+                  style={{
+                    flex: '0 0 auto',
+                    backgroundColor: listening ? '#d97706' : '#2563eb',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '4px',
+                    padding: '0.5rem 0.75rem',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {listening
+                    ? lang === 'de'
+                      ? 'Höre…'
+                      : 'Listening…'
+                    : lang === 'de'
+                    ? 'Sprache'
+                    : 'Voice'}
+                </button>
+              )}
+              <button
+                onClick={() => sendMessage()}
+                disabled={loading}
+                style={{
+                  flex: '0 0 auto',
+                  backgroundColor: '#2563eb',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '4px',
+                  padding: '0.5rem 1rem',
+                  cursor: 'pointer',
+                }}
+              >
+                {lang === 'de' ? 'Senden' : 'Send'}
+              </button>
+            </div>
+          </>
+        )}
+        {/* Life‑Saver‑Modus: Zeige Button, wenn Callback vorhanden und ein slug gesetzt ist */}
+        {onLifeSaver && slug && (showChatUI || messages.length > 0) && (
           <button
-            onClick={handleVoice}
+            onClick={() => onLifeSaver?.()}
             disabled={loading}
+            style={{ marginTop: '0.5rem' }}
+          >
+            {lang === 'de' ? 'Schritt‑für‑Schritt' : 'Life‑Saver Mode'}
+          </button>
+        )}
+      </div>
+
+      {/* Quick‑Actions: große Buttons für wichtige Aktionen. Sichtbar,
+          solange keine Nachrichten geschrieben wurden und die Chat-UI
+          nicht aktiv ist. */}
+      {messages.length === 0 && !showChatUI && (
+        <div
+          className="quick-actions"
+          style={{
+            display: 'flex',
+            gap: '0.5rem',
+            marginTop: '1rem',
+            flexWrap: 'wrap',
+          }}
+        >
+          {/* Notruf 112 Button – immer verfügbar */}
+          <a
+            href="tel:112"
             style={{
-              flex: '0 0 auto',
-              backgroundColor: listening ? '#d97706' : '#2563eb',
+              flexGrow: 1,
+              backgroundColor: '#dc2626',
+              color: '#fff',
+              padding: '0.6rem 1rem',
+              textAlign: 'center',
+              borderRadius: '4px',
+              textDecoration: 'none',
+              fontWeight: '600',
+            }}
+          >
+            {lang === 'de' ? '112 anrufen' : 'Call 112'}
+          </a>
+          {/* Chat starten – aktiviert das Eingabefeld */}
+          <button
+            onClick={() => setShowChatUI(true)}
+            style={{
+              flexGrow: 1,
+              backgroundColor: '#2563eb',
               color: '#fff',
               border: 'none',
               borderRadius: '4px',
-              padding: '0.5rem 0.75rem',
+              padding: '0.6rem 1rem',
               cursor: 'pointer',
+              fontWeight: '600',
             }}
           >
-            {listening
-              ? lang === 'de'
-                ? 'Höre…'
-                : 'Listening…'
-              : lang === 'de'
-              ? 'Sprache'
-              : 'Voice'}
+            {lang === 'de' ? 'Chat starten' : 'Start chat'}
           </button>
-        )}
-        <button
-          onClick={() => sendMessage()}
-          disabled={loading}
-          style={{
-            flex: '0 0 auto',
-            backgroundColor: '#2563eb',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '4px',
-            padding: '0.5rem 1rem',
-            cursor: 'pointer',
-          }}
-        >
-          {lang === 'de' ? 'Senden' : 'Send'}
-        </button>
-      </div>
-      {/* Life‑Saver‑Modus: Zeige Button, wenn Callback vorhanden und ein slug gesetzt ist */}
-      {onLifeSaver && slug && (
-        <button
-          onClick={() => onLifeSaver?.()}
-          disabled={loading}
-          style={{ marginTop: '0.5rem' }}
-        >
-          {lang === 'de' ? 'Schritt‑für‑Schritt' : 'Life‑Saver Mode'}
-        </button>
+          {/* Lernkarten öffnen – optional über onLifeSaver Callback */}
+          {onLifeSaver && (
+            <button
+              onClick={() => onLifeSaver?.()}
+              style={{
+                flexGrow: 1,
+                backgroundColor: '#059669',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '4px',
+                padding: '0.6rem 1rem',
+                cursor: 'pointer',
+                fontWeight: '600',
+              }}
+            >
+              {lang === 'de' ? 'Lernkarten' : 'Learning cards'}
+            </button>
+          )}
+        </div>
       )}
     </div>
   );
