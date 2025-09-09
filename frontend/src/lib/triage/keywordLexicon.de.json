@@ -1,0 +1,8 @@
+{
+  "herzinfarkt": ["brustschmerz", "druck auf brust", "enge", "schwere im brustkorb"],
+  "herzstillstand": ["kein puls", "nicht atmet", "bewusstlos", "reanimation"],
+  "krampfanfall": ["krampf", "anfälle", "epilepsie", "verkrampft"],
+  "anaphylaxie": ["allergie", "schwellung", "bienenstich", "anaphylaktisch"],
+  "hitze_uv_duerre": ["hitzschlag", "sonnenstich", "kreislaufkollaps"],
+  "blutung_stark": ["starke blutung", "blutet stark", "viel blut", "spritzende blutung"]
+}

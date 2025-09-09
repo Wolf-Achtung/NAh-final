@@ -1,0 +1,100 @@
+{
+  "herzinfarkt": {
+    "steps": {
+      "de": [
+        "112 anrufen – Symptome und Zeitpunkt nennen.",
+        "Person aufrecht hinsetzen und beengende Kleidung öffnen.",
+        "Ruhe bewahren, Atmung beobachten; bei Atemstillstand mit Herzdruckmassage beginnen."
+      ],
+      "en": [
+        "Dial 112 and report symptoms and onset time.",
+        "Sit the person upright and loosen tight clothing.",
+        "Stay calm and monitor breathing; start chest compressions if no breathing."
+      ]
+    }
+  },
+  "herzstillstand": {
+    "steps": {
+      "de": [
+        "112 anrufen und genau Ort beschreiben.",
+        "Person auf harte Unterlage legen.",
+        "Herzdruckmassage durchführen: 100–120 mal pro Minute."
+      ],
+      "en": [
+        "Dial 112 and provide precise location.",
+        "Lay the person on a hard surface.",
+        "Perform chest compressions at 100–120 per minute."
+      ]
+    }
+  },
+  "krampfanfall": {
+    "steps": {
+      "de": [
+        "Gefahren aus dem Umfeld entfernen, Kopf polstern.",
+        "Nichts zwischen die Zähne stecken, Krampf auslaufen lassen.",
+        "Nach dem Anfall in stabile Seitenlage bringen und atmen prüfen."
+      ],
+      "en": [
+        "Remove hazards nearby and cushion the head.",
+        "Do not put anything in the mouth; let the seizure run its course.",
+        "Afterwards place the person in recovery position and check breathing."
+      ]
+    }
+  },
+  "anaphylaxie": {
+    "steps": {
+      "de": [
+        "112 anrufen und Allergie nennen.",
+        "Adrenalin‑Auto‑Injector sofort anwenden (falls vorhanden).",
+        "Person hinlegen, Beine hochlagern und Atmung beobachten."
+      ],
+      "en": [
+        "Dial 112 and mention the allergy.",
+        "Administer adrenaline auto‑injector immediately if available.",
+        "Lay the person down, elevate legs and monitor breathing."
+      ]
+    }
+  },
+  "hitze_uv_duerre": {
+    "steps": {
+      "de": [
+        "Schatten aufsuchen und ausreichend trinken.",
+        "Leichte, helle Kleidung tragen.",
+        "Bei Hitzekollaps Notruf 112 wählen."
+      ],
+      "en": [
+        "Seek shade and drink plenty of fluids.",
+        "Wear light, light‑coloured clothing.",
+        "Call emergency services 112 in case of heat collapse."
+      ]
+    }
+  },
+  "blutung_stark": {
+    "steps": {
+      "de": [
+        "Direkter Druck auf die Wunde mit sauberem Tuch oder Verband.",
+        "Extremität hochlagern und ggf. Druckverband anlegen.",
+        "112 anrufen, Blutungsstärke kontrollieren."
+      ],
+      "en": [
+        "Apply direct pressure to the wound with a clean cloth or bandage.",
+        "Elevate the limb and apply a pressure bandage if necessary.",
+        "Dial 112 and monitor the bleeding intensity."
+      ]
+    }
+  },
+  "unklare_gefahr": {
+    "steps": {
+      "de": [
+        "Sichere Umgebung herstellen.",
+        "Abstand zu Gefahrenquellen halten.",
+        "Bei Verletzten 112 anrufen."
+      ],
+      "en": [
+        "Create a safe environment.",
+        "Keep distance from danger sources.",
+        "Call 112 if there are injured persons."
+      ]
+    }
+  }
+}
