@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useEffect, useRef } from 'react';
+import CameraAssist from './CameraAssist';
 import { planSteps } from '../lib/aiPlanner';
 import { safeReadSensors } from '../lib/riskEngine';
-import CameraAssist from './CameraAssist';
 
 /**
  * ChatAssistant – kompakte, barrierearme Notfallhilfe.
@@ -89,48 +89,18 @@ const ChatAssistant = ({
   // eine spezifische Gefahrenkategorie zurückliefert.
   const [slugOverride, setSlugOverride] = useState(null);
 
-  // Flag zum Steuern der Kamera-Assistenz. Wenn aktiv, wird CameraAssist
-  // angezeigt, um Foto/Video aufzunehmen und an den Vision-Worker zu senden.
+  // UI state for the camera assist: whether the camera component is visible
   const [showCameraAssist, setShowCameraAssist] = useState(false);
+  // Track which vision hints have already been processed to avoid repeated handling
+  const [seenHints, setSeenHints] = useState(new Set());
+  // Visible hint chips shown to the user
+  const [hintBanner, setHintBanner] = useState([]);
 
-  // Effektive Gefahrenkategorie und Risikoniveau.  Wenn die GPT‑Klassifikation eine
-  // alternative Gefahrenkategorie oder ein override_risk liefert, werden diese
-  // Informationen genutzt.  Andernfalls bleiben slug und riskLevel unverändert.
+  // Effektives Risiko und Gefahrenkategorie: Wird ggf. durch die
+  // GPT‑Klassifikation übersteuert. Wenn kein override vorliegt,
+  // bleiben riskLevel und slug unverändert.
   const effectiveRiskLevel = classification?.override_risk || riskLevel;
   const effectiveSlug = slugOverride || slug;
-
-  // Verarbeite Vision-Hinweise. Wenn z. B. 'blood_suspected' erkannt wird,
-  // aktualisiere die Klassifikation und die Schrittfolge. Weitere Hints
-  // können analog behandelt werden.
-  const handleHint = (hints) => {
-    if (!hints || !Array.isArray(hints)) return;
-    if (hints.includes('blood_suspected')) {
-      const newClassification = {
-        hazard: 'blutung_stark',
-        override_risk: 'high',
-        cta: lang === 'de'
-          ? 'Starke Blutung erkannt – Druck auf die Wunde ausüben.'
-          : 'Severe bleeding detected – apply pressure to the wound.',
-      };
-      setClassification(newClassification);
-      setSlugOverride('blutung_stark');
-      setClassificationDone(true);
-      // Plane Schritte neu
-      (async () => {
-        try {
-          const sensor = await safeReadSensors();
-          const locale = lang || 'de';
-          const { steps } = await planSteps({ text: '', sensor, locale, online: navigator.onLine });
-          if (steps && Array.isArray(steps) && steps.length > 0) {
-            setPlannedSteps(steps);
-          }
-        } catch {
-          // ignore errors
-        }
-      })();
-      setShowCameraAssist(false);
-    }
-  };
 
   // Plane die Schritte basierend auf Sensorsignalen und Hazard.  Wir lesen
   // einmalig vorhandene Sensoren aus und fragen den Planner.  Der Planner
@@ -139,7 +109,10 @@ const ChatAssistant = ({
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      // Nur vor Start des Chats planen und nur, wenn noch keine Klassifikation erfolgt ist
+      // Nur vor Start des Chats planen
+      // Nicht planen, wenn bereits eine Unterhaltung geführt wurde oder die
+      // Klassifikation abgeschlossen ist – die Planung wird durch handleClassification
+      // erneut durchgeführt.
       if (messages.length > 0 || classificationDone) return;
       try {
         const sensor = await safeReadSensors();
@@ -155,7 +128,7 @@ const ChatAssistant = ({
     return () => {
       cancelled = true;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line
   }, [slug, slugOverride, lang, messages.length, classificationDone]);
 
   // Sendet eine Benachrichtigung an den Buddy via SMS/Telefon. Öffnet die Telefon-App oder den SMS-Client.
@@ -195,7 +168,7 @@ const ChatAssistant = ({
       const res = await fetch('/api/gpt-classify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text, persona: 'default' })
+        body: JSON.stringify({ text, persona: 'default' }),
       });
       if (res.ok) {
         const data = await res.json();
@@ -208,9 +181,13 @@ const ChatAssistant = ({
         try {
           const sensor = await safeReadSensors();
           const locale = lang || 'de';
-          const { steps } = await planSteps({ text, sensor, locale, online: navigator.onLine });
-          if (steps && Array.isArray(steps) && steps.length > 0) {
-            setPlannedSteps(steps);
+          const plan = await planSteps({ text, sensor, locale, online: navigator.onLine });
+          if (plan && Array.isArray(plan.steps) && plan.steps.length > 0) {
+            setPlannedSteps(plan.steps);
+          }
+          // Persist CTA from planner for display in the risk banner
+          if (plan && plan.cta) {
+            setClassification((prev) => ({ ...(prev || {}), cta: plan.cta }));
           }
         } catch {
           // Ignoriere Fehler im Planner; fallback auf existierende Steps
@@ -222,6 +199,88 @@ const ChatAssistant = ({
       setLoading(false);
       setClassificationDone(true);
     }
+  };
+
+  // Handle hints returned from the camera vision worker.  When new hints are
+  // received, update the hazard slug and risk level, replan steps and show
+  // hint chips.  Telemetry is sent for each invocation.  Hints are
+  // debounced using the seenHints set.
+  const handleHint = async (hints = []) => {
+    if (!Array.isArray(hints) || hints.length === 0) return;
+    // Only handle hints we haven't seen before
+    const newOnes = hints.filter((h) => !seenHints.has(h));
+    if (newOnes.length === 0) return;
+    // Update visible hint chips
+    setHintBanner((prev) => Array.from(new Set([...(prev || []), ...newOnes])));
+    // Mark hints as processed
+    setSeenHints((prev) => {
+      const ns = new Set(prev);
+      newOnes.forEach((h) => ns.add(h));
+      return ns;
+    });
+    // Map hints to hazard/risk/cta
+    let mappedSlug = null;
+    let overrideRisk = null;
+    let cta = null;
+    if (hints.includes('blood_suspected')) {
+      mappedSlug = 'blutung_stark';
+      overrideRisk = 'high';
+      cta = lang === 'de' ? 'Direkten Druck auf die Wunde ausüben.' : 'Apply direct pressure to the wound.';
+    } else if (hints.includes('smoke_fire')) {
+      mappedSlug = 'brand_feuer';
+      overrideRisk = 'medium';
+      cta = lang === 'de' ? 'Gebäude geordnet verlassen.' : 'Evacuate the building in an orderly fashion.';
+    }
+    if (hints.includes('aed_icon')) {
+      cta = lang === 'de' ? 'AED holen lassen (jemanden losschicken).' : 'Send someone to get an AED.';
+    }
+    if (hints.includes('fall_detected') && !overrideRisk) {
+      overrideRisk = 'medium';
+    }
+    // Update classification override and CTA
+    setClassification((prev) => ({
+      ...(prev || {}),
+      hazard: mappedSlug || (prev && prev.hazard),
+      override_risk: overrideRisk || (prev && prev.override_risk),
+      cta: cta || (prev && prev.cta),
+    }));
+    if (mappedSlug) {
+      setSlugOverride(mappedSlug);
+    }
+    // Plan new steps considering hints
+    try {
+      const sensor = await safeReadSensors();
+      const locale = lang || 'de';
+      const { steps } = await planSteps({
+        text: '',
+        sensor,
+        locale,
+        online: navigator.onLine,
+        hints: Array.from(new Set([...(hintBanner || []), ...hints])),
+      });
+      if (steps && Array.isArray(steps) && steps.length > 0) {
+        setPlannedSteps(steps);
+      }
+    } catch {}
+    // Hide camera after processing
+    if (showCameraAssist) setShowCameraAssist(false);
+    // Send telemetry
+    try {
+      const metric = {
+        event: 'vision_hints',
+        hints,
+        slug_effective: mappedSlug || slugOverride || slug,
+        risk_effective: overrideRisk || effectiveRiskLevel,
+        timestamp: Date.now(),
+        online: typeof navigator !== 'undefined' ? navigator.onLine : null,
+      };
+      const baseUrl = process.env.REACT_APP_BACKEND_URL || '';
+      fetch(`${baseUrl}/api/telemetry`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(metric),
+      }).catch(() => {});
+    } catch {}
   };
 
   // Soforthilfe-Mapping: nummerierte Anweisungen für jede Gefahr.
@@ -301,7 +360,7 @@ const ChatAssistant = ({
         t('Bei Hitzekollaps Notruf 112 wählen.', 'Call 112 in case of heat collapse.'),
       ],
     }[effectiveSlug] || [];
-  }, [slug, lang]);
+  }, [slug, slugOverride, lang]);
 
   /**
    * Fortschritt durch die Soforthilfe‑Schritte.  Wird aufgerufen,
@@ -327,7 +386,6 @@ const ChatAssistant = ({
   // erscheinen in Rot, mittlere in Orange und niedrige in Grün.  Der
   // default case nutzt Blau.
   const riskColor = useMemo(() => {
-    // Verwende das effektive Risikoniveau (aus Klassifikation oder Prop)
     switch (effectiveRiskLevel) {
       case 'high':
         return '#dc2626';
@@ -762,7 +820,7 @@ const ChatAssistant = ({
         <button onClick={onClose}>×</button>
       </div>
       {/* Risiko-Hinweis mit dynamischer Farbe und Handlungsmöglichkeiten */}
-      {riskLevel && (
+      {effectiveRiskLevel && (
         <div
           style={{
             backgroundColor: riskColor,
@@ -777,13 +835,7 @@ const ChatAssistant = ({
           {classification?.cta && (
             <div style={{ fontWeight: '700', marginBottom: '0.25rem' }}>{classification.cta}</div>
           )}
-          {/* Zusatzaktionen im Risiko-Banner werden vorerst ausgeblendet (112/Buddy). */}
-        </div>
-      )}
-      {/* Kamera-Assistenz: wird angezeigt, wenn showCameraAssist aktiv ist */}
-      {showCameraAssist && (
-        <div style={{ marginTop: '1rem' }}>
-          <CameraAssist onHint={handleHint} />
+          {/* Keine zusätzlichen Schnellaktionen anzeigen (Notruf und Buddy werden später integriert) */}
         </div>
       )}
 
@@ -826,7 +878,7 @@ const ChatAssistant = ({
       )}
       {/* Hauptrenderbereich der Chat-Assistenz. */}
       <div className="chat-content">
-        {/* Wenn noch keine Klassifikation durchgeführt wurde, bieten wir dem Nutzer die Möglichkeit, die Situation kurz zu beschreiben. */}
+        {/* Klassifikation: biete dem Nutzer an, die Situation kurz zu beschreiben. */}
         {messages.length === 0 && !showChatUI && !classificationDone && (
           <div
             className="classification-input"
@@ -904,8 +956,37 @@ const ChatAssistant = ({
             </p>
           </div>
         )}
-
-        {/* Schritt-für-Schritt-Anleitung: nur wenn noch keine Unterhaltung geführt wurde, die Chat-UI nicht aktiviert ist und die Klassifikation abgeschlossen ist. */}
+        {hintBanner && hintBanner.length > 0 && (
+          <div style={{ marginBottom: '0.5rem', display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+            {hintBanner.map((h) => (
+              <span
+                key={h}
+                style={{
+                  background: '#eef2ff',
+                  border: '1px solid #c7d2fe',
+                  padding: '2px 8px',
+                  borderRadius: '999px',
+                  fontSize: '0.8rem',
+                }}
+              >
+                {h}
+              </span>
+            ))}
+            <button
+              onClick={() => setHintBanner([])}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                textDecoration: 'underline',
+                fontSize: '0.8rem',
+                cursor: 'pointer',
+              }}
+            >
+              {lang === 'de' ? 'Hinweise ausblenden' : 'Hide hints'}
+            </button>
+          </div>
+        )}
+        {/* Schritt-für-Schritt-Anleitung: zeige nach Abschluss der Klassifikation, solange noch keine Unterhaltung geführt wurde und die Chat-UI nicht aktiviert ist. */}
         {messages.length === 0 && !showChatUI && classificationDone && ((plannedSteps && plannedSteps.length > 0) || compactAdvice.length > 0) && (
           (() => {
             const stepsList = (plannedSteps && plannedSteps.length > 0) ? plannedSteps : compactAdvice;
@@ -935,43 +1016,26 @@ const ChatAssistant = ({
                     ? (lang === 'de' ? 'Weiter' : 'Next')
                     : (lang === 'de' ? 'Fertig' : 'Done')}
                 </button>
-                {/* Zusatzoptionen: Frage stellen oder Foto hochladen */}
-                <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.75rem' }}>
-                  <button
-                    onClick={() => setShowChatUI(true)}
-                    style={{
-                      flexGrow: 1,
-                      backgroundColor: '#2563eb',
-                      color: '#fff',
-                      border: 'none',
-                      borderRadius: '4px',
-                      padding: '0.4rem 0.8rem',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    {lang === 'de' ? 'Frage stellen' : 'Ask a question'}
-                  </button>
-                  <button
-                    onClick={() => setShowCameraAssist(true)}
-                    style={{
-                      flexGrow: 1,
-                      backgroundColor: '#ea580c',
-                      color: '#fff',
-                      border: 'none',
-                      borderRadius: '4px',
-                      padding: '0.4rem 0.8rem',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    {lang === 'de' ? 'Foto hochladen' : 'Upload photo'}
-                  </button>
-                </div>
                 {/* Hinweis für Datenschutz */}
                 <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: '#555' }}>
                   {lang === 'de'
                     ? 'Keine Fotos senden – das könnte die Privatsphäre der Betroffenen verletzen.'
                     : 'Please do not send photos – this could violate the privacy of those involved.'}
                 </p>
+                <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem', flexWrap: 'wrap' }}>
+                  <button
+                    onClick={() => setShowChatUI(true)}
+                    style={{ backgroundColor: '#2563eb', color: '#fff', border: 'none', borderRadius: '4px', padding: '0.4rem 0.8rem', cursor: 'pointer' }}
+                  >
+                    {lang === 'de' ? 'Frage stellen' : 'Ask question'}
+                  </button>
+                  <button
+                    onClick={() => setShowCameraAssist(true)}
+                    style={{ backgroundColor: '#475569', color: '#fff', border: 'none', borderRadius: '4px', padding: '0.4rem 0.8rem', cursor: 'pointer' }}
+                  >
+                    {lang === 'de' ? 'Foto hochladen' : 'Upload photo'}
+                  </button>
+                </div>
               </div>
             );
           })()
@@ -1097,12 +1161,12 @@ const ChatAssistant = ({
           >
             {lang === 'de' ? 'Chat starten' : 'Start chat'}
           </button>
-          {/* Foto hochladen / Kamera starten */}
+          {/* Foto hochladen – öffnet die Kamera */}
           <button
             onClick={() => setShowCameraAssist(true)}
             style={{
               flexGrow: 1,
-              backgroundColor: '#ea580c',
+              backgroundColor: '#475569',
               color: '#fff',
               border: 'none',
               borderRadius: '4px',
@@ -1131,6 +1195,13 @@ const ChatAssistant = ({
               {lang === 'de' ? 'Lernkarten' : 'Learning cards'}
             </button>
           )}
+        </div>
+      )}
+
+      {/* Kamera-Assistent: zeigt das Kamerafenster, wenn aktiv */}
+      {showCameraAssist && (
+        <div style={{ marginTop: '1rem' }}>
+          <CameraAssist onHint={handleHint} />
         </div>
       )}
     </div>
