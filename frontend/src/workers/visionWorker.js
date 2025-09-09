@@ -1,36 +1,104 @@
 // src/workers/visionWorker.js
-// Vision-Worker: Heuristiken + optional TFJS-TFLite (efficientdet_lite0.tflite) + BlazeFace-Anonymisierung.
+//
+// Vision-Worker: Heuristiken + optional TFJS-TFLite (efficientdet_lite0.tflite) + Hooks für MediaPipe/ONNX.
+// Läuft vollständig offline; sendet nur Hint-Labels zurück. Keine Bilddaten nach außen.
 
-let faceModel = null;
-let tfliteModel = null;
-let tf = null;
+let tf = null;                 // tfjs Kern wird lazy geladen
+let tfliteModel = null;        // tfjs-tflite Modell
+let mpReady = false;           // MediaPipe-Task-Hook (optional)
+let mpObjectDetector = null;
+let onnxReady = false;         // ONNX-Hook (optional)
+let onnxSession = null;
+let onnxLabels = [];
 
-// --- Helpers ---------------------------------------------------------------
+// ---------- Utils ----------
+
 async function resourceExists(url) {
   try {
-    const res = await fetch(url, { method: 'HEAD', cache: 'no-store' });
-    if (res.ok) return true;
-    const res2 = await fetch(url, { method: 'GET', cache: 'no-store' });
-    return res2.ok;
+    const h = await fetch(url, { method: 'HEAD', cache: 'no-store' });
+    if (h.ok) return true;
+    const g = await fetch(url, { method: 'GET', cache: 'no-store' });
+    return g.ok;
   } catch { return false; }
 }
 
-async function loadFaceModel() {
-  if (faceModel) return faceModel;
-  if (!tf) tf = (await import('@tensorflow/tfjs')).default;
+async function ensureTF() {
+  if (tf) return;
+  tf = (await import('@tensorflow/tfjs')).default;
   try { await import('@tensorflow/tfjs-backend-webgl'); await tf.setBackend('webgl'); }
   catch { await tf.setBackend('cpu'); }
   await tf.ready();
-  const blazeface = await import('@tensorflow-models/blazeface');
-  faceModel = await blazeface.load({ modelUrl: '/models/blazeface/model.json' });
-  return faceModel;
 }
 
-// sehr leichte Heuristik: viel Rot = blood_suspected
-function detectBloodHeuristic(img) {
-  const { data, width, height } = img;
+// ---------- TFJS-TFLite ----------
+
+async function ensureTFLite() {
+  if (tfliteModel) return true;
+  const exists = await resourceExists('/models/efficientdet_lite0.tflite');
+  if (!exists) return false;
+  const tfl = await import('@tensorflow/tfjs-tflite');
+  await ensureTF();
+  tfliteModel = await tfl.loadTFLiteModel('/models/efficientdet_lite0.tflite');
+  return true;
+}
+
+function imageDataToTensor(imgData, size = 320) {
+  const { data, width, height } = imgData;
+  const off = new OffscreenCanvas(width, height);
+  const ctx = off.getContext('2d');
+  const img = new ImageData(new Uint8ClampedArray(data), width, height);
+  ctx.putImageData(img, 0, 0);
+
+  const off2 = new OffscreenCanvas(size, size);
+  const ctx2 = off2.getContext('2d');
+  ctx2.drawImage(off, 0, 0, size, size);
+  const resized = ctx2.getImageData(0, 0, size, size);
+
+  // Normalize to [-1, 1]; strip alpha
+  const arr = Float32Array.from(resized.data, (v, i) => (i % 4 === 3 ? 0 : (v - 127.5) / 127.5));
+  const t4 = tf.tensor4d(arr, [1, size, size, 4]).slice([0, 0, 0, 0], [1, size, size, 3]);
+  return t4;
+}
+
+async function nms(boxes, scores, max = 10, iou = 0.5, thr = 0.5) {
+  const keep = await tf.image.nonMaxSuppressionAsync(boxes, scores, max, iou, thr);
+  const out = await keep.array();
+  keep.dispose();
+  return out;
+}
+
+function parseEffDetOutput(out) {
+  // robust gegen Map/Array
+  const output = {};
+  if (Array.isArray(out)) out.forEach((t, i) => output[`out_${i}`] = t);
+  else Object.assign(output, out);
+
+  const keys = Object.keys(output);
+  const boxesKey   = keys.find(k => /box/i.test(k)    && output[k].shape?.length === 3) || keys.find(k => /boxes/i.test(k));
+  const scoresKey  = keys.find(k => /score/i.test(k)) || keys.find(k => /scores/i.test(k));
+  const classesKey = keys.find(k => /class/i.test(k)) || keys.find(k => /classes/i.test(k));
+  if (!boxesKey || !scoresKey) return [];
+
+  const boxes  = output[boxesKey];   // [1,N,4] (ymin,xmin,ymax,xmax) normiert
+  const scores = output[scoresKey];  // [1,N]
+  const classes= classesKey ? output[classesKey] : null;
+
+  const b = boxes.dataSync ? boxes.dataSync() : boxes;
+  const s = scores.dataSync ? scores.dataSync() : scores;
+  const n = s.length;
+  const dets = [];
+  for (let i = 0; i < n; i++) {
+    dets.push({ box: [b[i*4], b[i*4+1], b[i*4+2], b[i*4+3]], score: s[i], cls: classes ? (classes[i]|0) : -1 });
+  }
+  return dets;
+}
+
+// ---------- Heuristiken ----------
+
+function hintBlood(img) {
+  const { data } = img;
   let red = 0, total = 0;
-  for (let i = 0; i < data.length; i += 4 * 8) {
+  for (let i = 0; i < data.length; i += 32) {
     const r = data[i], g = data[i+1], b = data[i+2];
     if (r > 150 && g < 110 && b < 110 && r > g + 40 && r > b + 40) red++;
     total++;
@@ -38,11 +106,10 @@ function detectBloodHeuristic(img) {
   return (red / Math.max(total,1)) > 0.02;
 }
 
-// sehr leichte Heuristik: warmes Orange = smoke_fire
-function detectWarmHeuristic(img) {
+function hintWarm(img) {
   const { data } = img;
   let warm = 0, total = 0;
-  for (let i = 0; i < data.length; i += 4 * 16) {
+  for (let i = 0; i < data.length; i += 64) {
     const r = data[i], g = data[i+1], b = data[i+2];
     if (r > 160 && g > 90 && b < 90) warm++;
     total++;
@@ -50,133 +117,93 @@ function detectWarmHeuristic(img) {
   return (warm / Math.max(total,1)) > 0.01;
 }
 
-// --- TFJS-TFLite Laden -----------------------------------------------------
-async function ensureTFLite() {
-  if (tfliteModel) return true;
-  const exists = await resourceExists('/models/efficientdet_lite0.tflite');
-  if (!exists) return false;
-  const tfl = await import('@tensorflow/tfjs-tflite');
-  if (!tf) tf = (await import('@tensorflow/tfjs')).default;
-  try { await import('@tensorflow/tfjs-backend-webgl'); await tf.setBackend('webgl'); }
-  catch { await tf.setBackend('cpu'); }
-  await tf.ready();
-  tfliteModel = await tfl.loadTFLiteModel('/models/efficientdet_lite0.tflite');
-  return true;
-}
-
-// Bild zu Tensor (Resizing auf 320x320 als Default; ggf. an Modell anpassen)
-function imageDataToTensor(imgData, size = 320) {
-  const { data, width, height } = imgData;
-  const off = new OffscreenCanvas(width, height);
-  const ctx = off.getContext('2d');
-  const img = new ImageData(new Uint8ClampedArray(data), width, height);
-  ctx.putImageData(img, 0, 0);
-  const off2 = new OffscreenCanvas(size, size);
-  const ctx2 = off2.getContext('2d');
-  ctx2.drawImage(off, 0, 0, size, size);
-  const resized = ctx2.getImageData(0, 0, size, size);
-  const arr = Float32Array.from(resized.data, (v, i) => (i % 4 === 3 ? 0 : (v - 127.5) / 127.5));
-  if (!tf) return null;
-  const t = tf.tensor4d(arr, [1, size, size, 4]).slice([0,0,0,0],[1,size,size,3]); // RG B; A weg
-  return t;
-}
-
-// NMS in TFJS
-async function nms(boxes, scores, max=10, iou=0.5, scoreThresh=0.5) {
-  if (!tf) tf = (await import('@tensorflow/tfjs')).default;
-  const keep = await tf.image.nonMaxSuppressionAsync(boxes, scores, max, iou, scoreThresh);
-  const idx = await keep.array();
-  keep.dispose();
-  return idx;
-}
-
-// Output-Parser (für EffDet/SSD-artige TFLite Modelle mit PostProcess)
-// Erwartet Keys wie 'TFLite_Detection_PostProcess', '…_scores', '…_classes', '…_boxes'
-function parseDetections(output) {
-  // Robust gegen unterschiedliche Keynamen
-  const keys = Object.keys(output);
-  // Suche das boxes/scores/classes
-  const boxesKey   = keys.find(k => /box/i.test(k) && output[k].shape?.length===3) || keys.find(k => /boxes/i.test(k));
-  const scoresKey  = keys.find(k => /score/i.test(k)) || keys.find(k => /scores/i.test(k));
-  const classesKey = keys.find(k => /class/i.test(k)) || keys.find(k => /classes/i.test(k));
-  if (!boxesKey || !scoresKey) return [];
-  const boxes  = output[boxesKey];   // [1,N,4] (ymin,xmin,ymax,xmax) relativ
-  const scores = output[scoresKey];  // [1,N]
-  const classes= classesKey ? output[classesKey] : null;
-
-  const b = boxes.dataSync ? boxes.dataSync() : boxes;
-  const s = scores.dataSync ? scores.dataSync() : scores;
-  const n = s.length;
-  const out = [];
-  for (let i=0;i<n;i++){
-    // in Pixel umrechnen übernimmt später das UI, wir geben normalisierte Koords
-    out.push({ box: [b[i*4], b[i*4+1], b[i*4+2], b[i*4+3]], score: s[i], cls: classes ? (classes[i]|0) : -1 });
+function hintAED(img) {
+  const { data } = img;
+  let green = 0, total = 0;
+  for (let i = 0; i < data.length; i += 32) {
+    const r = data[i], g = data[i+1], b = data[i+2];
+    if (g > 150 && g > r + 20 && g > b + 20) green++;
+    total++;
   }
-  return out;
+  return (green / Math.max(total,1)) > 0.015;
 }
 
-// --- Haupt-Handler ---------------------------------------------------------
+// ---------- MediaPipe / ONNX Hooks (optional, derzeit no-op) ----------
+
+async function initMediaPipe() {
+  if (mpObjectDetector || mpReady) return;
+  const taskUrl = '/models/mediapipe/object_detector.task';
+  if (!(await resourceExists(taskUrl))) { mpReady = true; return; }
+  try {
+    const vision = await import('@mediapipe/tasks-vision');
+    const fileset = await vision.FilesetResolver.forVisionTasks('/models/mediapipe/');
+    mpObjectDetector = await vision.ObjectDetector.createFromOptions(fileset, {
+      baseOptions: { modelAssetPath: taskUrl },
+      scoreThreshold: 0.5,
+    });
+    mpReady = true;
+  } catch { mpObjectDetector = null; mpReady = true; }
+}
+
+async function initOnnx() {
+  if (onnxReady || onnxSession) return;
+  const url = '/models/onnx/model.onnx';
+  if (!(await resourceExists(url))) { onnxReady = true; return; }
+  try {
+    const ort = await import('onnxruntime-web');
+    onnxSession = await ort.InferenceSession.create(url, { executionProviders: ['wasm'] });
+    try {
+      const res = await fetch('/models/onnx/labels.txt', { cache: 'no-store' });
+      if (res.ok) onnxLabels = (await res.text()).split('\n').map(s=>s.trim()).filter(Boolean);
+    } catch {}
+    onnxReady = true;
+  } catch { onnxSession = null; onnxReady = true; }
+}
+
+// ---------- Main ----------
+
 let frameCount = 0;
 
 self.onmessage = async (e) => {
   const { type, data } = e.data || {};
+  if (type === 'init') {
+    // Optionales Vorladen
+    await Promise.allSettled([ensureTFLite(), initMediaPipe(), initOnnx()]);
+    return;
+  }
   if (type !== 'frame' || !data) return;
 
-  const imageData = data;
+  const img = data;
   const hints = new Set();
 
-  // 1) Heuristiken (leicht & schnell)
-  try {
-    if (detectBloodHeuristic(imageData)) hints.add('blood_suspected');
-    if (detectWarmHeuristic(imageData))  hints.add('smoke_fire');
-  } catch {}
+  // Heuristiken
+  try { if (hintBlood(img)) hints.add('blood_suspected'); } catch {}
+  try { if (hintWarm(img))  hints.add('smoke_fire'); } catch {}
+  try { if (hintAED(img))   hints.add('aed_icon'); } catch {}
 
-  // 2) Optional: TFJS-TFLite laden und laufen lassen
+  // Platzhalter-Sturz
+  frameCount++; if (frameCount % 180 === 0) hints.add('fall_detected');
+
+  // Optional: TFJS-TFLite
   try {
     const ready = await ensureTFLite();
     if (ready && tfliteModel) {
-      if (!tf) tf = (await import('@tensorflow/tfjs')).default;
-      const x = imageDataToTensor(imageData, 320);
-      if (x) {
-        const out = await tfliteModel.predict(x);
-        // `out` kann Map oder Array sein – wir versuchen beides robust zu parsen
-        const output = {};
-        if (Array.isArray(out)) {
-          out.forEach((t, i) => output[`out_${i}`] = t);
-        } else {
-          Object.assign(output, out);
-        }
-        const dets = parseDetections(output);
-        // einfache Schwelle + NMS
-        const boxes = dets.map(d => d.box);                 // [ymin,xmin,ymax,xmax] normiert
-        const scores= dets.map(d => d.score);
-        if (boxes.length && scores.length) {
-          const boxesTensor  = tf.tensor2d(boxes);
-          const scoresTensor = tf.tensor1d(scores);
-          const keep = await nms(boxesTensor, scoresTensor, 10, 0.5, 0.5);
-          // Beispielhafte Hint-Ableitung (ohne echte Labels):
-          // Wir bleiben vorsichtig und nutzen TF-Ergebnis aktuell nur, um smoke/blood-Heuristik zu bestätigen.
-          if (keep.length >= 1 && scores.some(s => s > 0.5)) {
-            // könnten hier weitere Hints setzen, z.B. crowd_panic etc. – abhängig vom Modell/Labels
-          }
-          boxesTensor.dispose(); scoresTensor.dispose();
-        }
-        // Tensoren aufräumen
-        if (out.dispose) out.dispose();
-        x.dispose();
+      await ensureTF();
+      const x = imageDataToTensor(img, 320);
+      const out = await tfliteModel.predict(x);
+      const dets = parseEffDetOutput(out);
+      if (dets.length) {
+        const boxes = tf.tensor2d(dets.map(d => d.box));
+        const scores= tf.tensor1d(dets.map(d => d.score));
+        const keep  = await nms(boxes, scores, 10, 0.5, 0.5);
+        // Beispiel: hier könnten künftige Labels → Hints gemappt werden
+        boxes.dispose(); scores.dispose();
+        // (Wir lassen Hints aktuell konservativ bei den Heuristiken.)
       }
+      if (out && out.dispose) out.dispose();
+      x.dispose();
     }
-  } catch { /* bei Fehlern bleiben nur Heuristiken aktiv */ }
+  } catch {}
 
-  // 3) BlazeFace (nur Vorbereitung für Anonymisierung / keine Hints)
-  try { await loadFaceModel(); /* model.estimateFaces(...) optional */ }
-  catch {}
-
-  // 4) Sturz-Simulation (Demo)
-  frameCount++;
-  if (frameCount % 180 === 0) hints.add('fall_detected');
-
-  if (hints.size) {
-    self.postMessage({ type: 'hint', hints: Array.from(hints) });
-  }
+  if (hints.size) self.postMessage({ type: 'hint', hints: Array.from(hints) });
 };
